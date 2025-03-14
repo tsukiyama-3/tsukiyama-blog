@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/tailwind.css'],
   compatibilityDate: '2024-11-01',
+  nitro: {
+    preset: 'cloudflare-pages',
+  },
   vite: {
     plugins: [tailwindcss()],
   },
