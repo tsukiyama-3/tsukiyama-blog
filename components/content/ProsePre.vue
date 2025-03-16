@@ -54,9 +54,11 @@ const copyCode = (): void => {
       <span
         v-if="codeCopied"
         class="copy-success"
-      ><i>Copied</i></span>
+      >
+        <i>Copied</i>
+      </span>
       <button
-        class="copy-btn"
+        class="copy-btn cursor-pointer"
         @click="copyCode"
       >
         Copy
