@@ -7,7 +7,10 @@ const { data } = await useAsyncData(route.path, () =>
 
 <template>
   <main class="article">
-    <article v-if="data">
+    <article
+      v-if="data"
+      id="article"
+    >
       <h1 class="title">
         {{ data.title }}
       </h1>
@@ -22,3 +25,5 @@ const { data } = await useAsyncData(route.path, () =>
     </div>
   </main>
 </template>
+
+<style scoped src="~/assets/css/tailwind.css"></style>

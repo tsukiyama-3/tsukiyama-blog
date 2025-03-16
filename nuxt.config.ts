@@ -5,6 +5,22 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/content'],
   devtools: { enabled: true },
   css: ['~/assets/css/tailwind.css'],
+  content: {
+    build: {
+      markdown: {
+        // rehypePlugins: {
+        //   'rehype-figure': {},
+        // },
+        highlight: {
+          theme: {
+            default: 'github-light',
+            dark: 'github-dark',
+            // sepia: 'monokai',
+          },
+        },
+      },
+    },
+  },
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'cloudflare-pages',
