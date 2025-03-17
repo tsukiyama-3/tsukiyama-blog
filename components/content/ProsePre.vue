@@ -126,6 +126,7 @@ const copyCode = (): void => {
 
 .pre-body {
   margin: 0;
+  background-color: var(--color-gray-800);
   padding: 0.75rem 0 0.75rem 0;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;

@@ -13,7 +13,7 @@ export default defineNuxtConfig({
         // },
         highlight: {
           theme: {
-            default: 'github-light',
+            default: 'github-dark-high-contrast',
             dark: 'github-dark',
             // sepia: 'monokai',
           },
