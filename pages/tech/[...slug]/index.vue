@@ -6,7 +6,7 @@ const { data } = await useAsyncData(route.path, () =>
 </script>
 
 <template>
-  <main class="max-w-[800px] mx-auto">
+  <main class="max-w-[832px] mx-auto px-4">
     <article
       v-if="data"
       id="article"
@@ -20,7 +20,7 @@ const { data } = await useAsyncData(route.path, () =>
       >
       <ContentRenderer
         :value="data"
-        class="space-y-6"
+        class="space-y-8"
       />
     </article>
     <div v-else>

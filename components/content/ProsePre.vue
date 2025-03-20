@@ -75,7 +75,6 @@ const copyCode = (): void => {
 .pre {
   overflow-x: hidden;
   border-radius: 6px;
-  margin-bottom: 3rem;
   background-color: var(--shiki-default-bg);
   border: 1px solid var(--shiki-default);
 }
@@ -155,6 +154,7 @@ const copyCode = (): void => {
 
 .pre-body .line::before {
   content: attr(line);
+  color: var(--color-gray-50);
   padding-right: 1.25rem;
   display: inline-block;
   opacity: 0.8;

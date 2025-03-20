@@ -1,46 +1,115 @@
 ---
 title: マークダウンサンプル
-description: description sample
+description: 本ブログのマークダウンサンプルです。
 ogp: https://res.cloudinary.com/dyoyv8djx/image/upload/v1704624998/zenn/view-transition-api/Frame_2_yjt73r.png
 ---
 
-ディスクリプションディスクリプションディスクリプションディスクリプションディスクリプションディスクリプションディスクリプションディスクリプション
+## Headers
 
-## H2タイトル
+```md
+## H2
 
-## H2タイトル2
+### h3
 
-## H2タイトル3
+#### h4
+```
 
-hogehoge
+## H2
 
-### H3
+### h3
 
-#### H4
+#### h4
 
+## Paragraph
+
+```md
+これはパラグラフです。
+```
+
+これはパラグラフです。
+
+## Lists
+
+```md
 - 箇条書き
 - 箇条書き
+    - ネストも掘れるよ
+    - ネストも掘れるよ
+    - ネストも掘れるよ
 - 箇条書き
 
 1. 箇条書き
 2. 箇条書き
+    1. ネストも掘れるよ
+    2. ネストも掘れるよ
+    3. ネストも掘れるよ
 3. 箇条書き
+```
+
+- 箇条書き
+- 箇条書き
+    - ネストも掘れるよ
+    - ネストも掘れるよ
+    - ネストも掘れるよ
+- 箇条書き
+
+1. 箇条書き
+2. 箇条書き
+    1. ネストも掘れるよ
+    2. ネストも掘れるよ
+    3. ネストも掘れるよ
+3. 箇条書き
+
+## Links
+
+```md
+[リンクです](https://tsukiyama.blog)
+```
 
 [リンクです](https://tsukiyama.blog)
 
-> 引用はこんな感じです。<br>
+## Blockquotes
+
+```md
+> 引用はこんな感じです。
+```
+
 > 引用はこんな感じです。
 
 
 **協調協調**
+
+## Tables
+
+```md
+| Header 1 | Header 2 |
+| -------- | -------- |
+| Cell 1   | Cell 2   |
+| Cell 3   | Cell 4   |
+```
 
 | Header 1 | Header 2 |
 | -------- | -------- |
 | Cell 1   | Cell 2   |
 | Cell 3   | Cell 4   |
 
+## Inline Code
+
+```md
+`console.log("インラインコード")`
+```
 
 `console.log("インラインコード")`
+
+## Code Blocks
+
+````md
+```js [file.js]{2}
+export default () => {
+  console.log('コードブロックはこんな感じです')
+}
+```
+````
 
 ```js [file.js]{2}
 export default () => {
@@ -48,4 +117,10 @@ export default () => {
 }
 ```
 
-:div[MDXはこんな感じです]{.font-bold.text-blue-100.bg-linear-45.from-indigo-500.via-purple-500.to-pink-500}
+## MDX
+
+```md
+:div[MDXはこんな感じです]{.font-bold.text-blue-100.bg-linear-45.from-indigo-500.via-purple-500.to-pink-500.p-4.rounded-xl}
+```
+
+:div[MDXはこんな感じです]{.font-bold.text-blue-100.bg-linear-45.from-indigo-500.via-purple-500.to-pink-500.p-4.rounded-xl}
