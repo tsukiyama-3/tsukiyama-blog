@@ -84,6 +84,7 @@ const copyCode = (): void => {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  background-color: var(--color-gray-700);
   padding: 0.5rem 0.5rem 0.5rem 0.75rem;
 }
 
@@ -92,7 +93,7 @@ const copyCode = (): void => {
 .pre-head .copy-btn {
   font-family: Arial, sans-serif;
   font-size: 0.8rem;
-  color: var(--shiki-default);
+  color: var(--color-gray-50);
   opacity: 0.5;
 }
 
@@ -109,7 +110,7 @@ const copyCode = (): void => {
 }
 
 .pre-head .copy-success {
-  color: var(--color-blue-700);
+  color: var(--color-blue-300);
   border-color: transparent;
 }
 
@@ -120,8 +121,8 @@ const copyCode = (): void => {
 
 .pre-head .copy-btn:hover,
 .pre-head .copy-btn:active {
-  color: var(--color-blue-700);
-  border-color: var(--color-blue-700);
+  color: var(--color-blue-300);
+  border-color: var(--color-blue-300);
 }
 
 .pre-body {
