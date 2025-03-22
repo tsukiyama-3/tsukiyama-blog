@@ -18,6 +18,7 @@ onUnmounted(() => {
 
 <template>
   <div class="space-y-12">
+    {{ data }}
     <div class="grid grid-cols-[160px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]">
       <img
         ref="image"
