@@ -56,6 +56,7 @@ onUnmounted(() => {
             width="120"
             height="120"
             class="border border-gray-200 rounded-xl"
+            :style="`view-transition-name: ${article.id}`"
           >
           <div class="py-2">
             <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>

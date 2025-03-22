@@ -9,4 +9,10 @@ tags: ["Nuxt", "Nuxt Content", "Cloudflare Pages", "Tailwind CSS"]
 
 ## はじめに
 
+## 佐藤くん
+
+```js
+console.log('佐藤くん')
+```
+
 

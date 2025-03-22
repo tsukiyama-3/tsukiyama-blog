@@ -126,3 +126,5 @@ export default () => {
 ```
 
 :div[MDXはこんな感じです]{.font-bold.text-blue-100.bg-linear-45.from-indigo-500.via-purple-500.to-pink-500.p-4.rounded-xl}
+
+:div[]{.size-18.rounded-full.bg-radial.from-pink-400.from-40%.to-fuchsia-700}

@@ -36,6 +36,7 @@ onUnmounted(() => {
           width="160"
           height="160"
           class="mx-auto"
+          :style="`view-transition-name: ${data.id}`"
         >
         <h1 class="font-bold text-xl md:text-3xl">
           {{ data.title }}
