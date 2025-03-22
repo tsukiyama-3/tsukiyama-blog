@@ -3,7 +3,7 @@
     <header>
       <PageHeader />
     </header>
-    <main class="w-full grow">
+    <main class="w-full grow max-w-[832px] mx-auto px-4">
       <slot />
     </main>
     <PageFooter />

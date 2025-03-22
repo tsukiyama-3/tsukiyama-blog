@@ -1,7 +1,9 @@
 ---
 title: マークダウンサンプル
 description: 本ブログのマークダウンサンプルです。
-ogp: https://res.cloudinary.com/dyoyv8djx/image/upload/v1704624998/zenn/view-transition-api/Frame_2_yjt73r.png
+icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png
+published: true
+date: 2025-03-19
 ---
 
 ## Headers
