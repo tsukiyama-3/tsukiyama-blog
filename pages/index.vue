@@ -10,6 +10,6 @@ const { data } = await useAsyncData("blog", () =>
 <template>
   <div>
     <h1>Index</h1>
-    <p>{{ data }}</p>
+    <p>data: {{ data }}</p>
   </div>
 </template>
