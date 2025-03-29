@@ -4,6 +4,10 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ["@nuxt/content"],
   content: {
+    database: {
+      type: "d1",
+      bindingName: "DB",
+    },
     build: {
       markdown: {
         highlight: {
