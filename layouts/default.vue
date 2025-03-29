@@ -1,9 +1,11 @@
 <template>
-  <div>
-    <header>Header</header>
-    <main>
+  <div class="flex min-h-screen flex-col text-gray-800">
+    <header>
+      <PageHeader />
+    </header>
+    <main class="w-full grow max-w-[832px] mx-auto px-4">
       <slot />
     </main>
-    <footer>Footer</footer>
+    <PageFooter />
   </div>
 </template>
