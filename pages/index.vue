@@ -34,12 +34,13 @@ onUnmounted(() => {
         class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px]"
       />
       <div class="w-fit">
-        <h2 class="font-bold text-2xl">Kohei Tsukiyama</h2>
-        <p class="text-lg">Web Enginner</p>
-        <p class="opacity-80">1999.10.12</p>
-        <p>Vue / Nuxt / CSS が好きです。</p>
+        <h2 class="font-bold text-lg md:text-2xl">Kohei Tsukiyama</h2>
+        <p class="text-base md:text-lg">Web Enginner</p>
+        <p class="text-sm md:text-base opacity-80">1999.10.12</p>
+        <p class="text-sm md:text-base">Vue / Nuxt / CSS が好きです。</p>
       </div>
     </div>
+    <div class="font-bold text-blue-100 bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 p-4 rounded-xl"></div>
     <ul class="space-y-8">
       <li
         v-for="article in data"
@@ -53,9 +54,9 @@ onUnmounted(() => {
             width="120"
             height="120"
             class="border border-gray-200 rounded-xl"
-            :style="`view-transition-name: ${article.id}`"
+            :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
           />
-          <div class="py-2">
+          <div class="space-y-1">
             <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>
             <p class="text-sm md:text-base opacity-80">
               {{ article.description }}

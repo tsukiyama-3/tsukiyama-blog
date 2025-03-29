@@ -35,7 +35,7 @@ onUnmounted(() => {
           width="160"
           height="160"
           class="mx-auto"
-          :style="`view-transition-name: ${data.id}`"
+          :style="`view-transition-name: ${data.id.replace(/\W/g, '-')}`"
         />
         <h1 class="font-bold text-xl md:text-3xl">
           {{ data.title }}
@@ -61,7 +61,3 @@ onUnmounted(() => {
     </div>
   </div>
 </template>
-
-<style scoped>
-@reference "@/assets/css/tailwind.css";
-</style>
