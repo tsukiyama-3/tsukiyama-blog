@@ -40,7 +40,6 @@ onUnmounted(() => {
         <p class="text-sm md:text-base">Vue / Nuxt / CSS が好きです。</p>
       </div>
     </div>
-    <div class="font-bold text-blue-100 bg-linear-45 from-indigo-500 via-purple-500 to-pink-500 p-4 rounded-xl"></div>
     <ul class="space-y-8">
       <li
         v-for="article in data"
