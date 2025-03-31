@@ -54,7 +54,10 @@ const copyCode = (): void => {
       </span>
       <button class="copy-btn cursor-pointer" @click="copyCode">Copy</button>
     </div>
-    <pre class="pre-body" :class="$props.class"><slot /></pre>
+    <pre
+      class="pre-body text-sm md:text-base"
+      :class="$props.class"
+    ><slot /></pre>
   </div>
 </template>
 

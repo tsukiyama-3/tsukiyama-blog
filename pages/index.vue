@@ -37,7 +37,9 @@ onUnmounted(() => {
         <h2 class="font-bold text-lg md:text-2xl">Kohei Tsukiyama</h2>
         <p class="text-base md:text-lg">Web Enginner</p>
         <p class="text-sm md:text-base opacity-80">1999.10.12</p>
-        <p class="text-sm md:text-base">Vue / Nuxt / CSS が好きです。</p>
+        <p class="text-sm md:text-base">
+          Vue / Nuxt / CSS が好きです。<br />最近はポケポケと短歌の本を読んだりばかりしています。
+        </p>
       </div>
     </div>
     <ul class="space-y-8">

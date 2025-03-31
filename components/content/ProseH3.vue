@@ -14,7 +14,7 @@ const generate = computed(
 </script>
 
 <template>
-  <h2 :id="props.id" class="font-bold text-xl">
+  <h2 :id="props.id" class="font-bold text-lg md:text-xl">
     <a v-if="props.id && generate" :href="`#${props.id}`">
       <slot />
     </a>
