@@ -106,14 +106,14 @@ npm install tailwindcss @tailwindcss/vite
 `nuxt.config.ts`に vite plugins を追加します。
 
 ```ts [nuxt.config.ts]
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 
 export default defineNuxtConfig({
   // ...
   vite: {
     plugins: [tailwindcss()],
   },
-});
+})
 ```
 
 `~/assets/css/tailwind.css`を新規作成します。
@@ -194,7 +194,7 @@ Nuxt Content v3 ではコレクションを定義してコンテンツを管理�
 コレクションの定義は`content.config.ts`で行います。
 
 ```ts [content.config.ts]
-import { defineContentConfig, defineCollection, z } from "@nuxt/content";
+import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
@@ -203,7 +203,7 @@ export default defineContentConfig({
       source: "blog/*.md",
     }),
   },
-});
+})
 ```
 
 #### 一覧取得

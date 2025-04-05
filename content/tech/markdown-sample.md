@@ -107,14 +107,14 @@ date: 2025-03-19
 ````md
 ```js [file.js]{2}
 export default () => {
-  console.log("コードブロックはこんな感じです");
+  console.log("コードブロックはこんな感じです")
 };
 ```
 ````
 
 ```js [file.js]{2}
 export default () => {
-  console.log("コードブロックはこんな感じです");
+  console.log("コードブロックはこんな感じです")
 };
 ```
 
