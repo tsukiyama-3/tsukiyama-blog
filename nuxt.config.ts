@@ -18,6 +18,10 @@ export default defineNuxtConfig({
       },
     },
   },
+  components: [
+    { path: "~/components/links", pathPrefix: false },
+    "~/components",
+  ],
   experimental: {
     viewTransition: true,
   },

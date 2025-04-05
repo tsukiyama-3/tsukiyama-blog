@@ -9,6 +9,9 @@ tags: ["Nuxt.js", "Vue.js", "Cloudflare", "Tailwind CSS"]
 
 ## はじめに
 
+::ExternalLinkCard{url="https://www.npmjs.com/package/cheerio"}
+::
+
 はじめまして、フリーランスのエンジニアとして働いている**つきやま**です。<br>
 Vue, Nuxt, CSS が好きです。<br>
 技術以外だと最近はポケポケと短歌を嗜んでいます。
@@ -45,7 +48,8 @@ Nuxt Hub を用いて Cloudflare にデプロイするのでアカウント作�
 
 ### Nuxt インストール
 
-https://nuxt.com/docs/getting-started/installation
+::ExternalLinkCard{url="https://nuxt.com/docs/getting-started/installation"}
+::
 
 ```bash
 $ npm create nuxt sample-blog
@@ -66,7 +70,8 @@ npm run dev
 
 ### Nuxt Content インストール
 
-[https://content.nuxt.com/docs/getting-started/installation](https://content.nuxt.com/docs/getting-started/installation){target="\_blank"}
+::ExternalLinkCard{url="https://content.nuxt.com/docs/getting-started/installation"}
+::
 
 ```bash
 npx nuxi module add content
@@ -74,7 +79,8 @@ npx nuxi module add content
 
 ### Nuxt Hub インストール
 
-[https://hub.nuxt.com/docs/getting-started/installation](https://hub.nuxt.com/docs/getting-started/installation){target="\_blank"}
+::ExternalLinkCard{url="https://hub.nuxt.com/docs/getting-started/installation"}
+::
 
 ```bash
 npx nuxi module add hub
@@ -82,7 +88,8 @@ npx nuxi module add hub
 
 ### Zod インストール
 
-[https://www.npmjs.com/package/zod](https://www.npmjs.com/package/zod){target="\_blank"}
+::ExternalLinkCard{url="https://www.npmjs.com/package/zod"}
+::
 
 コンテンツのスキーマ定義で使用するバリデーションライブラリです。
 
@@ -92,7 +99,8 @@ npm install zod
 
 ### Tailwind CSS (Nice to Have)
 
-[https://tailwindcss.com/docs/installation/using-vite](https://tailwindcss.com/docs/installation/using-vite){target="\_blank"}
+::ExternalLinkCard{url="https://tailwindcss.com/docs/installation/using-vite"}
+::
 
 ```bash
 npm install tailwindcss @tailwindcss/vite
@@ -170,7 +178,8 @@ Welcome ページが表示されていたら完了です。
 Nuxt Content は 2025 年 1 月に v3 がリリースされました。<br>
 v3 の主な機能は公式ブログにまとめられています。
 
-[https://content.nuxt.com/blog/v3](https://content.nuxt.com/blog/v3){target="\_blank"}
+::ExternalLinkCard{url="https://content.nuxt.com/blog/v3"}
+::
 
 ### コンテンツの管理方法
 
