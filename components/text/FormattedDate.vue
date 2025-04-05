@@ -1,17 +1,17 @@
 <script setup lang="ts">
 const props = defineProps<{
-  date: string | Date;
-}>();
+  date: string | Date
+}>()
 
 const formattedDate = computed(() => {
-  const dateObj =
-    props.date instanceof Date ? props.date : new Date(props.date);
-  const year = dateObj.getFullYear();
-  const month = dateObj.getMonth() + 1;
-  const day = dateObj.getDate();
+  const dateObj
+    = props.date instanceof Date ? props.date : new Date(props.date)
+  const year = dateObj.getFullYear()
+  const month = dateObj.getMonth() + 1
+  const day = dateObj.getDate()
 
-  return `${year}/${month}/${day}`;
-});
+  return `${year}/${month}/${day}`
+})
 </script>
 
 <template>

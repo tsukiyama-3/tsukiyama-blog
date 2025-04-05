@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { BreadcrumbListItem } from "~/utils/types";
+import type { BreadcrumbListItem } from '~/utils/types'
 
 const { items } = defineProps<{
-  items: BreadcrumbListItem[];
-}>();
+  items: BreadcrumbListItem[]
+}>()
 </script>
 
 <template>
@@ -33,9 +33,11 @@ const { items } = defineProps<{
         <span
           v-if="index === items.length - 1"
           class="pr-4 text-sm md:text-base"
-          >{{ item.label }}</span
+        >{{ item.label }}</span>
+        <meta
+          itemprop="position"
+          :content="String(index + 1)"
         >
-        <meta itemprop="position" :content="String(index + 1)" />
       </li>
     </ol>
   </div>

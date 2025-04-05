@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import FormattedDate from "~/components/text/FormattedDate.vue";
-import { useRotate } from "~/composables/utilities/rotate";
+import FormattedDate from '~/components/text/FormattedDate.vue'
+import { useRotate } from '~/composables/utilities/rotate'
 
-const { data } = await useAsyncData("blog", () =>
-  queryCollection("tech")
-    .where("published", "=", true)
-    .order("id", "DESC")
-    .all()
-);
+const { data } = await useAsyncData('blog', () =>
+  queryCollection('tech')
+    .where('published', '=', true)
+    .order('id', 'DESC')
+    .all(),
+)
 
-const image = ref<HTMLElement | null>(null);
-const { handleScroll } = useRotate(image);
+const image = ref<HTMLElement | null>(null)
+const { handleScroll } = useRotate(image)
 onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
+  window.addEventListener('scroll', handleScroll)
+})
 
 onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
@@ -32,13 +32,19 @@ onUnmounted(() => {
         width="160"
         height="160"
         class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px]"
-      />
+      >
       <div class="w-fit">
-        <h2 class="font-bold text-lg md:text-2xl">Kohei Tsukiyama</h2>
-        <p class="text-base md:text-lg">Web Enginner</p>
-        <p class="text-sm md:text-base opacity-80">1999.10.12</p>
+        <h2 class="font-bold text-lg md:text-2xl">
+          Kohei Tsukiyama
+        </h2>
+        <p class="text-base md:text-lg">
+          Web Enginner
+        </p>
+        <p class="text-sm md:text-base opacity-80">
+          1999.10.12
+        </p>
         <p class="text-sm md:text-base">
-          Vue / Nuxt / CSS が好きです。<br />最近はポケポケと短歌の本を読んだりばかりしています。
+          Vue / Nuxt / CSS が好きです。<br>最近はポケポケと短歌の本を読んだりばかりしています。
         </p>
       </div>
     </div>
@@ -48,7 +54,10 @@ onUnmounted(() => {
         :key="article.path"
         class="list-none divide-y divide-gray-300 hover:opacity-70"
       >
-        <NuxtLink :to="article.path" class="grid grid-cols-[120px_1fr] gap-x-4">
+        <NuxtLink
+          :to="article.path"
+          class="grid grid-cols-[120px_1fr] gap-x-4"
+        >
           <img
             :src="article.icon"
             alt=""
@@ -56,7 +65,7 @@ onUnmounted(() => {
             height="120"
             class="border border-gray-200 rounded-xl"
             :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
-          />
+          >
           <div class="space-y-1">
             <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>
             <p class="text-sm md:text-base opacity-80">

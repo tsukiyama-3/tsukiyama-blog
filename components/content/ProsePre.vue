@@ -2,7 +2,7 @@
 const props = defineProps({
   code: {
     type: String,
-    default: "",
+    default: '',
   },
   language: {
     type: String,
@@ -24,35 +24,46 @@ const props = defineProps({
     type: String,
     default: null,
   },
-});
+})
 
-const codeCopied = ref<boolean>(false);
+const codeCopied = ref<boolean>(false)
 
 const copyCode = (): void => {
   navigator.clipboard
     .writeText(props.code)
     .then(() => {
-      codeCopied.value = true;
+      codeCopied.value = true
       setTimeout(function () {
-        codeCopied.value = false;
-      }, 5000);
+        codeCopied.value = false
+      }, 5000)
     })
     .catch(() => {
-      console.error("Error: Unable to copy code.");
-    });
-};
+      console.error('Error: Unable to copy code.')
+    })
+}
 </script>
 
 <template>
   <div class="pre">
     <div class="pre-head">
-      <div v-if="props.filename" class="filename">
+      <div
+        v-if="props.filename"
+        class="filename"
+      >
         <i>{{ filename }}</i>
       </div>
-      <span v-if="codeCopied" class="copy-success">
+      <span
+        v-if="codeCopied"
+        class="copy-success"
+      >
         <i>Copied</i>
       </span>
-      <button class="copy-btn cursor-pointer" @click="copyCode">Copy</button>
+      <button
+        class="copy-btn cursor-pointer"
+        @click="copyCode"
+      >
+        Copy
+      </button>
     </div>
     <pre
       class="pre-body text-sm md:text-base"

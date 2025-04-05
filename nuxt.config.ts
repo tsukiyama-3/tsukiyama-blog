@@ -1,29 +1,32 @@
-import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-11-01",
+  modules: ['@nuxt/content', '@nuxthub/core', '@nuxt/icon', '@nuxt/eslint'],
+  components: [
+    { path: '~/components/links', pathPrefix: false },
+    '~/components',
+  ],
   devtools: { enabled: true },
-  modules: ["@nuxt/content", "@nuxthub/core", "@nuxt/icon"],
-  css: ["~/assets/css/tailwind.css"],
+  css: ['~/assets/css/tailwind.css'],
   content: {
     build: {
       markdown: {
         highlight: {
           theme: {
-            default: "github-dark-high-contrast",
-            dark: "github-dark",
+            default: 'github-dark-high-contrast',
+            dark: 'github-dark',
           },
         },
       },
     },
   },
-  components: [
-    { path: "~/components/links", pathPrefix: false },
-    "~/components",
-  ],
   experimental: {
     viewTransition: true,
+  },
+  compatibilityDate: '2024-11-01',
+  nitro: {
+    preset: 'cloudflare_pages',
   },
   vite: {
     plugins: [tailwindcss()],
@@ -31,7 +34,9 @@ export default defineNuxtConfig({
       minify: false,
     },
   },
-  nitro: {
-    preset: "cloudflare_pages",
+  eslint: {
+    config: {
+      stylistic: true,
+    },
   },
-});
+})
