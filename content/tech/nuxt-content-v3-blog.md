@@ -9,9 +9,6 @@ tags: ["Nuxt.js", "Vue.js", "Cloudflare", "Tailwind CSS"]
 
 ## はじめに
 
-::ExternalLinkCard{url="https://www.npmjs.com/package/cheerio"}
-::
-
 はじめまして、フリーランスのエンジニアとして働いている**つきやま**です。<br>
 Vue, Nuxt, CSS が好きです。<br>
 技術以外だと最近はポケポケと短歌を嗜んでいます。
