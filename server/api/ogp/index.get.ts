@@ -6,7 +6,6 @@ import { load } from 'cheerio'
 export default defineEventHandler(async (event: H3Event) => {
   const { url } = getQuery(event)
 
-  console.log(url, 'url')
   if (!url || typeof url !== 'string') {
     return sendError(
       event,
