@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import FormattedDate from '~/components/text/FormattedDate.vue'
 import type { BreadcrumbListItem } from '~/types/utilities'
 import { useRotate } from '~/composables/utilities/rotate'
 
@@ -44,6 +45,7 @@ onUnmounted(() => {
         <h1 class="font-bold text-xl md:text-3xl">
           {{ data.title }}
         </h1>
+        <FormattedDate :date="data.date" />
         <ul
           v-if="data.tags"
           class="flex gap-2 flex-wrap"
