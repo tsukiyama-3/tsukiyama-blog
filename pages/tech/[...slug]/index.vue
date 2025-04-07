@@ -4,13 +4,13 @@ import type { BreadcrumbListItem } from '~/types/utilities'
 import { useRotate } from '~/composables/utilities/rotate'
 
 const route = useRoute()
-const { data } = await useAsyncData(route.path, () =>
+const { data: article } = await useAsyncData(route.path, () =>
   queryCollection('tech').path(route.path).first(),
 )
 const breadcrumbs = computed<BreadcrumbListItem[]>(() => [
   { label: 'TOP', route: { name: 'index' } },
   {
-    label: data.value?.title ?? '記事',
+    label: article.value?.title ?? '記事',
     route: { name: `tech-${route.params.slug}` },
   },
 ])
@@ -23,35 +23,48 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
+
+if (article.value === null) {
+  throw createError({ statusCode: 404, message: 'Article not found' })
+}
+
+useSeoMeta({
+  title: `${article.value.title}｜tsukiyama.blog`,
+  description: article.value.description,
+  ogTitle: `${article.value.title}｜tsukiyama.blog`,
+  ogDescription: article.value.description,
+  ogImage: article.value.ogImage ?? 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
+  ogUrl: `https://tsukiyama.blog/tech/${article.value.id}`,
+})
 </script>
 
 <template>
   <div>
     <article
-      v-if="data"
+      v-if="article"
       id="article"
       class="space-y-12"
     >
       <div class="space-y-4">
         <img
           ref="image"
-          :src="data.icon"
+          :src="article.icon"
           alt=""
           width="160"
           height="160"
           class="mx-auto"
-          :style="`view-transition-name: ${data.id.replace(/\W/g, '-')}`"
+          :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
         >
         <h1 class="font-bold text-xl md:text-3xl">
-          {{ data.title }}
+          {{ article.title }}
         </h1>
-        <FormattedDate :date="data.date" />
+        <FormattedDate :date="article.date" />
         <ul
-          v-if="data.tags"
+          v-if="article.tags"
           class="flex gap-2 flex-wrap"
         >
           <li
-            v-for="(tag, index) in data.tags"
+            v-for="(tag, index) in article.tags"
             :key="index"
           >
             <p
@@ -62,12 +75,12 @@ onUnmounted(() => {
           </li>
         </ul>
         <p class="opacity-80 text-sm md:text-base">
-          {{ data.description }}
+          {{ article.description }}
         </p>
         <BreadcrumbList :items="breadcrumbs" />
       </div>
       <ContentRenderer
-        :value="data"
+        :value="article"
         class="space-y-8"
       />
     </article>

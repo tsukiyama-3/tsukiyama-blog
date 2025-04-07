@@ -2,8 +2,9 @@
 title: Nuxt Content v3 + Nuxt Hub を使って爆速で個人ブログを作って公開する
 description: 2025 年 1 月にリリースされた Nuxt Content v3 とNuxt Hubを使って個人ブログを爆速で作っていきます。
 icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
+ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039379/tsukiyama-blog/nuxt-content-v3-blog/ogp-nuxt-content_gg1qi7.png
 published: true
-date: 2025-04-07
+date: 2025-04-08
 tags: ["Nuxt.js", "Vue.js", "Cloudflare", "Tailwind CSS"]
 ---
 

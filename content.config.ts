@@ -9,6 +9,7 @@ export default defineContentConfig({
         title: z.string(),
         description: z.string(),
         icon: z.string(),
+        ogImage: z.string().optional(),
         published: z.boolean(),
         date: z.date(),
         tags: z.string().array().optional(),
