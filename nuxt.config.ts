@@ -19,7 +19,7 @@ export default defineNuxtConfig({
           name: 'thumbnail',
           content: 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
         },
-        { name: 'twitter:card', content: 'summary' },
+        { name: 'twitter:card', content: 'summary_large_image' },
         { property: 'og:site_name', content: 'tsukiyama.blog' },
         { property: 'og:title', content: 'tsukiyama.blog' },
         { property: 'og:type', content: 'website' },

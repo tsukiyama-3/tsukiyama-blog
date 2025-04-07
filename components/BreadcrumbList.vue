@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { BreadcrumbListItem } from '~/utils/types'
+import type { BreadcrumbListItem } from '~/types/utilities'
 
 const { items } = defineProps<{
   items: BreadcrumbListItem[]
