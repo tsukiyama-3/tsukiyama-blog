@@ -5,7 +5,7 @@ import { useRotate } from '~/composables/utilities/rotate'
 const { data } = await useAsyncData('blog', () =>
   queryCollection('tech')
     .where('published', '=', true)
-    .order('id', 'DESC')
+    .order('date', 'DESC')
     .all(),
 )
 
