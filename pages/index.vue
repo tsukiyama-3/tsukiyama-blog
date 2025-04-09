@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useRotate } from '~/composables/utilities/rotate'
-import { useUser } from '~/composables/tests/useAsyncData'
 
 const { data } = await useAsyncData('blog', () =>
   queryCollection('tech')
@@ -9,8 +8,6 @@ const { data } = await useAsyncData('blog', () =>
     .order('date', 'DESC')
     .all(),
 )
-
-const user = await useUser()
 
 const image = ref<HTMLElement | null>(null)
 const { handleScroll } = useRotate(image)
@@ -40,7 +37,6 @@ onUnmounted(() => {
         <h2 class="font-bold text-lg md:text-2xl">
           Kohei Tsukiyama
         </h2>
-        <p>{{ user.toDisplayName() }}</p>
         <p class="text-base md:text-lg">
           Web Enginner
         </p>
