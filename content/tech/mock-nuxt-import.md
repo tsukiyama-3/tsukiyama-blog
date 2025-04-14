@@ -1,9 +1,10 @@
 ---
 title: Nuxt インポート関数をモックする mockNuxtImport 関数の紹介
 description: useAsyncData や useFetch のような Nuxt インポート関数をモックするのに便利な mockNuxtImport の紹介と凝集度を低くしテスタビリティを高める方法を紹介します。
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png
+icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
+ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1744641614/tsukiyama-blog/mock-nuxt-import/mock-nuxt-import-thumbnail_zqckp3.png
 published: true
-date: 2025-04-14
+date: 2025-04-15
 tags: ["Nuxt.js", "Vue.js", "Nuxt Test Utils"]
 ---
 
@@ -14,7 +15,8 @@ tags: ["Nuxt.js", "Vue.js", "Nuxt Test Utils"]
 ::externalLinkCard{url="https://nuxt.com/docs/getting-started/testing#mocknuxtimport"}
 ::
 
-`useAsyncData` や `useFetch` のようなインポート関数は Nuxt の内部で `#imports` から自動的にインポートされているので
+`useAsyncData` や `useFetch` のようなインポート関数は Nuxt の内部で `#imports` から自動的にインポートされているので通常の `vi.mock()` ではうまくモックできません。<br>
+そのため、これらの関数をテスト中に差し替えたい場合は、`@nuxt/test-utils` が提供する `mockNuxtImport` を使うと便利です。
 
 ## 実際に使ってみる
 
