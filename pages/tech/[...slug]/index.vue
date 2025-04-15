@@ -2,11 +2,10 @@
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import type { BreadcrumbListItem } from '~/types/utilities'
 import { useRotate } from '~/composables/utilities/rotate'
+import { useTechArticle } from '~/composables/articles'
 
 const route = useRoute()
-const { data: article } = await useAsyncData(route.path, () =>
-  queryCollection('tech').path(route.path).first(),
-)
+const { article } = await useTechArticle(route.path)
 const breadcrumbs = computed<BreadcrumbListItem[]>(() => [
   { label: 'TOP', route: { name: 'index' } },
   {
