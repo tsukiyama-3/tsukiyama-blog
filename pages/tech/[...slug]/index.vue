@@ -86,7 +86,7 @@ useSeoMeta({
             class="space-y-8"
           />
         </main>
-        <aside class="md:sticky order-1 md:top-4 h-fit md:order-2">
+        <aside class="md:sticky order-1 md:top-8 h-fit md:order-2">
           <TocList :toc="article?.body.toc" />
         </aside>
       </section>
