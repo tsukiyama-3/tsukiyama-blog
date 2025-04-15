@@ -1,13 +1,9 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useRotate } from '~/composables/utilities/rotate'
+import { useTechArticles } from '~/composables/articles'
 
-const { data } = await useAsyncData('blog', () =>
-  queryCollection('tech')
-    .where('published', '=', true)
-    .order('date', 'DESC')
-    .all(),
-)
+const { articles } = await useTechArticles()
 
 const image = ref<HTMLElement | null>(null)
 const { handleScroll } = useRotate(image)
@@ -50,7 +46,7 @@ onUnmounted(() => {
     </div>
     <ul class="space-y-8">
       <li
-        v-for="article in data"
+        v-for="article in articles"
         :key="article.path"
         class="list-none divide-y divide-gray-300 hover:opacity-70"
       >
