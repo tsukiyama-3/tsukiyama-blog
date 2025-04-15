@@ -32,6 +32,10 @@ export default defineNuxtConfig({
   content: {
     build: {
       markdown: {
+        toc: {
+          depth: 3,
+          searchDepth: 3,
+        },
         highlight: {
           theme: {
             default: 'github-dark-high-contrast',
