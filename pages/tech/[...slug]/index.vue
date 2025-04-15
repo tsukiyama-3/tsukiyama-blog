@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
+import TocList from '~/components/articles/TocList.vue'
 import type { BreadcrumbListItem } from '~/types/utilities'
 import { useRotate } from '~/composables/utilities/rotate'
 import { useTechArticle } from '~/composables/articles'
 
 const route = useRoute()
 const { article } = await useTechArticle(route.path)
+if (article.value === null) {
+  throw createError({ statusCode: 404, message: 'Article not found' })
+}
+
 const breadcrumbs = computed<BreadcrumbListItem[]>(() => [
   { label: 'TOP', route: { name: 'index' } },
   {
@@ -23,10 +28,6 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-if (article.value === null) {
-  throw createError({ statusCode: 404, message: 'Article not found' })
-}
-
 useSeoMeta({
   title: `${article.value.title}｜tsukiyama.blog`,
   description: article.value.description,
@@ -42,7 +43,7 @@ useSeoMeta({
     <article
       v-if="article"
       id="article"
-      class="space-y-12"
+      class="space-y-8"
     >
       <div class="space-y-4">
         <img
@@ -78,10 +79,17 @@ useSeoMeta({
         </p>
         <BreadcrumbList :items="breadcrumbs" />
       </div>
-      <ContentRenderer
-        :value="article"
-        class="space-y-8"
-      />
+      <section class="grid gap-8 grid-cols-1 md:grid-cols-[1fr_300px]">
+        <main class="w-full order-2 md:order-1">
+          <ContentRenderer
+            :value="article"
+            class="space-y-8"
+          />
+        </main>
+        <aside class="md:sticky order-1 md:top-8 h-fit md:order-2">
+          <TocList :toc="article?.body.toc" />
+        </aside>
+      </section>
     </article>
     <div v-else>
       <h1>記事が見つかりませんでした</h1>

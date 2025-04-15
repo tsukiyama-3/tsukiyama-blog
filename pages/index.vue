@@ -19,14 +19,14 @@ onUnmounted(() => {
 <template>
   <div class="space-y-12">
     <div
-      class="grid grid-cols-[160px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
+      class="grid grid-cols-[144px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
     >
       <img
         ref="image"
         src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
         alt=""
-        width="160"
-        height="160"
+        width="144"
+        height="144"
         class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px]"
       >
       <div class="w-fit">
