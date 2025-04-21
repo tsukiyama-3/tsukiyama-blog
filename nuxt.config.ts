@@ -5,6 +5,8 @@ export default defineNuxtConfig({
   modules: ['@nuxt/content', '@nuxthub/core', '@nuxt/icon', '@nuxt/eslint', '@nuxt/test-utils/module'],
   components: [
     { path: '~/components/links', pathPrefix: false },
+    { path: '~/components/sample', pathPrefix: false },
+    { path: '~/components/articles', pathPrefix: false },
     '~/components',
   ],
   devtools: { enabled: true },
