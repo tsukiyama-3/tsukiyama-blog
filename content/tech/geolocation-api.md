@@ -1,6 +1,6 @@
 ---
 title: デバイスの位置情報を取得する Geolocation API の紹介
-description: デバイスの位置情報を取得する Geolocation API
+description: 簡単にデバイスの位置情報を取得できる Web API Geolocation API の紹介です。
 icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog/geo-location-api/geo-location-api_dwk5a7.png
 published: true
