@@ -2,7 +2,7 @@
 title: <head>管理ライブラリ Unhead の紹介
 description: フレームワーク非依存<head>管理ライブラリのUnheadの紹介です。
 icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png
-ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog/geo-location-api/geo-location-api_dwk5a7.png
+ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1746433649/tsukiyama-blog/introduce-unhead/Frame_6_pwvdwd.png
 published: true
 date: 2025-05-05
 tags: ["JavaScript", "UnJs"]
