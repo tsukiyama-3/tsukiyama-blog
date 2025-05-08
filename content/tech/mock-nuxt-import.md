@@ -12,7 +12,7 @@ tags: ["Nuxt.js", "Vue.js", "Nuxt Test Utils"]
 
 `mockNuxtImport` とは、Nuxt のインポート関数たちをモックする `@nuxt/test-utils` が提供するユーティリティ関数です。
 
-::externalLinkCard{url="https://nuxt.com/docs/getting-started/testing#mocknuxtimport"}
+::LazyExternalLinkCard{url="https://nuxt.com/docs/getting-started/testing#mocknuxtimport"}
 ::
 
 `useAsyncData` や `useFetch` のようなインポート関数は Nuxt の内部で `#imports` から自動的にインポートされているので通常の `vi.mock()` ではうまくモックできません。<br>

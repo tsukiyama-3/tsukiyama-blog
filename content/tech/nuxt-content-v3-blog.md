@@ -27,7 +27,7 @@ Vue, Nuxt, CSS が好きです。<br>
 Nuxt Content は 2025 年 1 月に v3 がリリースされました。<br>
 v3 の主な機能は公式ブログにまとめられています。
 
-::ExternalLinkCard{url="https://content.nuxt.com/blog/v3"}
+::LazyExternalLinkCard{url="https://content.nuxt.com/blog/v3"}
 ::
 
 
@@ -43,28 +43,28 @@ Nuxt Hub を利用する際に必要なアカウント類の登録を行いま�
 
 GitHub アカウントと公開するサービスのリポジトリを用意をお願いします。
 
-::externalLinkCard{url="https://github.com/signup"}
+::LazyExternalLinkCard{url="https://github.com/signup"}
 ::
 
 ### Cloudflare
 
 Cloudflare Pages にホスティングするのでアカウントの作成をお願いします。
 
-::externalLinkCard{url="https://dash.cloudflare.com/sign-up"}
+::LazyExternalLinkCard{url="https://dash.cloudflare.com/sign-up"}
 ::
 
 ### Nuxt Hub
 
 Nuxt Hub を用いて Cloudflare にデプロイするのでアカウント作成をお願いします。
 
-::externalLinkCard{url="https://admin.hub.nuxt.com/?utm_source=hub-docs&utm_medium=header&utm_campaign=signup"}
+::LazyExternalLinkCard{url="https://admin.hub.nuxt.com/?utm_source=hub-docs&utm_medium=header&utm_campaign=signup"}
 ::
 
 ## 環境構築
 
 ### Nuxt インストール
 
-::ExternalLinkCard{url="https://nuxt.com/docs/getting-started/installation"}
+::LazyExternalLinkCard{url="https://nuxt.com/docs/getting-started/installation"}
 ::
 
 ```bash
@@ -87,7 +87,7 @@ npm run dev
 
 ### Nuxt Content インストール
 
-::ExternalLinkCard{url="https://content.nuxt.com/docs/getting-started/installation"}
+::LazyExternalLinkCard{url="https://content.nuxt.com/docs/getting-started/installation"}
 ::
 
 ```bash
@@ -96,7 +96,7 @@ npx nuxi module add content
 
 ### Nuxt Hub インストール
 
-::ExternalLinkCard{url="https://hub.nuxt.com/docs/getting-started/installation"}
+::LazyExternalLinkCard{url="https://hub.nuxt.com/docs/getting-started/installation"}
 ::
 
 ```bash
@@ -107,7 +107,7 @@ npx nuxi module add hub
 
 （Tailwind CSS はインストールしなくても問題ないです。）
 
-::ExternalLinkCard{url="https://tailwindcss.com/docs/installation/using-vite"}
+::LazyExternalLinkCard{url="https://tailwindcss.com/docs/installation/using-vite"}
 ::
 
 ```bash
@@ -189,7 +189,7 @@ Welcome ページが表示されていたら完了です。<br>
 v3 では従来のファイルベースの管理から SQL のデータベースシステムに移行しました。<br>
 ファイル管理の方法が変わったからといって内部でいい感じに `.sqlite` ファイルを生成してくれているので使う際に特に意識する必要はないと思います。
 
-::externalLinkCard{url="https://content.nuxt.com/docs/files/markdown"}
+::LazyExternalLinkCard{url="https://content.nuxt.com/docs/files/markdown"}
 ::
 
 Nuxt Content v3 ではコレクションを定義してコンテンツを管理します。<br>
@@ -277,7 +277,7 @@ const { data } = await useAsyncData('blog', () =>
 コンテンツの取得は`queryCollection`を用います。<br>
 `published`が`true`の記事を取得するように絞り込んでいます。
 
-::externalLinkCard{url="https://content.nuxt.com/docs/utils/query-collection"}
+::LazyExternalLinkCard{url="https://content.nuxt.com/docs/utils/query-collection"}
 ::
 
 `app.vue`も修正します。
@@ -368,7 +368,7 @@ Nuxt Hub のダッシューボードから Git リポジトリを紐づけるこ
 本記事で実装しているコードとは一部異なりますが気になる箇所があればご覧ください。<br>
 （誤字脱字や内容の誤りなどがありましたらコメントやIssueを建てていただけるとありがたいです。）
 
-::externalLinkCard{url="https://github.com/tsukiyama-3/tsukiyama-blog"}
+::LazyExternalLinkCard{url="https://github.com/tsukiyama-3/tsukiyama-blog"}
 ::
 
 今後も主にフロントエンドにまつわる記事を書いていく予定ですので、お見知り置きを。
