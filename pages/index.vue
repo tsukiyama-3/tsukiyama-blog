@@ -64,9 +64,21 @@ onUnmounted(() => {
           >
           <div class="space-y-1">
             <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>
-            <p class="text-sm md:text-base opacity-80">
-              {{ article.description }}
-            </p>
+            <ul
+              v-if="article.tags"
+              class="flex gap-1 flex-wrap"
+            >
+              <li
+                v-for="(tag, index) in article.tags"
+                :key="index"
+              >
+                <p
+                  class="text-xs border border-gray-400 opacity-80 font-bold rounded-full leading-none py-1 px-2 md:text-sm"
+                >
+                  #{{ tag }}
+                </p>
+              </li>
+            </ul>
             <FormattedDate :date="article.date" />
           </div>
         </NuxtLink>

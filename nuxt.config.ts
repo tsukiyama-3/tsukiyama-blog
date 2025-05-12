@@ -2,7 +2,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/content', '@nuxthub/core', '@nuxt/icon', '@nuxt/eslint', '@nuxt/test-utils/module'],
+  modules: ['@nuxt/content', '@nuxthub/core', '@nuxt/icon', '@nuxt/eslint', '@nuxt/test-utils/module', '@nuxt/scripts'],
   components: [
     { path: '~/components/links', pathPrefix: false },
     { path: '~/components/sample', pathPrefix: false },
