@@ -16,7 +16,7 @@ Web サービスを開発する上で、計測タグや広告配信タグなど�
 
 本記事では、Nuxt.js アプリケーションにおける**サードパーティースクリプトの最適化をサポートするモジュール Nuxt Scripts** について紹介します。
 
-::ExternalLinkCard{url="https://scripts.nuxt.com/"}
+::LazyExternalLinkCard{url="https://scripts.nuxt.com/"}
 ::
 
 ## Nuxt Scripts では何ができるの？
