@@ -7,6 +7,7 @@ const { articles } = await useTechArticles()
 
 const image = ref<HTMLElement | null>(null)
 const { handleScroll } = useRotate(image)
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -24,7 +25,7 @@ onUnmounted(() => {
       <img
         ref="image"
         src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
-        alt=""
+        alt="Kohei Tsukiyama Icon"
         width="144"
         height="144"
         class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px]"
@@ -39,9 +40,38 @@ onUnmounted(() => {
         <p class="text-sm md:text-base opacity-80">
           🇯🇵 Tokyo / 1999.10.12
         </p>
-        <p class="text-sm md:text-base">
-          Vue / Nuxt / CSS が好きです。<br>最近はポケポケと短歌の歌集を読んだりばかりしています。
-        </p>
+        <ul class="flex items-center gap-x-1 mt-1 md:mt-2">
+          <li class="leading-none opacity-80">
+            <NuxtLink
+              to="https://x.com/tsuyakima3"
+              target="_blank"
+              aria-label="X Link"
+              class="hover:opacity-60"
+            >
+              <Icon
+                name="mynaui:brand-x"
+                class="text-gray-800 text-2xl md:text-3xl"
+                width="24"
+                height="24"
+              />
+            </NuxtLink>
+          </li>
+          <li class="leading-none opacity-80">
+            <NuxtLink
+              to="https://github.com/tsukiyama-3"
+              target="_blank"
+              aria-label="GitHub Link"
+              class="hover:opacity-60"
+            >
+              <Icon
+                name="mynaui:brand-github"
+                class="text-gray-800 text-2xl md:text-3xl"
+                width="24"
+                height="24"
+              />
+            </NuxtLink>
+          </li>
+        </ul>
       </div>
     </div>
     <ul class="space-y-8">

@@ -35,6 +35,7 @@ const { data } = await useFetch('/api/ogp', {
       <img
         :src="data?.image"
         class="aspect-video w-[120px] object-cover md:w-[240px] h-full"
+        alt=""
         width="120"
         height="68"
         loading="lazy"
