@@ -47,6 +47,13 @@ export default defineNuxtConfig({
       },
     },
   },
+  runtimeConfig: {
+    basicAuth: {
+      username: 'admin',
+      password: 'admin',
+      allowedRoutes: [],
+    },
+  },
   experimental: {
     viewTransition: true,
   },
