@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-
 const props = defineProps<{
   url: string
   label?: string
