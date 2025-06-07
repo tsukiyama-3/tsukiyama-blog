@@ -28,6 +28,10 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
+useHead({
+  link: [{ rel: 'canonical', href: `https://tsukiyama.blog/tech/${article.value.id}` }],
+})
+
 useSeoMeta({
   title: `${article.value.title}｜tsukiyama.blog`,
   description: article.value.description,
