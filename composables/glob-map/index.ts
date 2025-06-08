@@ -2,16 +2,16 @@ import { AmbientLight, DirectionalLight, HemisphereLight, Mesh, MeshPhongMateria
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 import { useScene, useRenderer, useEarthTexture } from '~/composables/three'
 
-export const useGlobMap = () => {
+export const useGlobMap = (container: Ref<HTMLElement>) => {
   if (!import.meta.client) {
     return { render: () => {} }
   }
 
   const { scene } = useScene()
-  const { renderer } = useRenderer()
+  const { renderer } = useRenderer({ width: container.value.clientWidth, height: container.value.clientHeight })
   const camera = new PerspectiveCamera(
     45,
-    1168 / 657,
+    container.value.clientWidth / container.value.clientHeight,
     0.1,
     1000,
   )

@@ -8,10 +8,12 @@ import { useGlobMap } from '~/composables/glob-map'
 
 const container = ref<HTMLElement | null>(null)
 
-const { render, renderer } = useGlobMap()
-
 onMounted(() => {
-  if (container.value === null || renderer === undefined) {
+  if (container.value === null) {
+    return
+  }
+  const { render, renderer } = useGlobMap(container)
+  if (renderer === undefined) {
     return
   }
 
