@@ -10,6 +10,8 @@ tags: ["JavaScript", "Web API"]
 
 ## はじめに
 
+[https://hub.docker.com](https://hub.docker.com){target="_blank"}
+
 Web で位置情報を簡単に扱える Geolocation API を紹介します。
 
 ::LazyExternalLinkCard{url="https://developer.mozilla.org/ja/docs/Web/API/Geolocation_API"}
