@@ -2,7 +2,15 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/sitemap', '@nuxt/content', '@nuxthub/core', '@nuxt/icon', '@nuxt/eslint', '@nuxt/test-utils/module', '@nuxt/scripts'],
+  modules: [
+    '@nuxtjs/sitemap',
+    '@nuxt/content',
+    '@nuxthub/core',
+    '@nuxt/icon',
+    '@nuxt/eslint',
+    '@nuxt/test-utils/module',
+    '@nuxt/scripts',
+  ],
   components: [
     { path: '~/components/links', pathPrefix: false },
     { path: '~/components/sample', pathPrefix: false },
@@ -19,14 +27,19 @@ export default defineNuxtConfig({
       meta: [
         {
           name: 'thumbnail',
-          content: 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
+          content:
+            'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
         },
         { name: 'twitter:card', content: 'summary_large_image' },
         { property: 'og:site_name', content: 'tsukiyama.blog' },
         { property: 'og:title', content: 'tsukiyama.blog' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://tsukiyama.blog/' },
-        { property: 'og:image', content: 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png' },
+        {
+          property: 'og:image',
+          content:
+            'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
+        },
       ],
     },
   },
