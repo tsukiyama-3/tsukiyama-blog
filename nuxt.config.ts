@@ -10,6 +10,7 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/test-utils/module',
     '@nuxt/scripts',
+    '@nuxt/ui-pro',
   ],
   components: [
     { path: '~/components/links', pathPrefix: false },
