@@ -1,20 +1,8 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
-import { useRotate } from '~/composables/utilities/rotate'
 import { useTechArticles } from '~/composables/articles'
 
 const { articles } = await useTechArticles()
-
-const image = ref<HTMLElement | null>(null)
-const { handleScroll } = useRotate(image)
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 </script>
 
 <template>
@@ -23,7 +11,6 @@ onUnmounted(() => {
       class="grid grid-cols-[144px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
     >
       <img
-        ref="image"
         src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
         alt="Kohei Tsukiyama Icon"
         width="144"
