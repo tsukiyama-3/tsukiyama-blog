@@ -11,13 +11,13 @@ const { convertSvgLogo } = useTag()
   <UPage>
     <div class="space-y-6">
       <div
-        class="grid grid-cols-[144px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
+        class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
       >
         <img
           src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
           alt="Kohei Tsukiyama Icon"
-          width="144"
-          height="144"
+          width="120"
+          height="120"
           class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px] dark:border-gray-800"
         >
         <div class="w-fit">
@@ -31,7 +31,7 @@ const { convertSvgLogo } = useTag()
             <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
               <UIcon
                 name="flag:jp-4x3"
-                class="size-5"
+                class="size-5 border border-gray-200 dark:border-0"
               />
               Tokyo
             </p>
@@ -58,13 +58,13 @@ const { convertSvgLogo } = useTag()
             <NuxtLink
               :to="article.path"
             >
-              <article class="grid grid-cols-[120px_1fr] gap-x-4">
+              <article class="grid grid-cols-[80px_1fr] gap-x-4 md:grid-cols-[120px_1fr]">
                 <img
                   :src="article.icon"
                   alt=""
-                  width="120"
-                  height="120"
-                  class="border border-gray-200 rounded-xl dark:border-gray-800"
+                  width="80"
+                  height="80"
+                  class="border border-gray-200 rounded-xl dark:border-gray-800 md:w-[120px] md:h-[120px]"
                   :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
                 >
                 <div class="space-y-1">
