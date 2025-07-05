@@ -90,7 +90,7 @@ useSeoMeta({
           <UContentToc
             title="目次"
             :links="article?.body?.toc?.links"
-            :ui="{ title: 'dark:text-highlighted' }"
+            :ui="{ title: 'dark:text-highlighted', trailingIcon: 'dark:text-highlighted' }"
           />
         </aside>
       </section>
