@@ -41,7 +41,6 @@ onUnmounted(() => {
           target="_blank"
           icon="i-simple-icons-x"
           aria-label="X"
-          size="xl"
         />
       </UTooltip>
       <UTooltip
@@ -54,7 +53,6 @@ onUnmounted(() => {
           target="_blank"
           icon="i-simple-icons-github"
           aria-label="GitHub"
-          size="xl"
         />
       </UTooltip>
     </template>
