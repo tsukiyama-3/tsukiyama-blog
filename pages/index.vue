@@ -18,20 +18,20 @@ const { convertSvgLogo } = useTag()
           alt="Kohei Tsukiyama Icon"
           width="144"
           height="144"
-          class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px]"
+          class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px] dark:border-gray-800"
         >
         <div class="w-fit">
-          <h2 class="font-bold text-lg md:text-2xl">
+          <h2 class="font-bold text-lg md:text-2xl dark:text-highlighted">
             Kohei Tsukiyama
           </h2>
-          <p class="text-base md:text-lg">
+          <p class="text-base md:text-lg dark:text-highlighted">
             Web Enginner
           </p>
-          <div class="flex gap-x-2">
+          <div class="flex gap-x-2 dark:text-highlighted">
             <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
               <UIcon
                 name="flag:jp-4x3"
-                class="size-5 border border-gray-200"
+                class="size-5"
               />
               Tokyo
             </p>
@@ -46,7 +46,7 @@ const { convertSvgLogo } = useTag()
         </div>
       </div>
       <section class="space-y-6">
-        <h2 class="text-xl text-center">
+        <h2 class="text-xl text-center dark:text-highlighted">
           新着記事
         </h2>
         <ul class="grid md:grid-cols-2 gap-4">
@@ -64,11 +64,11 @@ const { convertSvgLogo } = useTag()
                   alt=""
                   width="120"
                   height="120"
-                  class="border border-gray-200 rounded-xl"
+                  class="border border-gray-200 rounded-xl dark:border-gray-800"
                   :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
                 >
                 <div class="space-y-1">
-                  <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>
+                  <h3 class="text-base md:text-xl font-bold dark:text-highlighted">{{ article.title }}</h3>
                   <ul
                     v-if="article.tags"
                     class="flex gap-1 flex-wrap"

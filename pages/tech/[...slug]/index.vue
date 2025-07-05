@@ -47,7 +47,7 @@ useSeoMeta({
           class="mx-auto"
           :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
         >
-        <h1 class="font-bold text-xl md:text-3xl">
+        <h1 class="font-bold text-xl md:text-3xl dark:text-highlighted">
           {{ article.title }}
         </h1>
         <FormattedDate :date="article.date" />
@@ -74,7 +74,7 @@ useSeoMeta({
             </UBadge>
           </li>
         </ul>
-        <p class="opacity-80 text-sm md:text-base">
+        <p class="opacity-80 text-sm md:text-base dark:text-highlighted">
           {{ article.description }}
         </p>
         <UBreadcrumb :items="breadcrumbs" />
@@ -83,13 +83,14 @@ useSeoMeta({
         <main class="w-full max-w-[836px] order-2 md:order-1">
           <ContentRenderer
             :value="article"
-            class="space-y-8"
+            class="space-y-8 dark:text-highlighted"
           />
         </main>
         <aside class="md:sticky order-1 md:top-8 h-fit md:order-2">
           <UContentToc
             title="目次"
             :links="article?.body?.toc?.links"
+            :ui="{ title: 'dark:text-highlighted' }"
           />
         </aside>
       </section>

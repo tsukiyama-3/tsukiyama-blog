@@ -23,7 +23,7 @@ onUnmounted(() => {
           alt="Kohei Tsukiyama Icon"
           width="32"
           height="32"
-          class="border border-gray-200 rounded-full md:w-[32px] md:h-[32px]"
+          class="border border-gray-200 rounded-full md:w-[32px] md:h-[32px] dark:border-gray-800"
         >
         <h1 class="font-bold md:text-lg">
           tsukiyama.blog
@@ -31,6 +31,7 @@ onUnmounted(() => {
       </hgroup>
     </template>
     <template #right>
+      <UColorModeButton />
       <UTooltip
         text="Open on X"
       >
