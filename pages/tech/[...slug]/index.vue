@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
-import TocList from '~/components/articles/TocList.vue'
 import type { BreadcrumbListItem } from '~/types/utilities'
 import { useTag } from '~/composables/utilities/tag'
-import { useRotate } from '~/composables/utilities/rotate'
 import { useTechArticle } from '~/composables/articles'
 
 const route = useRoute()
@@ -19,18 +17,8 @@ const breadcrumbs = computed<BreadcrumbListItem[]>(() => [
     route: { name: `tech-${route.params.slug}` },
   },
 ])
-const image = ref<HTMLElement | null>(null)
-const { handleScroll } = useRotate(image)
 
 const { convertSvgLogo } = useTag()
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
 
 useHead({
   link: [{ rel: 'canonical', href: `https://tsukiyama.blog/tech/${article.value.id}` }],
@@ -55,7 +43,6 @@ useSeoMeta({
     >
       <div class="space-y-4">
         <img
-          ref="image"
           :src="article.icon"
           alt=""
           width="160"
@@ -103,7 +90,10 @@ useSeoMeta({
           />
         </main>
         <aside class="md:sticky order-1 md:top-8 h-fit md:order-2">
-          <TocList :toc="article?.body.toc" />
+          <UContentToc
+            title="目次"
+            :links="article?.body?.toc?.links"
+          />
         </aside>
       </section>
     </article>
