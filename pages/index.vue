@@ -24,41 +24,22 @@ const { articles } = await useTechArticles()
         <p class="text-base md:text-lg">
           Web Enginner
         </p>
-        <p class="text-sm md:text-base opacity-80">
-          🇯🇵 Tokyo / 1999.10.12
-        </p>
-        <ul class="flex items-center gap-x-1 mt-1 md:mt-2">
-          <li class="leading-none opacity-80">
-            <NuxtLink
-              to="https://x.com/tsuyakima3"
-              target="_blank"
-              aria-label="X Link"
-              class="hover:opacity-60"
-            >
-              <Icon
-                name="mynaui:brand-x"
-                class="text-gray-800 text-2xl md:text-3xl"
-                width="24"
-                height="24"
-              />
-            </NuxtLink>
-          </li>
-          <li class="leading-none opacity-80">
-            <NuxtLink
-              to="https://github.com/tsukiyama-3"
-              target="_blank"
-              aria-label="GitHub Link"
-              class="hover:opacity-60"
-            >
-              <Icon
-                name="mynaui:brand-github"
-                class="text-gray-800 text-2xl md:text-3xl"
-                width="24"
-                height="24"
-              />
-            </NuxtLink>
-          </li>
-        </ul>
+        <div class="flex gap-x-2">
+          <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
+            <UIcon
+              name="flag:jp-4x3"
+              class="size-5 border border-gray-200"
+            />
+            Tokyo
+          </p>
+          /
+          <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
+            <UIcon
+              name="emojione:birthday-cake"
+              class="size-5"
+            /> 1999.10.12
+          </p>
+        </div>
       </div>
     </div>
     <ul class="space-y-8">
