@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import type { BreadcrumbItem } from '@nuxt/ui'
 import FormattedDate from '~/components/text/FormattedDate.vue'
-import type { BreadcrumbListItem } from '~/types/utilities'
 import { useTag } from '~/composables/utilities/tag'
 import { useTechArticle } from '~/composables/articles'
 
@@ -10,12 +10,9 @@ if (article.value === null) {
   throw createError({ statusCode: 404, message: 'Article not found' })
 }
 
-const breadcrumbs = computed<BreadcrumbListItem[]>(() => [
-  { label: 'TOP', route: { name: 'index' } },
-  {
-    label: article.value?.title ?? '記事',
-    route: { name: `tech-${route.params.slug}` },
-  },
+const breadcrumbs = ref<BreadcrumbItem[]>([
+  { label: 'TOP', to: '/' },
+  { label: article.value?.title ?? '記事' },
 ])
 
 const { convertSvgLogo } = useTag()
@@ -80,7 +77,7 @@ useSeoMeta({
         <p class="opacity-80 text-sm md:text-base">
           {{ article.description }}
         </p>
-        <BreadcrumbList :items="breadcrumbs" />
+        <UBreadcrumb :items="breadcrumbs" />
       </div>
       <section class="grid gap-8 grid-cols-1 md:grid-cols-[1fr_300px]">
         <main class="w-full max-w-[836px] order-2 md:order-1">

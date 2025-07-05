@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxthub/core',
-    '@nuxt/icon',
     '@nuxt/eslint',
     '@nuxt/test-utils/module',
     '@nuxt/scripts',

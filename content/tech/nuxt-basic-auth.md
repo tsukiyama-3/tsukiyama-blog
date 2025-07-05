@@ -45,24 +45,24 @@ export default defineEventHandler((event) => {
     return
   }
 
-	// 認証を判定する真偽値
+  // 認証を判定する真偽値
   let authenticated = false
 
   // Authorizationヘッダーから認証情報を取得する
   const credentials = event.node.req.headers.authorization?.split(' ')[1]
 
   if (credentials) {
-	  // base64 形式から utf-8 の String へ変換する
+    // base64 形式から utf-8 の String へ変換する
     const [username, password] = Buffer.from(credentials, 'base64').toString('utf-8').split(':')
 
-		// username と password が一致しているかどうか
+    // username と password が一致しているかどうか
     authenticated = username === basicAuth.username && password === basicAuth.password
 
-		// 一致していれば認証通過
+    // 一致していれば認証通過
     if (authenticated) return
   }
 
-	// 一致していなければ Unauthorized レスポンスを返す
+  // 一致していなければ Unauthorized レスポンスを返す
   event.node.res.statusCode = 401
   event.node.res.setHeader(
     'WWW-Authenticate',
@@ -99,7 +99,7 @@ GitHubに公開したくなければ `.env` などで管理しましょう。
 
 実際に Basic 認証をかけたページを用意してみました。
 
-<NuxtLink to="/basic-auth" external class="text-blue-600 block hover:underline cursor-pointer">Basic認証サンプルページ</NuxtLink>
+[Basic認証サンプルページ](https://tsukiyama.blog/basic-auth)
 
 `username: admin`<br>
 `password: admin`

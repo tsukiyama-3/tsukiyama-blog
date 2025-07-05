@@ -84,7 +84,7 @@ const { convertSvgLogo } = useTag()
                         <UIcon
                           v-if="convertSvgLogo(tag)"
                           :name="convertSvgLogo(tag)"
-                          class="size-4"
+                          class="size-3"
                         />
                         <p>
                           {{ tag }}
