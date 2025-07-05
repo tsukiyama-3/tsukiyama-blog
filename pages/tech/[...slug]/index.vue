@@ -2,6 +2,7 @@
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import TocList from '~/components/articles/TocList.vue'
 import type { BreadcrumbListItem } from '~/types/utilities'
+import { useTag } from '~/composables/utilities/tag'
 import { useRotate } from '~/composables/utilities/rotate'
 import { useTechArticle } from '~/composables/articles'
 
@@ -20,6 +21,9 @@ const breadcrumbs = computed<BreadcrumbListItem[]>(() => [
 ])
 const image = ref<HTMLElement | null>(null)
 const { handleScroll } = useRotate(image)
+
+const { convertSvgLogo } = useTag()
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -71,11 +75,19 @@ useSeoMeta({
             v-for="(tag, index) in article.tags"
             :key="index"
           >
-            <p
-              class="text-sm border border-gray-400 opacity-80 font-bold rounded-full leading-none py-1 px-2"
+            <UBadge
+              color="neutral"
+              variant="outline"
             >
-              #{{ tag }}
-            </p>
+              <UIcon
+                v-if="convertSvgLogo(tag)"
+                :name="convertSvgLogo(tag)"
+                class="size-5"
+              />
+              <p>
+                {{ tag }}
+              </p>
+            </UBadge>
           </li>
         </ul>
         <p class="opacity-80 text-sm md:text-base">
