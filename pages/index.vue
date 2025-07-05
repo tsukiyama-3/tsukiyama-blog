@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
+import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
+const { convertSvgLogo } = useTag()
 </script>
 
 <template>
@@ -71,11 +73,19 @@ const { articles } = await useTechArticles()
                   v-for="(tag, index) in article.tags"
                   :key="index"
                 >
-                  <p
-                    class="text-xs border border-gray-400 opacity-80 font-bold rounded-full leading-none py-1 px-2 md:text-sm"
+                  <UBadge
+                    color="neutral"
+                    variant="outline"
                   >
-                    #{{ tag }}
-                  </p>
+                    <UIcon
+                      v-if="convertSvgLogo(tag)"
+                      :name="convertSvgLogo(tag)"
+                      class="size-5"
+                    />
+                    <p>
+                      {{ tag }}
+                    </p>
+                  </UBadge>
                 </li>
               </ul>
               <FormattedDate :date="article.date" />
