@@ -9,7 +9,7 @@ const { convertSvgLogo } = useTag()
 
 <template>
   <UPage>
-    <div class="space-y-12">
+    <div class="space-y-6">
       <div
         class="grid grid-cols-[144px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
       >
@@ -45,54 +45,60 @@ const { convertSvgLogo } = useTag()
           </div>
         </div>
       </div>
-      <ul class="space-y-8">
-        <li
-          v-for="article in articles"
-          :key="article.path"
-          class="list-none divide-y divide-gray-300 hover:opacity-70"
-        >
-          <NuxtLink
-            :to="article.path"
-            class="grid grid-cols-[120px_1fr] gap-x-4"
+      <section class="space-y-6">
+        <h2 class="text-xl text-center">
+          新着記事
+        </h2>
+        <ul class="grid md:grid-cols-2 gap-4">
+          <li
+            v-for="article in articles"
+            :key="article.path"
+            class="list-none divide-y divide-gray-300 hover:opacity-70"
           >
-            <img
-              :src="article.icon"
-              alt=""
-              width="120"
-              height="120"
-              class="border border-gray-200 rounded-xl"
-              :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
+            <NuxtLink
+              :to="article.path"
             >
-            <div class="space-y-1">
-              <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>
-              <ul
-                v-if="article.tags"
-                class="flex gap-1 flex-wrap"
-              >
-                <li
-                  v-for="(tag, index) in article.tags"
-                  :key="index"
+              <article class="grid grid-cols-[120px_1fr] gap-x-4">
+                <img
+                  :src="article.icon"
+                  alt=""
+                  width="120"
+                  height="120"
+                  class="border border-gray-200 rounded-xl"
+                  :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
                 >
-                  <UBadge
-                    color="neutral"
-                    variant="outline"
+                <div class="space-y-1">
+                  <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>
+                  <ul
+                    v-if="article.tags"
+                    class="flex gap-1 flex-wrap"
                   >
-                    <UIcon
-                      v-if="convertSvgLogo(tag)"
-                      :name="convertSvgLogo(tag)"
-                      class="size-5"
-                    />
-                    <p>
-                      {{ tag }}
-                    </p>
-                  </UBadge>
-                </li>
-              </ul>
-              <FormattedDate :date="article.date" />
-            </div>
-          </NuxtLink>
-        </li>
-      </ul>
+                    <li
+                      v-for="(tag, index) in article.tags"
+                      :key="index"
+                    >
+                      <UBadge
+                        color="neutral"
+                        variant="outline"
+                      >
+                        <UIcon
+                          v-if="convertSvgLogo(tag)"
+                          :name="convertSvgLogo(tag)"
+                          class="size-5"
+                        />
+                        <p>
+                          {{ tag }}
+                        </p>
+                      </UBadge>
+                    </li>
+                  </ul>
+                  <FormattedDate :date="article.date" />
+                </div>
+              </article>
+            </NuxtLink>
+          </li>
+        </ul>
+      </section>
     </div>
   </UPage>
 </template>
