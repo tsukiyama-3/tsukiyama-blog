@@ -92,5 +92,7 @@ export default defineNuxtConfig({
   },
   uiPro: {
     content: true,
+    license: process.env.NUXT_UI_PRO_LICENSE,
+    mdc: true,
   },
 })
