@@ -23,6 +23,15 @@ jobs:
         with:
           node-version: 22
           cache: 'npm'
+    
+    - name: Check if secret is set
+      run: |
+        if [ -z "${NUXT_UI_PRO_LICENSE}" ]; then
+          echo "❌ Secret is NOT set"
+          exit 1
+        else
+          echo "✅ Secret is set"
+        fi
 
       - name: Install dependencies
         run: npm install
