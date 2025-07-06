@@ -5,7 +5,6 @@ import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
-
 </script>
 
 <template>
