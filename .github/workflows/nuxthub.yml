@@ -23,21 +23,18 @@ jobs:
         with:
           node-version: 22
           cache: 'npm'
-    
-    - name: Check if secret is set
-      run: |
-        if [ -z "${NUXT_UI_PRO_LICENSE}" ]; then
-          echo "❌ Secret is NOT set"
-          exit 1
-        else
-          echo "✅ Secret is set"
-        fi
+
+      - name: Check if secret is set
+        run: |
+          if [ -z "${NUXT_UI_PRO_LICENSE}" ]; then
+            echo "❌ Secret is NOT set"
+            exit 1
+          else
+            echo "✅ Secret is set"
+          fi
 
       - name: Install dependencies
         run: npm install
-
-      - name: Debug license
-        run: echo "KEY=${NUXT_UI_PRO_LICENSE}"
 
       - name: Ensure NuxtHub module is installed
         run: npx nuxthub@latest ensure
@@ -46,3 +43,5 @@ jobs:
         uses: nuxt-hub/action@v2
         with:
           project-key: tsukiyama-blog-y4im
+        env:
+          NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
