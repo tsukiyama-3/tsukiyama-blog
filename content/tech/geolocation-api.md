@@ -8,6 +8,7 @@ date: 2025-04-22
 tags: ["JavaScript", "Web API"]
 ---
 
+
 ## はじめに
 
 Web で位置情報を簡単に扱える Geolocation API を紹介します。
