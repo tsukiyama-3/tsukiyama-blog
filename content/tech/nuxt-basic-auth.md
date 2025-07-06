@@ -17,7 +17,7 @@ Nuxt での Basic 認証を実装する方法について気になったので�
 サードパーティ製のモジュールとして公開されている `@kgierke/nuxt-basic-auth` を参考に実装しました。<br>
 こだわりがなければ、こちらをインストールして使用することをお勧めします。
 
-::LazyExternalLinkCard{url="https://github.com/kgierke/nuxt-basic-auth/tree/main"}
+::ExternalLinkCardWrapper{url="https://github.com/kgierke/nuxt-basic-auth/tree/main"}
 ::
 
 公式モジュールではないことと、最終更新日が8ヶ月前だったので自分で実装してみることにしました。<br>

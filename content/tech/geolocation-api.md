@@ -12,7 +12,7 @@ tags: ["JavaScript", "Web API"]
 
 Web で位置情報を簡単に扱える Geolocation API を紹介します。
 
-::LazyExternalLinkCard{url="https://developer.mozilla.org/ja/docs/Web/API/Geolocation_API"}
+::ExternalLinkCardWrapper{url="https://developer.mozilla.org/ja/docs/Web/API/Geolocation_API"}
 ::
 
 Geolocation API は Web 標準のAPIで、ユーザーの位置情報（緯度・経度）の取得ができます。<br>
