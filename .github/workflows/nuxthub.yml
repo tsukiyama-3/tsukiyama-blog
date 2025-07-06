@@ -5,6 +5,7 @@ jobs:
   deploy:
     name: "Deploy to NuxtHub"
     runs-on: ubuntu-latest
+    environment: preview
     permissions:
       contents: read
       id-token: write
