@@ -19,7 +19,7 @@ tags: ["JavaScript", "UnJs"]
 
 ## Unhead とは？
 
-::LazyExternalLinkCard{url="https://unhead.unjs.io/"}
+::ExternalLinkCardWrapper{url="https://unhead.unjs.io/"}
 ::
 
 Web アプリケーション向けの**フレームワークに依存しないヘッド管理ライブラリ**です。<br>
@@ -29,12 +29,12 @@ Web アプリケーション向けの**フレームワークに依存しない�
 
 今回は Vue に Unhead をインストールして使ってみます。
 
-::LazyExternalLinkCard{url="https://unhead.unjs.io/docs/vue/head/guides/get-started/installation"}
+::ExternalLinkCardWrapper{url="https://unhead.unjs.io/docs/vue/head/guides/get-started/installation"}
 ::
 
 ### `useHead()`
 
-::LazyExternalLinkCard{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-head"}
+::ExternalLinkCardWrapper{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-head"}
 ::
 
 `useHead()`は`<head>`タグの設定を管理する型安全なリアクティブ API を提供します。<br>
@@ -51,7 +51,7 @@ useHead({
 
 ### `useHeadSafe()`
 
-::LazyExternalLinkCard{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-head-safe"}
+::ExternalLinkCardWrapper{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-head-safe"}
 ::
 
 `useHeadSafe()`は`useHead()`のセキュリティに焦点を当てたラッパーです。<br>
@@ -80,7 +80,7 @@ useHeadSafe({
 
 ### `useSeoMeta()`
 
-::LazyExternalLinkCard{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-seo-meta"}
+::ExternalLinkCardWrapper{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-seo-meta"}
 ::
 
 `useSeoMeta()`は`useHead()`のSEOに焦点を当てたラッパーです。<br>
@@ -108,7 +108,7 @@ useSeoMeta({
 
 ### `useScript()`
 
-::LazyExternalLinkCard{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-script"}
+::ExternalLinkCardWrapper{url="https://unhead.unjs.io/docs/vue/head/api/composables/use-script"}
 ::
 
 `useScript()`はサードパーティースクリプト（Google Analytics や 広告タグなど）を**安全かつ効率的に読み込むため**のコンポーザブルです。<br>
@@ -177,13 +177,13 @@ Consoleを確認するとイベントが発火していることがわかりま�
 Unhead は Nuxt 3 でもデフォルトで採用されており、`useHead()` や `useSeoMeta()` は追加インストールなしでそのまま使えます。<br>
 (`nuxt v3.16`からは`unhead v2`がデフォルトでサポートされています)
 
-::LazyExternalLinkCard{url="https://nuxt.com/blog/v3-16"}
+::ExternalLinkCardWrapper{url="https://nuxt.com/blog/v3-16"}
 ::
 
 `useScript()`は Nuxt 3 にデフォルトでは含まれていません。<br>
 Nuxt Scripts を追加でインストールすることで使用できます。
 
-::LazyExternalLinkCard{url="https://scripts.nuxt.com/"}
+::ExternalLinkCardWrapper{url="https://scripts.nuxt.com/"}
 ::
 
 ## おわりに

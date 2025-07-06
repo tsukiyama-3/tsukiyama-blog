@@ -1,11 +1,9 @@
 <template>
   <div class="flex min-h-screen flex-col text-gray-800">
-    <header>
-      <PageHeader />
-    </header>
-    <main class="w-full grow max-w-[1200px] mx-auto px-4">
+    <PageHeader />
+    <UMain class="w-full grow max-w-[1200px] mx-auto p-4">
       <slot />
-    </main>
+    </UMain>
     <PageFooter />
   </div>
 </template>

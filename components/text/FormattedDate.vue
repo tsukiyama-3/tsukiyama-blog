@@ -15,7 +15,7 @@ const formattedDate = computed(() => {
 </script>
 
 <template>
-  <p class="text-sm opacity-80">
+  <p class="text-sm opacity-80 dark:text-highlighted">
     <time :datetime="date.toString()">
       {{ formattedDate }}
     </time>

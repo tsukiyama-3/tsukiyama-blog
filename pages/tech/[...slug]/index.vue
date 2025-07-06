@@ -1,8 +1,7 @@
 <script setup lang="ts">
+import type { BreadcrumbItem } from '@nuxt/ui'
 import FormattedDate from '~/components/text/FormattedDate.vue'
-import TocList from '~/components/articles/TocList.vue'
-import type { BreadcrumbListItem } from '~/types/utilities'
-import { useRotate } from '~/composables/utilities/rotate'
+import { useTag } from '~/composables/utilities/tag'
 import { useTechArticle } from '~/composables/articles'
 
 const route = useRoute()
@@ -11,22 +10,12 @@ if (article.value === null) {
   throw createError({ statusCode: 404, message: 'Article not found' })
 }
 
-const breadcrumbs = computed<BreadcrumbListItem[]>(() => [
-  { label: 'TOP', route: { name: 'index' } },
-  {
-    label: article.value?.title ?? '記事',
-    route: { name: `tech-${route.params.slug}` },
-  },
+const breadcrumbs = ref<BreadcrumbItem[]>([
+  { label: 'TOP', to: '/' },
+  { label: article.value?.title ?? '記事' },
 ])
-const image = ref<HTMLElement | null>(null)
-const { handleScroll } = useRotate(image)
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
 
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+const { convertSvgLogo } = useTag()
 
 useHead({
   link: [{ rel: 'canonical', href: `https://tsukiyama.blog/tech/${article.value.id}` }],
@@ -51,7 +40,6 @@ useSeoMeta({
     >
       <div class="space-y-4">
         <img
-          ref="image"
           :src="article.icon"
           alt=""
           width="160"
@@ -59,7 +47,7 @@ useSeoMeta({
           class="mx-auto"
           :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
         >
-        <h1 class="font-bold text-xl md:text-3xl">
+        <h1 class="font-bold text-xl md:text-3xl dark:text-highlighted">
           {{ article.title }}
         </h1>
         <FormattedDate :date="article.date" />
@@ -71,27 +59,39 @@ useSeoMeta({
             v-for="(tag, index) in article.tags"
             :key="index"
           >
-            <p
-              class="text-sm border border-gray-400 opacity-80 font-bold rounded-full leading-none py-1 px-2"
+            <UBadge
+              color="neutral"
+              variant="outline"
             >
-              #{{ tag }}
-            </p>
+              <UIcon
+                v-if="convertSvgLogo(tag)"
+                :name="convertSvgLogo(tag)"
+                class="size-5"
+              />
+              <p>
+                {{ tag }}
+              </p>
+            </UBadge>
           </li>
         </ul>
-        <p class="opacity-80 text-sm md:text-base">
+        <p class="opacity-80 text-sm md:text-base dark:text-highlighted">
           {{ article.description }}
         </p>
-        <BreadcrumbList :items="breadcrumbs" />
+        <UBreadcrumb :items="breadcrumbs" />
       </div>
       <section class="grid gap-8 grid-cols-1 md:grid-cols-[1fr_300px]">
         <main class="w-full max-w-[836px] order-2 md:order-1">
           <ContentRenderer
             :value="article"
-            class="space-y-8"
+            class="space-y-8 dark:text-highlighted"
           />
         </main>
         <aside class="md:sticky order-1 md:top-8 h-fit md:order-2">
-          <TocList :toc="article?.body.toc" />
+          <UContentToc
+            title="目次"
+            :links="article?.body?.toc?.links"
+            :ui="{ title: 'dark:text-highlighted', trailingIcon: 'dark:text-highlighted' }"
+          />
         </aside>
       </section>
     </article>
@@ -100,3 +100,13 @@ useSeoMeta({
     </div>
   </div>
 </template>
+
+<style scoped>
+:deep(h2),
+:deep(h3),
+:deep(h4),
+:deep(h5),
+:deep(h6) {
+  scroll-margin-top: 80px;
+}
+</style>

@@ -1,118 +1,104 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
-import { useRotate } from '~/composables/utilities/rotate'
 import { useTechArticles } from '~/composables/articles'
+import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
-
-const image = ref<HTMLElement | null>(null)
-const { handleScroll } = useRotate(image)
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-})
-
-onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
+const { convertSvgLogo } = useTag()
 </script>
 
 <template>
-  <div class="space-y-12">
-    <div
-      class="grid grid-cols-[144px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
-    >
-      <img
-        ref="image"
-        src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
-        alt="Kohei Tsukiyama Icon"
-        width="144"
-        height="144"
-        class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px]"
+  <UPage>
+    <div class="space-y-6">
+      <div
+        class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
       >
-      <div class="w-fit">
-        <h2 class="font-bold text-lg md:text-2xl">
-          Kohei Tsukiyama
+        <img
+          src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
+          alt="Kohei Tsukiyama Icon"
+          width="120"
+          height="120"
+          class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px] dark:border-gray-800"
+        >
+        <div class="w-fit">
+          <h2 class="font-bold text-lg md:text-2xl dark:text-highlighted">
+            Kohei Tsukiyama
+          </h2>
+          <p class="text-base md:text-lg dark:text-highlighted">
+            Web Enginner
+          </p>
+          <div class="flex gap-x-2 dark:text-highlighted">
+            <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
+              <UIcon
+                name="flag:jp-4x3"
+                class="size-5 border border-gray-200 dark:border-0"
+              />
+              Tokyo
+            </p>
+            /
+            <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
+              <UIcon
+                name="emojione:birthday-cake"
+                class="size-5"
+              /> 1999.10.12
+            </p>
+          </div>
+        </div>
+      </div>
+      <section class="space-y-6">
+        <h2 class="text-xl text-center dark:text-highlighted">
+          新着記事
         </h2>
-        <p class="text-base md:text-lg">
-          Web Enginner
-        </p>
-        <p class="text-sm md:text-base opacity-80">
-          🇯🇵 Tokyo / 1999.10.12
-        </p>
-        <ul class="flex items-center gap-x-1 mt-1 md:mt-2">
-          <li class="leading-none opacity-80">
+        <ul class="grid md:grid-cols-2 gap-4">
+          <li
+            v-for="article in articles"
+            :key="article.path"
+            class="list-none divide-y divide-gray-300 hover:opacity-70"
+          >
             <NuxtLink
-              to="https://x.com/tsuyakima3"
-              target="_blank"
-              aria-label="X Link"
-              class="hover:opacity-60"
+              :to="article.path"
             >
-              <Icon
-                name="mynaui:brand-x"
-                class="text-gray-800 text-2xl md:text-3xl"
-                width="24"
-                height="24"
-              />
-            </NuxtLink>
-          </li>
-          <li class="leading-none opacity-80">
-            <NuxtLink
-              to="https://github.com/tsukiyama-3"
-              target="_blank"
-              aria-label="GitHub Link"
-              class="hover:opacity-60"
-            >
-              <Icon
-                name="mynaui:brand-github"
-                class="text-gray-800 text-2xl md:text-3xl"
-                width="24"
-                height="24"
-              />
+              <article class="grid grid-cols-[80px_1fr] gap-x-4 md:grid-cols-[120px_1fr]">
+                <img
+                  :src="article.icon"
+                  alt=""
+                  width="80"
+                  height="80"
+                  class="border border-gray-200 rounded-xl dark:border-gray-800 md:w-[120px] md:h-[120px]"
+                  :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
+                >
+                <div class="space-y-1">
+                  <h3 class="text-base md:text-xl font-bold dark:text-highlighted">{{ article.title }}</h3>
+                  <ul
+                    v-if="article.tags"
+                    class="flex gap-1 flex-wrap"
+                  >
+                    <li
+                      v-for="(tag, index) in article.tags"
+                      :key="index"
+                    >
+                      <UBadge
+                        color="neutral"
+                        variant="outline"
+                      >
+                        <UIcon
+                          v-if="convertSvgLogo(tag)"
+                          :name="convertSvgLogo(tag)"
+                          class="size-3"
+                        />
+                        <p>
+                          {{ tag }}
+                        </p>
+                      </UBadge>
+                    </li>
+                  </ul>
+                  <FormattedDate :date="article.date" />
+                </div>
+              </article>
             </NuxtLink>
           </li>
         </ul>
-      </div>
+      </section>
     </div>
-    <ul class="space-y-8">
-      <li
-        v-for="article in articles"
-        :key="article.path"
-        class="list-none divide-y divide-gray-300 hover:opacity-70"
-      >
-        <NuxtLink
-          :to="article.path"
-          class="grid grid-cols-[120px_1fr] gap-x-4"
-        >
-          <img
-            :src="article.icon"
-            alt=""
-            width="120"
-            height="120"
-            class="border border-gray-200 rounded-xl"
-            :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
-          >
-          <div class="space-y-1">
-            <h3 class="text-base md:text-xl font-bold">{{ article.title }}</h3>
-            <ul
-              v-if="article.tags"
-              class="flex gap-1 flex-wrap"
-            >
-              <li
-                v-for="(tag, index) in article.tags"
-                :key="index"
-              >
-                <p
-                  class="text-xs border border-gray-400 opacity-80 font-bold rounded-full leading-none py-1 px-2 md:text-sm"
-                >
-                  #{{ tag }}
-                </p>
-              </li>
-            </ul>
-            <FormattedDate :date="article.date" />
-          </div>
-        </NuxtLink>
-      </li>
-    </ul>
-  </div>
+  </UPage>
 </template>

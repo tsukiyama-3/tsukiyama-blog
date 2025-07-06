@@ -3,10 +3,10 @@ import tailwindcss from '@tailwindcss/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
+    '@nuxt/ui-pro',
     '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxthub/core',
-    '@nuxt/icon',
     '@nuxt/eslint',
     '@nuxt/test-utils/module',
     '@nuxt/scripts',
@@ -60,6 +60,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  mdc: {
+    components: {
+      prose: false,
+    },
+  },
   runtimeConfig: {
     basicAuth: {
       username: 'admin',
@@ -84,5 +89,10 @@ export default defineNuxtConfig({
     config: {
       stylistic: true,
     },
+  },
+  uiPro: {
+    content: true,
+    license: process.env.NUXT_UI_PRO_LICENSE,
+    mdc: true,
   },
 })

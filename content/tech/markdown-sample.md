@@ -98,9 +98,17 @@ date: 2025-04-07
 
 ```md
 `console.log("インラインコード")`
+
+`error`{color="error"}
+
+`nuxt.config.ts`{lang="ts-type"}
 ```
 
 `console.log("インラインコード")`
+
+`error`{color="error"}
+
+`nuxt.config.ts`{lang="ts-type"}
 
 ## Code Blocks
 
@@ -117,6 +125,14 @@ export default () => {
   console.log("コードブロックはこんな感じです")
 };
 ```
+
+## Image
+
+```
+![サンプル画像](sample.jpg)
+```
+
+![サンプル画像](https://res.cloudinary.com/dyoyv8djx/image/upload/v1678911095/sample.jpg)
 
 ## MDX
 

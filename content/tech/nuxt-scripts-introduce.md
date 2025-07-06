@@ -16,7 +16,7 @@ Web サービスを開発する上で、計測タグや広告配信タグなど�
 
 本記事では、Nuxt.js アプリケーションにおける**サードパーティースクリプトの最適化をサポートするモジュール Nuxt Scripts** について紹介します。
 
-::LazyExternalLinkCard{url="https://scripts.nuxt.com/"}
+::ExternalLinkCardWrapper{url="https://scripts.nuxt.com/"}
 ::
 
 ## Nuxt Scripts では何ができるの？
@@ -38,7 +38,7 @@ Nuxt Scripts を使うと、こうした課題を次のように解決できま�
 
 ### 利用可能なサードパーティースクリプト
 
-::LazyExternalLinkCard{url="https://scripts.nuxt.com/scripts"}
+::ExternalLinkCardWrapper{url="https://scripts.nuxt.com/scripts"}
 ::
 
 こちらのページにすぐに使用できるコンポーザブルがまとまっています。
@@ -53,7 +53,7 @@ Google Analytics や X Pixel など、よく使うスクリプトはあらかじ
 
 今回は、用意されているスクリプトの中の Youtube Player を使ってみます。
 
-::LazyExternalLinkCard{url="https://scripts.nuxt.com/scripts/content/youtube-player"}
+::ExternalLinkCardWrapper{url="https://scripts.nuxt.com/scripts/content/youtube-player"}
 ::
 
 ### コンポーネント
