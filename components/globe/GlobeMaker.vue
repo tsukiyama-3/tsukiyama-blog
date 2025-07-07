@@ -58,8 +58,21 @@ onMounted(async () => {
   const { globe } = await useGlobe()
   if (!globe) return
 
-  scene.add(globe)
+  const radius = 300
+  const lat = 35.6895
+  const lng = 139.6917
+
+  const phi = (90 - lat) * (Math.PI / 180)
+  const theta = (lng + 180) * (Math.PI / 180)
+
+  const x = radius * Math.sin(phi) * Math.cos(theta)
+  const y = radius * Math.cos(phi)
+  const z = radius * Math.sin(phi) * Math.sin(theta)
+
+  camera.position.set(x, y, z)
+  camera.lookAt(0, 0, 0)
   globe.setPointOfView(camera)
+  scene.add(globe)
 
   renderer = new WebGLRenderer({ antialias: true, alpha: true })
   cssRenderer = new CSS2DRenderer()
@@ -77,6 +90,9 @@ onMounted(async () => {
   controls.enableDamping = true
   controls.enableZoom = false
   controls.enablePan = false
+
+  controls.minPolarAngle = Math.PI / 3.5
+  controls.maxPolarAngle = Math.PI - Math.PI / 3
 
   controls.addEventListener('change', () => {
     globe.setPointOfView(camera)
