@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components'
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
 import { useTag } from '~/composables/utilities/tag'
@@ -49,6 +50,10 @@ const { convertSvgLogo } = useTag()
         <h2 class="text-xl text-center dark:text-highlighted">
           新着記事
         </h2>
+        <NuxtLink
+          to="/journey"
+          class="dark:text-highlighted"
+        >Journey</NuxtLink>
         <ul class="grid md:grid-cols-2 gap-4">
           <li
             v-for="article in articles"
