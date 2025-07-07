@@ -3,7 +3,9 @@ import type { MeshPhongMaterial } from 'three'
 import { Scene, PerspectiveCamera, AmbientLight, Fog, PointLight, DirectionalLight, WebGLRenderer, Color } from 'three'
 import { OrbitControls } from 'three/examples/jsm/Addons.js'
 import { CSS2DRenderer } from 'three/addons/renderers/CSS2DRenderer.js'
+import { createApp, h } from 'vue'
 import countries from '~/public/json/globe-data-min.json'
+import GlobeAvatar from '~/components/globe/GlobeAvatar.vue'
 
 const container = ref<HTMLDivElement | null>(null)
 
@@ -37,17 +39,13 @@ onMounted(async () => {
 
   scene.fog = new Fog(0x535ef3, 400, 2000)
 
-  const markerSvg = `<svg viewBox="-4 0 36 36">
-      <path fill="currentColor" d="M14,0 C21.732,0 28,5.641 28,12.6 C28,23.963 14,36 14,36 C14,36 0,24.064 0,12.6 C0,5.641 6.268,0 14,0 Z"></path>
-      <circle fill="black" cx="14" cy="14" r="7"></circle>
-    </svg>`
   const N = 30
-  const gData = [...Array(N).keys()].map(() => ({
-    lat: (Math.random() - 0.5) * 180,
-    lng: (Math.random() - 0.5) * 360,
-    size: 7 + Math.random() * 30,
-    color: ['red', 'white', 'blue', 'green'][Math.round(Math.random() * 3)],
-  }))
+  const gData = [
+    {
+      lat: 35.6895,
+      lng: 139.6917,
+    },
+  ]
 
   const Globe = new ThreeGlobe({
     waitForGlobeReady: true,
@@ -72,9 +70,10 @@ onMounted(async () => {
     .htmlElementsData(gData)
     .htmlElement((d) => {
       const el = document.createElement('div')
-      el.innerHTML = markerSvg
-      el.style.color = d.color
-      el.style.width = `${d.size}px`
+      const app = createApp({
+        render: () => h(GlobeAvatar, { src: 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465735/tsukiyama-bg-white_evpsok.png' }),
+      })
+      app.mount(el)
       el.style.transition = 'opacity 250ms'
       return el
     })
