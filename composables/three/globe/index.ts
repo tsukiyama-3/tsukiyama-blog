@@ -28,13 +28,13 @@ export const useGlobe = async () => {
     .atmosphereAltitude(0.25)
     .hexPolygonColor((e: any) => {
       if (
-        ['USA'].includes(
+        ['USA', 'ESP', 'JPN', 'CAN', 'FRA', 'RUS', 'CAF', 'MEX', 'LBY', 'EGY', 'DZA', 'MAR', 'AGO', 'TCD', 'AUS', 'RWA', 'COG', 'COD', 'NAM', 'ZAF', 'VEN', 'PER', 'BOL', 'HND', 'CRI', 'BLZ', 'SLV', 'CHL', 'GTM', 'NIC', 'PAN', 'COL', 'ARG'].includes(
           e.properties.ISO_A3,
         )
       ) {
-        return 'rgba(255,255,255, 1)'
+        return 'rgba(5, 223, 114, 1)'
       }
-      else return 'rgba(255,255,255, 0.5)'
+      else return 'rgba(255, 255, 255, 0.5)'
     })
     .htmlElementsData(gData)
     .htmlElement((d) => {

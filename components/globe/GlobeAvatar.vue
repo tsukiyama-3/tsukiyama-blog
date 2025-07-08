@@ -5,7 +5,7 @@ defineProps<{ src: string }>()
 <template>
   <div class="relative">
     <UBadge
-      class="absolute font-bold left-1/2 transform -translate-x-1/2 top-[-32px] inline-block whitespace-nowrap"
+      class="absolute font-bold left-1/2 transform -translate-x-1/2 top-[-30px] inline-block whitespace-nowrap"
       variant="subtle"
       size="md"
     >
