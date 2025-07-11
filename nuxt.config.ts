@@ -71,6 +71,11 @@ export default defineNuxtConfig({
       password: 'admin',
       allowedRoutes: [],
     },
+    public: {
+      googleMaps: {
+        apiKey: '',
+      },
+    },
   },
   experimental: {
     viewTransition: true,
