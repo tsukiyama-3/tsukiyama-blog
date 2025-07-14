@@ -13,6 +13,7 @@ jobs:
 
     env:
       NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
+      NUXT_PUBLIC_GOOGLE_MAPS_API_KEY: ${{ secrets.NUXT_PUBLIC_GOOGLE_MAPS_API_KEY }}
 
     steps:
       - uses: actions/checkout@v4
