@@ -40,9 +40,7 @@ onMounted(() => {
       travelMode: google.maps.TravelMode.DRIVING,
     }
     const directionsService = new maps.DirectionsService()
-    const directionsRenderer = new maps.DirectionsRenderer(
-      { suppressMarkers: true },
-    )
+    const directionsRenderer = new maps.DirectionsRenderer({ suppressMarkers: true })
     directionsRenderer.setMap(mapInstance)
     directionsService.route(request, (result, status) => {
       if (status === 'OK') {
