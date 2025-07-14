@@ -25,6 +25,7 @@ export default defineContentConfig({
         description: z.string(),
         ogImage: z.string(),
         date: z.date(),
+        day: z.number(),
         // 位置情報
         position: z.object({
           // 開始位置

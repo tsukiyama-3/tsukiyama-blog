@@ -11,13 +11,21 @@ const { articles } = await useDiaryArticles()
       <h1>Journey</h1>
       <GlobeMaker />
     </div>
-    <UBlogPosts orientation="vertical">
+    <UBlogPosts
+      orientation="vertical"
+      class="gap-4 lg:gap-4"
+    >
       <UBlogPost
         v-for="(article, index) in articles"
         :key="index"
         v-bind="article"
         orientation="vertical"
         :to="article.path"
+        :badge="{
+          label: `Day ${article.day}`,
+          color: 'primary',
+          variant: 'subtle',
+        }"
       />
     </UBlogPosts>
   </UPage>
