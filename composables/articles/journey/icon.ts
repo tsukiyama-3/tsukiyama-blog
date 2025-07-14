@@ -1,11 +1,11 @@
 import type { DiaryCollectionItem } from '@nuxt/content'
 
 const weatherIconMap: Record<string, string> = {
-  sunny: 'fluent-emoji:sun',
-  cloudy: 'fluent-emoji:cloud',
-  rainy: 'fluent-emoji:cloud-with-rain',
-  snow: 'fluent-emoji:cloud-with-snow',
-  lightning_rain: 'fluent-emoji:cloud-with-lightning-and-rain',
+  sunny: 'twemoji:sun',
+  cloudy: 'twemoji:cloud',
+  rainy: 'twemoji:cloud-with-rain',
+  snow: 'twemoji:cloud-with-snow',
+  lightning_rain: 'twemoji:cloud-with-lightning-and-rain',
   // 必要に応じてどんどん追加
 }
 
