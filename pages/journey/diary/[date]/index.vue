@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { UAccordion, UPage } from '#components'
+import { UAccordion, UBadge, UPage } from '#components'
 import ExpensesTable from '~/components/articles/journey/ExpensesTable.vue'
-import { useDiaryArticle } from '~/composables/articles/journey/diary'
+import { useDiaryArticle, useDiarySrroundArticles } from '~/composables/articles/journey/diary'
 import { useWeatherIcon } from '~/composables/articles/journey/icon'
 
 const route = useRoute()
 const config = useRuntimeConfig()
 
 const { article } = await useDiaryArticle(route.path)
+const { surrounds } = await useDiarySrroundArticles(route.path)
+
 type LatLng = { lat: number, lng: number }
 
 const { onLoaded } = useScriptGoogleMaps({
@@ -92,7 +94,7 @@ const { convertIcon, convertText } = useWeatherIcon()
 
 <template>
   <UPage
-    v-if="article"
+    v-if="article && surrounds"
     :ui="{ center: 'lg:col-span-6 order-3', root: 'mt-0', left: 'lg:col-span-10 order-1', right: 'lg:col-span-4 order-2' }"
     class="dark:text-highlighted"
   >
@@ -108,6 +110,24 @@ const { convertIcon, convertText } = useWeatherIcon()
       <ContentRenderer
         :value="article"
       />
+
+      <USeparator />
+
+      <UContentSurround :surround="surrounds">
+        <template #link-title="surround">
+          <div class="space-y-1">
+            <UBadge
+              size="md"
+              variant="subtle"
+            >
+              Day {{ surround.link.day }}
+            </UBadge>
+            <h4>
+              {{ surround.link.title }}
+            </h4>
+          </div>
+        </template>
+      </UContentSurround>
     </UPageBody>
     <template #right>
       <div class="font-mono">

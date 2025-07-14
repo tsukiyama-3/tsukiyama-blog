@@ -15,3 +15,13 @@ export const useDiaryArticle = async (path: string) => {
 
   return { article }
 }
+
+export const useDiarySrroundArticles = async (path: string) => {
+  const { data: surrounds } = await useAsyncData(`${path}-surround`, () => {
+    return queryCollectionItemSurroundings('diary', path, {
+      fields: ['description', 'day'],
+    })
+  })
+
+  return { surrounds }
+}
