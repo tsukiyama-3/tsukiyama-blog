@@ -26,6 +26,7 @@ const { articles } = await useDiaryArticles()
           color: 'primary',
           variant: 'subtle',
         }"
+        :ui="{ badge: 'font-mono', date: 'font-mono' }"
       />
     </UBlogPosts>
   </UPage>

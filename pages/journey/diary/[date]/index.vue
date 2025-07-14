@@ -98,9 +98,10 @@ const { convertIcon, convertText } = useWeatherIcon()
   >
     <template #left>
       <UPageHeader
-        headline="Day 1"
+        :headline="`Day ${article.day}`"
         :title="article.title"
         :description="article.description"
+        :ui="{ headline: 'font-mono' }"
       />
     </template>
     <UPageBody class="lg:mt-0">
@@ -109,7 +110,7 @@ const { convertIcon, convertText } = useWeatherIcon()
       />
     </UPageBody>
     <template #right>
-      <div>
+      <div class="font-mono">
         <UAccordion
           :items="[{ label: '' }]"
           :unmount-on-hide="false"
@@ -138,7 +139,9 @@ const { convertIcon, convertText } = useWeatherIcon()
               <h2 class="text-muted">
                 移動距離
               </h2>
-              <p>{{ article.distance }}km</p>
+              <p>
+                {{ article.distance }}km
+              </p>
             </div>
           </template>
           <template #content>
@@ -148,7 +151,12 @@ const { convertIcon, convertText } = useWeatherIcon()
             />
           </template>
         </UAccordion>
-        <ul class="border border-muted relative py-4">
+        <UAccordion
+          :items="[{ label: '' }]"
+          :unmount-on-hide="false"
+          class="border border-muted relative"
+          :ui="{ trigger: 'pr-2' }"
+        >
           <div>
             <span class="w-[9px] h-[0.5px] block top-[-1px] left-[-5px] dark:bg-white bg-black absolute" />
             <span class="w-[1px] h-[9px] block top-[-5px] left-[-1px] dark:bg-white bg-black absolute" />
@@ -165,48 +173,59 @@ const { convertIcon, convertText } = useWeatherIcon()
             <span class="w-[9px] h-[1px] block bottom-[-1px] right-[-5px] dark:bg-white bg-black absolute" />
             <span class="w-[1px] h-[9px] block bottom-[-5px] right-[-1px] dark:bg-white bg-black absolute" />
           </div>
-          <li class="grid grid-cols-2 px-2">
-            <h2 class="text-muted">
-              天候
-            </h2>
-            <div class="flex gap-x-1">
-              <p
-                v-for="(weather, index) in article.weather"
-                :key="index"
-                class="flex items-center gap-x-1"
-              >
-                <UIcon
-                  :name="convertIcon(weather)"
-                  class="size-5"
-                />
-                {{ convertText(weather) }}
-                <span v-if="index < article.weather.length - 1">/</span>
-              </p>
+          <template #leading>
+            <div class="grid items-center grid-cols-2 px-2">
+              <h2 class="text-muted">
+                基本情報
+              </h2>
             </div>
-          </li>
-          <li class="grid grid-cols-2 px-2">
-            <h2 class="text-muted">
-              気温
-            </h2>
-            <div>
-              <p>最高: {{ article.temperature.high }}℃</p>
-              <p>最低: {{ article.temperature.low }}℃</p>
-            </div>
-          </li>
-          <li class="grid grid-cols-2 px-2">
-            <h2 class="text-muted">
-              所持金
-            </h2>
-            <div>
-              <p
-                v-for="(cash, currency) in article.cash"
-                :key="currency"
-              >
-                {{ currency }}:{{ cash }}
-              </p>
-            </div>
-          </li>
-        </ul>
+          </template>
+          <template #content>
+            <ul>
+              <li class="grid grid-cols-2 px-2">
+                <h2 class="text-muted">
+                  天候
+                </h2>
+                <div class="flex gap-x-1">
+                  <p
+                    v-for="(weather, index) in article.weather"
+                    :key="index"
+                    class="flex items-center gap-x-1"
+                  >
+                    <UIcon
+                      :name="convertIcon(weather)"
+                      class="size-5"
+                    />
+                    {{ convertText(weather) }}
+                    <span v-if="index < article.weather.length - 1">/</span>
+                  </p>
+                </div>
+              </li>
+              <li class="grid grid-cols-2 px-2">
+                <h2 class="text-muted">
+                  気温
+                </h2>
+                <div>
+                  <p>最高: {{ article.temperature.high }}℃</p>
+                  <p>最低: {{ article.temperature.low }}℃</p>
+                </div>
+              </li>
+              <li class="grid grid-cols-2 px-2">
+                <h2 class="text-muted">
+                  所持金
+                </h2>
+                <div>
+                  <p
+                    v-for="(cash, currency) in article.cash"
+                    :key="currency"
+                  >
+                    {{ currency }}:{{ cash }}
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </template>
+        </UAccordion>
         <UAccordion
           :items="[{ label: '' }]"
           class="border border-muted relative"
@@ -229,7 +248,7 @@ const { convertIcon, convertText } = useWeatherIcon()
             <span class="w-[1px] h-[9px] block bottom-[-5px] right-[-1px] dark:bg-white bg-black absolute" />
           </div>
           <template #leading>
-            <div class="grid items-center grid-cols-2 px-2">
+            <div class="flex items-center gap-x-2 px-2">
               <h2 class="text-muted">
                 出費
               </h2>
@@ -268,7 +287,7 @@ const { convertIcon, convertText } = useWeatherIcon()
             <span class="w-[1px] h-[9px] block bottom-[-5px] right-[-1px] dark:bg-white bg-black absolute" />
           </div>
           <template #leading>
-            <div class="grid items-center grid-cols-2 px-2">
+            <div class="flex items-center gap-x-2 px-2">
               <h2 class="text-muted">
                 収入
               </h2>
