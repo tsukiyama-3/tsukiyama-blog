@@ -97,7 +97,6 @@ const { convertIcon, convertText } = useWeatherIcon()
     class="dark:text-highlighted"
   >
     <template #left>
-      <p>{{ config.public.googleMaps.apiKey }}</p>
       <UPageHeader
         headline="Day 1"
         :title="article.title"
