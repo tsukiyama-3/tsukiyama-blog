@@ -52,15 +52,15 @@ export default defineContentConfig({
         distance: z.number(),
         // 所持金
         cash: z.object({
-          jpy: z.number().optional(),
-          usd: z.number().optional(),
+          JPY: z.number().optional(),
+          USD: z.number().optional(),
           // 通貨が増えたらここに追加していく
         }),
         // 所持金を各通貨に変換した合計
         equivalent: z.object({
-          jpy: z.number(),
-          usd: z.number(),
-          eur: z.number(),
+          JPY: z.number(),
+          USD: z.number(),
+          EUR: z.number(),
         }),
         // 出費
         expenses: z.array(z.object({
@@ -75,7 +75,7 @@ export default defineContentConfig({
           type: z.enum(['withdrawal', 'exchange', 'received']),
           amount: z.number(), // 両替「元」の金額
           currency: z.string(), // 両替「元」の通貨（例: jpy）
-          toCurrency: z.string().optional(), // 両替「先」の通貨（例: usd）
+          toCurrency: z.string().optional(), // 両替「先」の通貨（例: USD）
           rate: z.number().optional(), // 両替レート（例: 1 JPY = 0.0065 USD）
           note: z.string().optional(),
         })),

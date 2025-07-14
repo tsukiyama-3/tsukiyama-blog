@@ -25,18 +25,18 @@ onMounted(() => {
       streetViewControl: false,
       fullscreenControl: false,
     })
-    const tokyo = new google.maps.LatLng(35.739028, 139.426325)
-    const osaka = new google.maps.LatLng(35.298777, 139.480566)
-    const gifu = new google.maps.LatLng(35.4233, 136.7607)
+    const tokyo = new google.maps.LatLng(24.1426, -110.3127)
+    const osaka = new google.maps.LatLng(25.79, -109.00)
+    // const gifu = new google.maps.LatLng(35.4233, 136.7607)
     const request = {
       origin: tokyo,
       destination: osaka,
-      waypoints: [
-        {
-          location: gifu,
-          stopover: true,
-        },
-      ],
+      // waypoints: [
+      //   {
+      //     location: gifu,
+      //     stopover: true,
+      //   },
+      // ],
       travelMode: google.maps.TravelMode.DRIVING,
     }
     const directionsService = new maps.DirectionsService()

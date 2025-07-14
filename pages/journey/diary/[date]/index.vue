@@ -135,7 +135,7 @@ const { convertIcon, convertText } = useWeatherIcon()
             <span class="w-[1px] h-[9px] block bottom-[-5px] right-[-1px] dark:bg-white bg-black absolute" />
           </div>
           <template #leading>
-            <div class="grid items-center grid-cols-2 px-2">
+            <div class="grid items-center gap-x-2 grid-cols-2 px-2">
               <h2 class="text-muted">
                 移動距離
               </h2>
@@ -181,8 +181,8 @@ const { convertIcon, convertText } = useWeatherIcon()
             </div>
           </template>
           <template #content>
-            <ul>
-              <li class="grid grid-cols-2 px-2">
+            <ul class="py-2">
+              <li class="grid grid-cols-2 px-2 text-sm">
                 <h2 class="text-muted">
                   天候
                 </h2>
@@ -194,14 +194,14 @@ const { convertIcon, convertText } = useWeatherIcon()
                   >
                     <UIcon
                       :name="convertIcon(weather)"
-                      class="size-5"
+                      class="size-4"
                     />
                     {{ convertText(weather) }}
                     <span v-if="index < article.weather.length - 1">/</span>
                   </p>
                 </div>
               </li>
-              <li class="grid grid-cols-2 px-2">
+              <li class="grid grid-cols-2 px-2 text-sm">
                 <h2 class="text-muted">
                   気温
                 </h2>
@@ -210,7 +210,7 @@ const { convertIcon, convertText } = useWeatherIcon()
                   <p>最低: {{ article.temperature.low }}℃</p>
                 </div>
               </li>
-              <li class="grid grid-cols-2 px-2">
+              <li class="grid grid-cols-2 px-2 text-sm">
                 <h2 class="text-muted">
                   所持金
                 </h2>
