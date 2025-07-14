@@ -31,7 +31,7 @@ jobs:
         run: npm install
 
       - name: Debug license
-        run: echo "KEY=${NUXT_UI_PRO_LICENSE}"
+        run: echo "KEY=${NUXT_PUBLIC_GOOGLE_MAPS_API_KEY}"
 
       - name: Ensure NuxtHub module is installed
         run: npx nuxthub@latest ensure
