@@ -48,6 +48,7 @@ export default defineContentConfig({
           start: z.object({
             lat: z.number(),
             lng: z.number(),
+            label: z.string(),
             // 標高
             elevation: z.number().optional(),
           }),
@@ -55,6 +56,7 @@ export default defineContentConfig({
           end: z.object({
             lat: z.number(),
             lng: z.number(),
+            label: z.string(),
             // 標高
             elevation: z.number().optional(),
           }).optional(),
@@ -66,6 +68,8 @@ export default defineContentConfig({
         }),
         // 移動距離
         distance: z.number(),
+        // タイムゾーン
+        timezone: z.string(),
         // 所持金
         cash: z.object({
           JPY: z.number().optional(),
