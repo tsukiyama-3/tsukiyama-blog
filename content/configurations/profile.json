@@ -1,12 +1,19 @@
 {
-  "_description": "プロフィール",
-  "familyName": "tsukiyama",
-  "givenName": "kohei",
-  "birthDate": "1999-10-12",
-  "birthPlace": {
-    "country": "japan",
-    "prefecture": "tokyo"
-  },
-  "avatar": "/avatar_bwg8e2.webp",
-  "bio": "Web Enginner"
+  "_description": "個人情報",
+  "name": "kohei tsukiyama",
+  "birthday": "1999-10-12",
+  "origin": "Tokyo",
+  "nationality": "Japan",
+  "avatar": "https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png",
+  "email": "tsukiyama.mail@gmail.com",
+  "accounts": [
+    {
+      "link": "https://x.com/tsuyakima3",
+      "label": "X"
+    },
+    {
+      "link": "https://github.com/tsukiyama-3/tsukiyama-blog",
+      "label": "GitHub"
+    }
+  ]
 }
