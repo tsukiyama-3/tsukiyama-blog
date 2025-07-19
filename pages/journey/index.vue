@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import GlobeMaker from '~/components/globe/GlobeMaker.vue'
 import { useDiaryArticles } from '~/composables/articles/journey/diary'
+import { useProfile } from '~/composables/profile'
 
+const { profile } = await useProfile()
 const { articles, totalDistance, localTime, localOffset } = await useDiaryArticles()
 </script>
 
@@ -22,7 +24,17 @@ const { articles, totalDistance, localTime, localOffset } = await useDiaryArticl
             <li class="contents grid-cols-subgrid">
               <span class="text-muted">NAME</span>
               <span class="text-muted">:</span>
-              <span>KOHEI TSUKIYAMA</span>
+              <span v-if="profile.name">{{ profile?.name.toUpperCase() }}</span>
+            </li>
+            <li class="contents grid-cols-subgrid">
+              <span class="text-muted">AGE</span>
+              <span class="text-muted">:</span>
+              <span>{{ profile?.age }}</span>
+            </li>
+            <li class="contents grid-cols-subgrid">
+              <span class="text-muted">ORIGIN</span>
+              <span class="text-muted">:</span>
+              <span>{{ profile?.origin }}</span>
             </li>
             <li class="contents grid-cols-subgrid">
               <span class="text-muted">LOCATION</span>

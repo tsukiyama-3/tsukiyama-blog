@@ -92,6 +92,22 @@ export default defineContentConfig({
         }),
       }),
     }),
+    profile: defineCollection({
+      type: 'data',
+      source: 'configurations/profile.json',
+      schema: z.object({
+        name: z.string(),
+        birthday: z.date(),
+        origin: z.string(), // 出身
+        nationality: z.string(), // 国籍
+        avatar: z.string(),
+        email: z.string(),
+        accounts: z.array(z.object({
+          link: z.string(),
+          label: z.string(),
+        })),
+      }),
+    }),
     content: defineCollection(
       // adds the robots frontmatter key to the collection
       asSitemapCollection({

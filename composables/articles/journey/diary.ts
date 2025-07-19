@@ -30,7 +30,7 @@ export const useDiaryArticles = async () => {
 
     const parts = dtf.formatToParts(new Date())
     const offsetPart = parts.find(p => p.type === 'timeZoneName')
-    return offsetPart?.value || 'UTC'
+    return (offsetPart?.value || 'UTC').replace('GMT', 'UTC')
   })
 
   return { articles, totalDistance, localTime, localOffset }
