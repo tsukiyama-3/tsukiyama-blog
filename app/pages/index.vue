@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { NuxtLink } from '#components'
+import GoogleMap from '~/components/map/GoogleMap.vue'
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
 import { useProfile } from '~/composables/configurations/profile'
@@ -10,7 +11,7 @@ const { convertSvgLogo } = useTag()
 const { profile, displayName, displayBirthDate, displayPrefecture } = await useProfile()
 const config = useRuntimeConfig()
 const { onLoaded } = useScriptGoogleMaps({
-  apiKey: config.public.googleMaps.apiKey,
+  apiKey: config.public.scripts.googleMaps.apiKey,
 })
 const map = ref<HTMLElement | null>(null)
 onMounted(() => {
@@ -66,9 +67,9 @@ onMounted(() => {
 <template>
   <UPage>
     <div class="space-y-6">
-      <div
-        ref="map"
-        class="w-full aspect-video"
+      <GoogleMap
+        :position="{ lat: 35.4047, lng: 139.4516 }"
+        :enable-marker="true"
       />
       <div
         class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
