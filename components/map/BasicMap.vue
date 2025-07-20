@@ -15,11 +15,14 @@ const { onLoaded } = useScriptGoogleMaps({
 })
 
 onLoaded(async (instance) => {
+  if (!mapRef.value) {
+    return
+  }
   const maps = await instance.maps
   const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
   const { AdvancedMarkerElement } = await maps.importLibrary('marker') as google.maps.MarkerLibrary
 
-  const map = new Map(mapRef.value!, {
+  const map = new Map(mapRef.value, {
     center: props.position,
     zoom: 16,
     mapId: config.public.googleMaps.mapId.raster,
