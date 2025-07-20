@@ -13,7 +13,7 @@ const config = useRuntimeConfig()
 
 <template>
   <UPage>
-    {{ config.public.scripts.googleMaps }}
+    {{ config.public.scripts }}
     <div class="space-y-6">
       <BasicMap
         :position="{ lat: 35.4047, lng: 139.4516 }"
