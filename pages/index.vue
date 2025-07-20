@@ -8,59 +8,6 @@ import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
-const config = useRuntimeConfig()
-const { onLoaded } = useScriptGoogleMaps({
-  apiKey: config.public.scripts.googleMaps.apiKey,
-})
-const map = ref<HTMLElement | null>(null)
-onMounted(() => {
-  onLoaded(async (instance) => {
-    if (!map.value) return
-    const maps = await instance.maps
-    const mapInstance = new maps.Map(map.value, {
-      center: { lat: 35.4047, lng: 139.4516 },
-      zoom: 12,
-      disableDefaultUI: true,
-      mapTypeControl: false,
-      zoomControl: true,
-      scaleControl: false,
-      streetViewControl: false,
-      fullscreenControl: false,
-    })
-    const tokyo = new google.maps.LatLng(24.1426, -110.3127)
-    const osaka = new google.maps.LatLng(25.79, -109.00)
-    // const gifu = new google.maps.LatLng(35.4233, 136.7607)
-    const request = {
-      origin: tokyo,
-      destination: osaka,
-      // waypoints: [
-      //   {
-      //     location: gifu,
-      //     stopover: true,
-      //   },
-      // ],
-      travelMode: google.maps.TravelMode.DRIVING,
-    }
-    const directionsService = new maps.DirectionsService()
-    const directionsRenderer = new maps.DirectionsRenderer({ suppressMarkers: true })
-    directionsRenderer.setMap(mapInstance)
-    directionsService.route(request, (result, status) => {
-      if (status === 'OK') {
-        directionsRenderer.setDirections(result)
-        new maps.Marker({
-          position: tokyo,
-          map: mapInstance,
-        })
-
-        // ✅ 自前マーカー追加（到着地点）
-        new maps.Marker({
-          position: osaka,
-          map: mapInstance,
-        })
-      }
-    })
-  })
-})
 </script>
 
 <template>
