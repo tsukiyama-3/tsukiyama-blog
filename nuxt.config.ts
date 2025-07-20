@@ -72,8 +72,10 @@ export default defineNuxtConfig({
       allowedRoutes: [],
     },
     public: {
-      googleMaps: {
-        apiKey: '',
+      scripts: {
+        googleMaps: {
+          apiKey: '',
+        },
       },
     },
   },

@@ -13,7 +13,7 @@ const { surrounds } = await useDiarySrroundArticles(route.path)
 type LatLng = { lat: number, lng: number }
 
 const { onLoaded } = useScriptGoogleMaps({
-  apiKey: config.public.googleMaps.apiKey,
+  apiKey: config.public.scripts.googleMaps.apiKey,
 })
 const mapRef = ref<HTMLElement | null>(null)
 onMounted(() => {
@@ -32,7 +32,6 @@ onMounted(() => {
     })
     const start = new google.maps.LatLng(article.value.position.start.lat, article.value.position.start.lng)
     const end = article.value.position.end ? new google.maps.LatLng(article.value.position.end.lat, article.value.position.end.lng) : start
-    console.log(start, end, 'pos')
     const request = {
       origin: start,
       destination: end,
