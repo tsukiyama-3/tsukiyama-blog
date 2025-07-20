@@ -8,12 +8,10 @@ import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
-const config = useRuntimeConfig()
 </script>
 
 <template>
   <UPage>
-    {{ config.public.scripts }}
     <div class="space-y-6">
       <BasicMap
         :position="{ lat: 35.4047, lng: 139.4516 }"
