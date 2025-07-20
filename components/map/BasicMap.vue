@@ -10,9 +10,7 @@ const config = useRuntimeConfig()
 
 const mapRef = ref<HTMLElement | null>(null)
 
-const { onLoaded } = useScriptGoogleMaps({
-  apiKey: config.public.scripts.googleMaps.apiKey,
-})
+const { onLoaded } = useScriptGoogleMaps()
 
 onLoaded(async (instance) => {
   if (!mapRef.value) {
