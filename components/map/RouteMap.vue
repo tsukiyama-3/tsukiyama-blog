@@ -4,8 +4,8 @@ const props = defineProps<{
   positions: {
     start: Position
     end: Position
-    waypoints?: Position[]
   }
+  waypoints?: Position[]
   enableMarker?: boolean
 }>()
 const config = useRuntimeConfig()
@@ -33,8 +33,8 @@ onMounted(() => {
     const request = {
       origin,
       destination,
-      waypoints: props.positions.waypoints
-        ? props.positions.waypoints.map(point => ({
+      waypoints: props.waypoints
+        ? props.waypoints.map(point => ({
             location: new google.maps.LatLng(point.lat, point.lng),
             stopover: true,
           }))

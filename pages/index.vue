@@ -9,12 +9,6 @@ const { convertSvgLogo } = useTag()
 
 <template>
   <UPage>
-    <RouteMap
-      :positions="{
-        start: { lat: 35.6895, lng: 139.6917 },
-        end: { lat: 34.6937, lng: 135.5023 },
-      }"
-    />
     <div class="space-y-6">
       <div
         class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
