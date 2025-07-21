@@ -28,6 +28,10 @@ Google Maps API は Google Map にまつわる様々な機能が扱えるが、�
 の2つです。<br>
 上記 API を有効化し、API キーを作成してください。
 
+```.env [.env]
+NUXT_PUBLIC_SCRIPTS_GOOGLE_MAPS_API_KEY=<your-api-key>
+```
+
 ### Map ID 作成
 
 ::ExternalLinkCardWrapper{url="https://console.cloud.google.com/google/maps-apis/overview"}
@@ -42,7 +46,21 @@ Google Maps API は Google Map にまつわる様々な機能が扱えるが、�
 
 ![](https://res.cloudinary.com/dyoyv8djx/image/upload/v1753108498/tsukiyama-blog/google-maps-api/%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%B3%E3%82%B7%E3%83%A7%E3%83%83%E3%83%88_2025-07-21_23.33.05_nzeyp3.png)
 
-### Nuxt Scripts インストール
+環境変数として`runtimeConfig`に設定しておきます。
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+ runtimeConfig: {
+    public: {
+      googleMaps: {
+        mapId: '<your-map-id>'
+      },
+    },
+ ],
+})
+```
+
+### Nuxt Scripts
 
 `Google Maps API` を利用するにあたり、スクリプトの読み込みに `Nuxt Scripts` を使用します。
 
@@ -51,6 +69,8 @@ Google Maps API は Google Map にまつわる様々な機能が扱えるが、�
 
 ::ExternalLinkCardWrapper{url="https://scripts.nuxt.com/scripts/content/google-maps"}
 ::
+
+#### インストール
 
 Nuxi を用いてインストールします。
 
@@ -79,6 +99,26 @@ bun add -d @types/google.maps
 ```
 
 ::
+
+#### `nuxt.config`
+
+API キーを環境変数として定義します
+（`.env`で定義しているのでここでは空文字）
+
+```ts [nuxt.config.ts]
+export default defineNuxtConfig({
+ runtimeConfig: {
+    public: {
+      // ...other prop
+      scripts: {
+        googleMaps: {
+          apiKey: '',
+        }
+      },
+    },
+ ],
+})
+```
 
 ## 地図を表示する
 
@@ -115,7 +155,7 @@ onMounted(() => {
     new Map(mapRef.value, {
       center: props.position,
       zoom: props.zoom ?? 8,
-      mapId: config.public.googleMaps.mapId.raster,
+      mapId: config.public.googleMaps.mapId,
     })
   })
 })
@@ -180,7 +220,7 @@ onMounted(() => {
     const map = new Map(mapRef.value, {
       center: props.position,
       zoom: props.zoom ?? 8,
-      mapId: config.public.googleMaps.mapId.raster,
+      mapId: config.public.googleMaps.mapId,
     })
 
     if (props.enableMarker) { // 追加
@@ -252,7 +292,7 @@ onMounted(() => {
     const { DirectionsService, DirectionsRenderer } = await maps.importLibrary('routes') as google.maps.RoutesLibrary
 
     const map = new Map(mapRef.value, {
-      mapId: config.public.googleMaps.mapId.raster,
+      mapId: config.public.googleMaps.mapId,
     })
 
     const directionsService = new DirectionsService()
@@ -352,7 +392,7 @@ onMounted(() => {
     const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
     const { DirectionsService, DirectionsRenderer } = await maps.importLibrary('routes') as google.maps.RoutesLibrary
     const map = new Map(mapRef.value, {
-      mapId: config.public.googleMaps.mapId.raster,
+      mapId: config.public.googleMaps.mapId,
     })
 
     const directionsService = new DirectionsService()
