@@ -2,9 +2,9 @@
 title: Nuxt で Google Maps API を使ってみる
 description: Nuxt + Google Maps API を使ってマップの表示とルート表示を行います。
 icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
-ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1746433649/tsukiyama-blog/introduce-unhead/Frame_6_pwvdwd.png
+ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1753114202/tsukiyama-blog/google-maps-api/google-maps-api_camiip.png
 published: true
-date: 2025-07-19
+date: 2025-07-22
 tags: ["Nuxt.js", "GCP", "Google Maps", "Nuxt Scripts"]
 ---
 
@@ -102,7 +102,7 @@ bun add -d @types/google.maps
 
 #### `nuxt.config`
 
-API キーを環境変数として定義します
+ドキュメントに従って API キーを環境変数として定義します
 （`.env`で定義しているのでここでは空文字）
 
 ```ts [nuxt.config.ts]
@@ -191,7 +191,7 @@ onMounted(() => {
 
 `BasicMap.vue` を修正します。
 
-```vue [~/components/map/BasicMap.vue]{7,23,25,31-35}
+```vue [~/components/map/BasicMap.vue]{8,24,26,32-36}
 <script setup lang="ts">
 type Position = { lat: number, lng: number }
 
