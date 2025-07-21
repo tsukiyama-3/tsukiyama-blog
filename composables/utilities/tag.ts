@@ -6,6 +6,8 @@ const tagToLogoMap: Record<string, string> = {
   'Vue.js': 'logos:vue',
   'Cloudflare': 'logos:cloudflare-icon',
   'Tailwind CSS': 'logos:tailwindcss-icon',
+  'GCP': 'logos:google-cloud-platform',
+  'Google Maps': 'logos:google-maps',
   // 必要に応じてどんどん追加
 }
 

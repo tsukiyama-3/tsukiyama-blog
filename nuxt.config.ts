@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     { path: '~/components/links', pathPrefix: false },
     { path: '~/components/sample', pathPrefix: false },
     { path: '~/components/articles', pathPrefix: false },
+    { path: '~/components/map', pathPrefix: false },
     '~/components',
   ],
   devtools: { enabled: true },
@@ -70,6 +71,19 @@ export default defineNuxtConfig({
       username: 'admin',
       password: 'admin',
       allowedRoutes: [],
+    },
+    public: {
+      googleMaps: {
+        mapId: {
+          raster: '4dd6c17f0750a29a89cda4c8',
+          vector: '4dd6c17f0750a29aa8d88c90',
+        },
+      },
+      scripts: {
+        googleMaps: {
+          apiKey: '',
+        },
+      },
     },
   },
   experimental: {

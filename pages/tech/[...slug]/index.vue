@@ -62,6 +62,7 @@ useSeoMeta({
             <UBadge
               color="neutral"
               variant="outline"
+              class="h-full"
             >
               <UIcon
                 v-if="convertSvgLogo(tag)"
