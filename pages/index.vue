@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+import BasicMap from '~/components/map/BasicMap.vue'
+import RouteMap from '~/components/map/RouteMap.vue'
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
 import { useTag } from '~/composables/utilities/tag'
@@ -10,6 +13,19 @@ const { convertSvgLogo } = useTag()
 <template>
   <UPage>
     <div class="space-y-6">
+      <BasicMap
+        :position="{ lat: 35.4047, lng: 139.4516 }"
+        :enable-marker="true"
+      />
+      <RouteMap
+        :positions="{
+          start: { lat: 35.6895, lng: 139.6917 },
+          end: { lat: 34.6937, lng: 135.5023 },
+          waypoints: [{
+            lat: 35.4233, lng: 136.7607,
+          }],
+        }"
+      />
       <div
         class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
       >
@@ -49,6 +65,10 @@ const { convertSvgLogo } = useTag()
         <h2 class="text-xl text-center dark:text-highlighted">
           新着記事
         </h2>
+        <NuxtLink
+          to="/journey"
+          class="dark:text-highlighted"
+        >Journey</NuxtLink>
         <ul class="grid md:grid-cols-2 gap-4">
           <li
             v-for="article in articles"
