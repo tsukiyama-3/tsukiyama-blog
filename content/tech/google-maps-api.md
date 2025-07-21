@@ -25,7 +25,7 @@ Google Maps API は Google Map にまつわる様々な機能が扱えるが、�
 - Maps JavaScript API
 - Directions API
 
-です。<br>
+の2つです。<br>
 上記 API を有効化し、API キーを作成してください。
 
 ### Map ID 作成
@@ -51,8 +51,6 @@ Google Maps API は Google Map にまつわる様々な機能が扱えるが、�
 
 ::ExternalLinkCardWrapper{url="https://scripts.nuxt.com/scripts/content/google-maps"}
 ::
-
-#### インストール
 
 Nuxi を用いてインストールします。
 
@@ -84,11 +82,11 @@ bun add -d @types/google.maps
 
 ## 地図を表示する
 
-まずは、地図を表示してみるところまで進める。
+まずは、地図を表示してみるところまで進めます。
 
 ### `BasicMap` コンポーネント作成
 
-`~/components/map/BasicMap.vue`を作成して、そこに `Google Maps API` を呼ぶように作る。
+`~/components/map/BasicMap.vue`を作成して、そこに `Google Maps API` を呼ぶように作ります。
 
 ```vue [~/components/map/BasicMap.vue]
 <script setup lang="ts">
@@ -105,19 +103,20 @@ const mapRef = ref<HTMLElement | null>(null)
 
 const { onLoaded } = useScriptGoogleMaps()
 
-onLoaded(async (instance) => {
-  // ref が取得できていなければ return
-  if (!mapRef.value) {
-    return
-  }
+onMounted(() => {
+  onLoaded(async (instance) => {
+    if (!mapRef.value) {
+      return
+    }
 
-  const maps = await instance.maps
-  const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
+    const maps = await instance.maps
+    const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
 
-  new Map(mapRef.value, {
-    center: props.position,
-    zoom: props.zoom ?? 8,
-    mapId: config.public.googleMaps.mapId.raster,
+    new Map(mapRef.value, {
+      center: props.position,
+      zoom: props.zoom ?? 8,
+      mapId: config.public.googleMaps.mapId.raster,
+    })
   })
 })
 </script>
@@ -132,7 +131,7 @@ onLoaded(async (instance) => {
 
 ### コンポーネントを呼ぶ側
 
-`props` として 緯度・経度、ズーム値を渡す。
+`props` として 緯度・経度、ズーム値を渡します。
 
 ```vue [index.vue]
 // 皇居の緯度経度を渡す
@@ -146,11 +145,11 @@ onLoaded(async (instance) => {
 
 ## 地図にマーカーを追加する
 
-少し手を加えて、地図上の `position` の位置にマーカーを表示してみる。
+少し手を加えて、地図上の `position` の位置にマーカーを表示してみます。
 
 ### `BasicMap.vue` コンポーネント修正
 
-`BasicMap.vue` を修正する。
+`BasicMap.vue` を修正します。
 
 ```vue [~/components/map/BasicMap.vue]{7,23,25,31-35}
 <script setup lang="ts">
@@ -168,27 +167,29 @@ const mapRef = ref<HTMLElement | null>(null)
 
 const { onLoaded } = useScriptGoogleMaps()
 
-onLoaded(async (instance) => {
-  if (!mapRef.value) {
-    return
-  }
+onMounted(() => {
+  onLoaded(async (instance) => {
+    if (!mapRef.value) {
+      return
+    }
 
-  const maps = await instance.maps
-  const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
-  const { AdvancedMarkerElement } = await maps.importLibrary('marker') as google.maps.MarkerLibrary // 追加
+    const maps = await instance.maps
+    const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
+    const { AdvancedMarkerElement } = await maps.importLibrary('marker') as google.maps.MarkerLibrary // 追加
 
-  const map = new Map(mapRef.value, {
-    center: props.position,
-    zoom: props.zoom ?? 8,
-    mapId: config.public.googleMaps.mapId.raster,
-  })
-
-  if (props.enableMarker) { // 追加
-    new AdvancedMarkerElement({
-      map,
-      position: props.position,
+    const map = new Map(mapRef.value, {
+      center: props.position,
+      zoom: props.zoom ?? 8,
+      mapId: config.public.googleMaps.mapId.raster,
     })
-  }
+
+    if (props.enableMarker) { // 追加
+      new AdvancedMarkerElement({
+        map,
+        position: props.position,
+      })
+    }
+  })
 })
 </script>
 
@@ -200,18 +201,28 @@ onLoaded(async (instance) => {
 </template>
 ```
 
+### コンポーネントを呼ぶ側
+
+```vue [index.vue]
+<BasicMap
+  :position="{ lat: 35.685355, lng: 139.753144 }"
+  :enable-marker="true"
+  :zoom="14"
+/>
+```
+
 ### 画面表示はこんな感じ
 
 ::BasicMap{:position="{\"lat\":35.685355,\"lng\":139.753144}" :zoom="14" :enableMarker="true"}
 ::
 
-## 2点間のルート検索
+## 2点間のルート表示
 
-地図の表示までは
+今度は、2点間のルートを表示してみます。
 
 ### コンポーネント作成
 
-ルート表示用に新たに`~/components/map/RouteMap.vue`を作成する。
+ルート表示用に新たに`~/components/map/RouteMap.vue`を作成します。
 
 ```vue [~/components/map/RouteMap.vue]
 <script setup lang="ts">
@@ -230,38 +241,39 @@ const mapRef = ref<HTMLElement | null>(null)
 
 const { onLoaded } = useScriptGoogleMaps()
 
-onLoaded(async (instance) => {
-  if (!mapRef.value) {
-    return
-  }
-
-  const maps = await instance.maps
-  const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
-  const { AdvancedMarkerElement } = await maps.importLibrary('marker') as google.maps.MarkerLibrary
-  const { DirectionsService, DirectionsRenderer } = await maps.importLibrary('routes') as google.maps.RoutesLibrary
-
-  const map = new Map(mapRef.value, {
-    mapId: config.public.googleMaps.mapId.raster,
-  })
-
-  const directionsService = new DirectionsService()
-  const directionsRenderer = new DirectionsRenderer({ suppressMarkers: true })
-
-  directionsRenderer.setMap(map)
-
-  const origin = new google.maps.LatLng(props.positions.start.lat, props.positions.start.lng)
-  const destination = new google.maps.LatLng(props.positions.end.lat, props.positions.end.lng)
-
-  const request = {
-    origin,
-    destination,
-    travelMode: google.maps.TravelMode.DRIVING,
-  }
-
-  directionsService.route(request, (result, status) => {
-    if (status === 'OK') {
-      directionsRenderer.setDirections(result)
+onMounted(() => {
+  onLoaded(async (instance) => {
+    if (!mapRef.value) {
+      return
     }
+
+    const maps = await instance.maps
+    const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
+    const { DirectionsService, DirectionsRenderer } = await maps.importLibrary('routes') as google.maps.RoutesLibrary
+
+    const map = new Map(mapRef.value, {
+      mapId: config.public.googleMaps.mapId.raster,
+    })
+
+    const directionsService = new DirectionsService()
+    const directionsRenderer = new DirectionsRenderer()
+
+    directionsRenderer.setMap(map)
+
+    const origin = new google.maps.LatLng(props.positions.start.lat, props.positions.start.lng)
+    const destination = new google.maps.LatLng(props.positions.end.lat, props.positions.end.lng)
+
+    const request = {
+      origin,
+      destination,
+      travelMode: google.maps.TravelMode.DRIVING,
+    }
+
+    directionsService.route(request, (result, status) => {
+      if (status === 'OK') {
+        directionsRenderer.setDirections(result)
+      }
+    })
   })
 })
 </script>
@@ -293,25 +305,26 @@ onLoaded(async (instance) => {
 
 ## 複数地点を経由するルート検索
 
-2点間だと、環状のルートを表示するときに詰む。
-例えば、山手線の一周のルートを開始・終了位置を新宿駅で設定したとする。
+2点間だと、環状のルートを表示するときに詰みます。
+例えば、山手線の一周のルートを開始・終了位置を新宿駅で設定したとします。
 
-するとこんな感じになる↓
+するとこんな感じになります↓
 
 ::RouteMap{:positions="{\"start\":{\"lat\":35.689393,\"lng\":139.700647},\"end\":{\"lat\":35.689393,\"lng\":139.700647}}"}
 ::
 
-開始・終了位置が同じなので当たり前なのだが
+*開始・終了位置が同じなので当たり前なのだが*
 
-中間ウェイポイントを設定することによってこの問題を回避する。
+中間ウェイポイントを設定することによってこの問題を回避します。
 
 ### `RouteMap` コンポーネント修正
 
-中間ウェイポイントを配列で受け取れるように `props` を修正する。
+中間ウェイポイントを配列で受け取れるように `props` を修正します。
 
 ```vue [RouteMap.vue]
 <script setup lang="ts">
 type Position = { lat: number, lng: number }
+
 const props = defineProps<{
   positions: {
     start: Position
@@ -320,28 +333,35 @@ const props = defineProps<{
   }
   enableMarker?: boolean
 }>()
+
 const config = useRuntimeConfig()
+
 const mapRef = ref<HTMLElement | null>(null)
+
 const { onLoaded } = useScriptGoogleMaps({
   apiKey: config.public.scripts.googleMaps.apiKey,
 })
+
 onMounted(() => {
   onLoaded(async (instance) => {
     if (!mapRef.value) {
       return
     }
+
     const maps = await instance.maps
     const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
-    const { AdvancedMarkerElement } = await maps.importLibrary('marker') as google.maps.MarkerLibrary
     const { DirectionsService, DirectionsRenderer } = await maps.importLibrary('routes') as google.maps.RoutesLibrary
     const map = new Map(mapRef.value, {
       mapId: config.public.googleMaps.mapId.raster,
     })
+
     const directionsService = new DirectionsService()
     const directionsRenderer = new DirectionsRenderer({ suppressMarkers: props.enableMarker })
     directionsRenderer.setMap(map)
+
     const origin = new google.maps.LatLng(props.positions.start.lat, props.positions.start.lng)
     const destination = new google.maps.LatLng(props.positions.end.lat, props.positions.end.lng)
+
     const request = {
       origin,
       destination,
@@ -353,19 +373,10 @@ onMounted(() => {
         : [],
       travelMode: google.maps.TravelMode.DRIVING,
     }
+
     directionsService.route(request, (result, status) => {
       if (status === 'OK') {
         directionsRenderer.setDirections(result)
-        if (props.enableMarker) {
-          new AdvancedMarkerElement({
-            map,
-            position: props.positions.start,
-          })
-          new AdvancedMarkerElement({
-            map,
-            position: props.positions.end,
-          })
-        }
       }
     })
   })
@@ -431,3 +442,5 @@ onMounted(() => {
 
 ## おわりに
 
+`Google Maps Platform`を使ってマップの表示などをまとめました。<br>
+今回紹介した API 以外にもおもしろそうな API がいくつもあるのでまた試してみたいです。
