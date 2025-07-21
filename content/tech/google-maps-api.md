@@ -100,6 +100,18 @@ bun add -d @types/google.maps
 
 ::
 
+`tsconfig.json`{lang="ts-type"} で読み込むようにしておきます。
+
+```diff [tsconfig.json]
+{
+  // https://nuxt.com/docs/guide/concepts/typescript
+  "extends": "./.nuxt/tsconfig.json",
++  "compilerOptions": {
++  "types": ["google.maps"]
++ }
+}
+```
+
 #### `nuxt.config`
 
 ドキュメントに従って API キーを環境変数として定義します
