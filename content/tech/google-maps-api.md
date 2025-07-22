@@ -80,7 +80,7 @@ Nuxi を用いてインストールします。
 npx nuxi@latest module add scripts
 ```
 
-`Google Maps` を 型安全に扱うために `@types/google.maps` パッケージをインストールします。
+`Google Maps` を `TypeScript` で扱うために `@types/google.maps` パッケージをインストールします。
 
 ::code-group
 
