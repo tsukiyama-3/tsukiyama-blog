@@ -28,6 +28,8 @@ Google Maps API は Google Map にまつわる様々な機能が扱えるが、�
 の2つです。<br>
 上記 API を有効化し、API キーを作成してください。
 
+作成した API キーを `.env` で管理します。
+
 ```.env [.env]
 NUXT_PUBLIC_SCRIPTS_GOOGLE_MAPS_API_KEY=<your-api-key>
 ```
@@ -156,14 +158,18 @@ const mapRef = ref<HTMLElement | null>(null)
 const { onLoaded } = useScriptGoogleMaps()
 
 onMounted(() => {
+  // Google Maps の読み込みが完了したら実行
   onLoaded(async (instance) => {
     if (!mapRef.value) {
       return
     }
 
+    // Google Maps API モジュールを取得
     const maps = await instance.maps
+    // MapsLibrary から Map クラスを取得
     const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
 
+    // Google Map のインスタンスを生成して DOM に描画
     new Map(mapRef.value, {
       center: props.position,
       zoom: props.zoom ?? 8,
@@ -203,14 +209,15 @@ onMounted(() => {
 
 `BasicMap.vue` を修正します。
 
-```vue [~/components/map/BasicMap.vue]{8,24,26,32-36}
+```vue [~/components/map/BasicMap.vue]{7-8,25-26,34-40}
 <script setup lang="ts">
 type Position = { lat: number, lng: number }
 
 const props = defineProps<{
   position: Position
   zoom?: number
-  enableMarker?: boolean // 追加
+  // マーカー表示を制御する props
+  enableMarker?: boolean
 }>()
 
 const config = useRuntimeConfig()
@@ -227,7 +234,8 @@ onMounted(() => {
 
     const maps = await instance.maps
     const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
-    const { AdvancedMarkerElement } = await maps.importLibrary('marker') as google.maps.MarkerLibrary // 追加
+    // マーカーのクラスを取得
+    const { AdvancedMarkerElement } = await maps.importLibrary('marker') as google.maps.MarkerLibrary
 
     const map = new Map(mapRef.value, {
       center: props.position,
@@ -235,7 +243,8 @@ onMounted(() => {
       mapId: config.public.googleMaps.mapId,
     })
 
-    if (props.enableMarker) { // 追加
+    // enableMarker が true の場合マーカーを表示
+    if (props.enableMarker) {
       new AdvancedMarkerElement({
         map,
         position: props.position,
@@ -301,27 +310,35 @@ onMounted(() => {
 
     const maps = await instance.maps
     const { Map } = await maps.importLibrary('maps') as google.maps.MapsLibrary
+    // routes ライブラリから DirectionsService（経路検索）と DirectionsRenderer（経路描画）を取得
     const { DirectionsService, DirectionsRenderer } = await maps.importLibrary('routes') as google.maps.RoutesLibrary
 
+    // 地図インスタンスを作成
     const map = new Map(mapRef.value, {
       mapId: config.public.googleMaps.mapId,
     })
 
+    // インスタンス生成
     const directionsService = new DirectionsService()
     const directionsRenderer = new DirectionsRenderer()
 
+    // 地図上にルートを描画する設定
     directionsRenderer.setMap(map)
 
+    // 出発地と目的地の緯度経度を LatLng オブジェクトに変換
     const origin = new google.maps.LatLng(props.positions.start.lat, props.positions.start.lng)
     const destination = new google.maps.LatLng(props.positions.end.lat, props.positions.end.lng)
 
+    // 経路検索のリクエストを作成
     const request = {
       origin,
       destination,
       travelMode: google.maps.TravelMode.DRIVING,
     }
 
+    // 経路を検索して描画する
     directionsService.route(request, (result, status) => {
+      // ステータスが OK（正常）ならルートを地図上に描画
       if (status === 'OK') {
         directionsRenderer.setDirections(result)
       }
@@ -373,7 +390,7 @@ onMounted(() => {
 
 中間ウェイポイントを配列で受け取れるように `props` を修正します。
 
-```vue [RouteMap.vue]
+```vue [RouteMap.vue]{8-9,45-51}
 <script setup lang="ts">
 type Position = { lat: number, lng: number }
 
@@ -381,6 +398,7 @@ const props = defineProps<{
   positions: {
     start: Position
     end: Position
+    // 中間ウェイポイントを配列で受け取る
     waypoints?: Position[]
   }
   enableMarker?: boolean
@@ -417,6 +435,7 @@ onMounted(() => {
     const request = {
       origin,
       destination,
+      // 中間ウェイポイントが存在する場合は LatLng に変換、なければ空配列
       waypoints: props.positions.waypoints
         ? props.positions.waypoints.map(point => ({
             location: new google.maps.LatLng(point.lat, point.lng),
@@ -496,3 +515,8 @@ onMounted(() => {
 
 `Google Maps Platform`を使ってマップの表示などをまとめました。<br>
 今回紹介した API 以外にもおもしろそうな API がいくつもあるのでまた試してみたいです。
+
+## 参考文献
+
+::ExternalLinkCardWrapper{url="https://qiita.com/butchi_y/items/3a6b70b38e13dc56ef13"}
+::
