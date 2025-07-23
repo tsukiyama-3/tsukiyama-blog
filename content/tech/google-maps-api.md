@@ -198,9 +198,7 @@ onMounted(() => {
 
 ### 画面表示はこんな感じ
 
-::ClientOnly
-  ::BasicMap{:position="{\"lat\":35.685355,\"lng\":139.753144}" :zoom="14"}
-  ::
+::BasicMap{:position="{\"lat\":35.685355,\"lng\":139.753144}" :zoom="14"}
 ::
 
 ## 地図にマーカーを追加する
@@ -276,9 +274,7 @@ onMounted(() => {
 
 ### 画面表示はこんな感じ
 
-::ClientOnly
-  ::BasicMap{:position="{\"lat\":35.685355,\"lng\":139.753144}" :zoom="14" :enableMarker="true"}
-  ::
+::BasicMap{:position="{\"lat\":35.685355,\"lng\":139.753144}" :zoom="14" :enableMarker="true"}
 ::
 
 ## 2点間のルート表示
@@ -373,9 +369,7 @@ onMounted(() => {
 
 ### 画面表示はこんな感じ
 
-::ClientOnly
-  ::RouteMap{:positions="{\"start\":{\"lat\":35.685355,\"lng\":139.753144},\"end\":{\"lat\":35.689419,\"lng\":139.691682}}"}
-  ::
+::RouteMap{:positions="{\"start\":{\"lat\":35.685355,\"lng\":139.753144},\"end\":{\"lat\":35.689419,\"lng\":139.691682}}"}
 ::
 
 ## 複数地点を経由するルート検索
@@ -509,9 +503,7 @@ onMounted(() => {
 
 ### 画面表示はこんな感じ
 
-::ClientOnly
-  ::RouteMapSample
-  ::
+::RouteMapSample
 ::
 
 ::warning
