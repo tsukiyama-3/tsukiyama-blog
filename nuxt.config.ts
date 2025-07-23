@@ -99,6 +99,7 @@ export default defineNuxtConfig({
     preset: 'cloudflare_pages',
     prerender: {
       crawlLinks: true,
+      ignore: ['/basic-auth'],
     },
   },
   vite: {
