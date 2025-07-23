@@ -87,7 +87,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/tech/**': { isr: 60 },
+    '/tech/**': { isr: 300 },
   },
   experimental: {
     viewTransition: true,
