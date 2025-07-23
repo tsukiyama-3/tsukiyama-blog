@@ -5,13 +5,11 @@ import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
-const config = useRuntimeConfig()
 </script>
 
 <template>
   <UPage>
     <div class="space-y-6">
-      {{ config }}
       <div
         class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
       >
