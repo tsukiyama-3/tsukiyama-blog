@@ -87,6 +87,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
+    '/': { prerender: true },
     '/tech/**': { prerender: true },
   },
   experimental: {
@@ -95,6 +96,9 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'cloudflare_pages',
+    prerender: {
+      crawlLinks: true,
+    },
   },
   vite: {
     plugins: [tailwindcss()],
