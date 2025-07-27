@@ -91,6 +91,9 @@ export default defineNuxtConfig({
     '/tech/**': { prerender: true },
     '/basic-auth': { ssr: true },
   },
+  future: {
+    compatibilityVersion: 4,
+  },
   experimental: {
     viewTransition: true,
   },
