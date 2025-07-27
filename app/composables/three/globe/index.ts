@@ -1,6 +1,6 @@
 import { createApp, h } from 'vue'
 import { Color, type MeshPhongMaterial } from 'three'
-import countries from '~/public/json/globe-data-min.json'
+import countries from '~~/public/json/globe-data-min.json'
 import GlobeAvatar from '~/components/globe/GlobeAvatar.vue'
 
 export const useGlobe = async () => {

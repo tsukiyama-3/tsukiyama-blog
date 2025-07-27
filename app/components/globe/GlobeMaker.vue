@@ -48,10 +48,8 @@ onMounted(async () => {
 
   const dLight2 = new PointLight(0x8566cc, 0.8)
   dLight2.position.set(-150, 400, 150)
-  camera.add(dLight2)
 
   camera.position.set(0, 0, 300)
-  scene.add(camera)
 
   scene.fog = new Fog(0x535ef3, 400, 2000)
 
@@ -118,7 +116,6 @@ onUnmounted(() => {
 
   renderer.dispose()
   controls.dispose()
-  // cssRenderer.dispose() は不要（存在しない）
   window.removeEventListener('resize', resizeHandler)
 })
 </script>

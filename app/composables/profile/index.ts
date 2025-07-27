@@ -28,7 +28,6 @@ export const useProfile = async () => {
     return `${data.value.origin}, ${data.value.nationality}`
   })
 
-  console.log(data.value, 'data')
   return { profile: {
     ...data.value,
     origin,

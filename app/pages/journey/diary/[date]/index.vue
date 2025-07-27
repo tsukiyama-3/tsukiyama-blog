@@ -78,10 +78,6 @@ const getMidPoint = (point1: LatLng, point2?: LatLng): LatLng => {
   )
   const lng3 = lng1 + Math.atan2(by, Math.cos(lat1) + bx)
 
-  console.log({
-    lat: toDeg(lat3),
-    lng: ((toDeg(lng3) + 540) % 360) - 180,
-  })
   return {
     lat: toDeg(lat3),
     lng: ((toDeg(lng3) + 540) % 360) - 180,

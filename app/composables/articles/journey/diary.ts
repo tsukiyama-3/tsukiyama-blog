@@ -1,5 +1,5 @@
 export const useDiaryArticles = async () => {
-  const { data: articles } = await useAsyncData('blog', () =>
+  const { data: articles } = await useAsyncData('diary-blog', () =>
     queryCollection('diary')
       .order('date', 'DESC')
       .all(),
