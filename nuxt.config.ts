@@ -2,15 +2,8 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/ui-pro',
-    '@nuxtjs/sitemap',
-    '@nuxt/content',
-    '@nuxthub/core',
-    '@nuxt/eslint',
-    '@nuxt/test-utils/module',
-    '@nuxt/scripts',
-  ],
+  modules: ['@nuxt/ui-pro', '@nuxtjs/sitemap', '@nuxt/content', '@nuxthub/core', '@nuxt/eslint',
+    '@nuxt/test-utils/module', '@nuxt/scripts'],
   components: [
     { path: '~/components/links', pathPrefix: false },
     { path: '~/components/sample', pathPrefix: false },
@@ -90,6 +83,9 @@ export default defineNuxtConfig({
     '/': { prerender: true },
     '/tech/**': { prerender: true },
     '/basic-auth': { ssr: true },
+  },
+  future: {
+    compatibilityVersion: 4,
   },
   experimental: {
     viewTransition: true,
