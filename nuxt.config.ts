@@ -2,19 +2,13 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/ui-pro',
-    '@nuxtjs/sitemap',
-    '@nuxt/content',
-    '@nuxthub/core',
-    '@nuxt/eslint',
-    '@nuxt/test-utils/module',
-    '@nuxt/scripts',
-  ],
+  modules: ['@nuxt/ui-pro', '@nuxtjs/sitemap', '@nuxt/content', '@nuxthub/core', '@nuxt/eslint',
+    '@nuxt/test-utils/module', '@nuxt/scripts'],
   components: [
     { path: '~/components/links', pathPrefix: false },
     { path: '~/components/sample', pathPrefix: false },
     { path: '~/components/articles', pathPrefix: false },
+    { path: '~/components/map', pathPrefix: false },
     '~/components',
   ],
   devtools: { enabled: true },
@@ -85,12 +79,24 @@ export default defineNuxtConfig({
       },
     },
   },
+  routeRules: {
+    '/': { prerender: true },
+    '/tech/**': { prerender: true },
+    '/basic-auth': { ssr: true },
+  },
+  future: {
+    compatibilityVersion: 4,
+  },
   experimental: {
     viewTransition: true,
   },
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'cloudflare_pages',
+    prerender: {
+      crawlLinks: true,
+      ignore: ['/basic-auth'],
+    },
   },
   vite: {
     plugins: [tailwindcss()],
