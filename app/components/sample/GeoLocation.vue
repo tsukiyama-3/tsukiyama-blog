@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useGeoLocation } from '~/composables/articles/geolocation-api'
+import { useGeoLocation } from '~/composables/articles/sample/geolocation-api'
 
 const { position, getPosition } = useGeoLocation()
 </script>

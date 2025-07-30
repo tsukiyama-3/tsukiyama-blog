@@ -1,5 +1,5 @@
 export const useTechArticles = async () => {
-  const { data: articles } = await useAsyncData('blog', () =>
+  const { data: articles } = await useAsyncData('tech-blog', () =>
     queryCollection('tech')
       .where('published', '=', true)
       .order('date', 'DESC')
