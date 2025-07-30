@@ -520,3 +520,4 @@ onMounted(() => {
 
 ::ExternalLinkCardWrapper{url="https://qiita.com/butchi_y/items/3a6b70b38e13dc56ef13"}
 ::
+
