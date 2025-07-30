@@ -5,7 +5,7 @@ icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transp
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1753114202/tsukiyama-blog/google-maps-api/google-maps-api_camiip.png
 published: true
 date: 2025-07-22
-tags: ["Nuxt.js", "GCP", "Google Maps", "Nuxt Scripts"]
+tags: ["Nuxt.js", "GCP", "Google Maps"]
 ---
 
 ## はじめに
@@ -520,4 +520,3 @@ onMounted(() => {
 
 ::ExternalLinkCardWrapper{url="https://qiita.com/butchi_y/items/3a6b70b38e13dc56ef13"}
 ::
-
