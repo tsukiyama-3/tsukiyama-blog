@@ -1,14 +1,49 @@
 <script setup lang="ts">
+import { z } from 'zod'
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
 import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
+
+const schema = z.object({
+  age: z.number({ invalid_type_error: 'hogehoge' }),
+  name: z.string(),
+})
+
+const state = reactive({
+  age: 10,
+  name: 'hoge',
+})
 </script>
 
 <template>
   <UPage>
+    <SampleForm
+      v-slot="{ errors }"
+      :schema="schema"
+      :state="state"
+    >
+      <div>
+        <label for="name">name</label>
+        <input
+          v-model="state.name"
+          type="text"
+          name="name"
+        >
+        <p>{{ errors.name }}</p>
+      </div>
+      <div>
+        <label for="age">age</label>
+        <input
+          v-model="state.age"
+          type="text"
+          name="age"
+        >
+        <p>{{ errors.age }}</p>
+      </div>
+    </SampleForm>
     <div class="space-y-6">
       <div
         class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"

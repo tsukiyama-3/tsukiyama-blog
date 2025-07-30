@@ -8,6 +8,8 @@ const tagToLogoMap: Record<string, string> = {
   'Tailwind CSS': 'logos:tailwindcss-icon',
   'GCP': 'logos:google-cloud-platform',
   'Google Maps': 'logos:google-maps',
+  'HTML': 'logos:html-5',
+  'Zod': 'logos:zod',
   // 必要に応じてどんどん追加
 }
 
