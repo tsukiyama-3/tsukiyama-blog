@@ -89,6 +89,7 @@ export default defineNuxtConfig({
   },
   experimental: {
     viewTransition: true,
+    payloadExtraction: true,
   },
   compatibilityDate: '2024-11-01',
   nitro: {
