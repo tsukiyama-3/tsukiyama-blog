@@ -21,7 +21,7 @@ tags: ["Nuxt.js", "Vue.js", "Nuxt Test Utils"]
 ## 実際に使ってみる
 
 例えばこのような `composables` があるとします。<br>
-（実際には `useAsyncDate` で ユーザー API を Fetch している）
+（実際には `useAsyncData` で ユーザー API を Fetch している）
 
 ```ts [user.ts]
 type User = {
