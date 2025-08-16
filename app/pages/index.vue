@@ -27,20 +27,6 @@ const { profile, displayName, displayBirthDate } = await useProfile()
             class: 'border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800',
           }"
         />
-        <NuxtPicture
-          provider="cloudinary"
-          :src="profile?.avatar"
-          den
-          sizes="120px md:240w"
-          alt=""
-          densities="x1 x2 x3"
-          width="120"
-          height="120"
-          format="avif,webp"
-          :img-attrs="{
-            class: 'border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800',
-          }"
-        />
         <div class="w-fit space-y-0.5 md:space-y-1 lg:space-y-2">
           <h2 class="font-bold text-lg md:text-2xl dark:text-highlighted">
             {{ displayName }}
@@ -83,7 +69,7 @@ const { profile, displayName, displayBirthDate } = await useProfile()
                 <NuxtImg
                   provider="cloudinary"
                   :src="article.icon"
-                  sizes="240px md:160w lg:240w"
+                  sizes="480px md:240w lg:480w"
                   format="avif"
                   alt=""
                   width="120"
