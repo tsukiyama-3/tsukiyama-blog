@@ -1,7 +1,7 @@
 ---
 title: Webページの画像最適化について学びなおす
 description: フロントエンド
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
+icon: /avatar_orange_t1b2ky.webp
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1753114202/tsukiyama-blog/google-maps-api/google-maps-api_camiip.png
 published: true
 date: 2025-07-30

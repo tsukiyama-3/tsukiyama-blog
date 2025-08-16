@@ -17,14 +17,19 @@ onUnmounted(() => {
   <UHeader :toggle="false">
     <template #title>
       <hgroup class="flex items-center gap-x-2">
-        <img
-          ref="image"
-          src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
-          alt="Kohei Tsukiyama Icon"
-          width="32"
-          height="32"
-          class="border border-gray-200 rounded-full md:w-[32px] md:h-[32px] dark:border-gray-800"
-        >
+        <div ref="image">
+          <NuxtImg
+            ref="image"
+            provider="cloudinary"
+            src="/avatar_bwg8e2.webp"
+            alt="Kohei Tsukiyama Icon"
+            format="avif"
+            sizes="32px"
+            width="32"
+            height="32"
+            class="border border-gray-200 rounded-full md:w-[32px] md:h-[32px] dark:border-gray-800"
+          />
+        </div>
         <h1 class="font-bold text-sm md:text-lg">
           tsukiyama.blog
         </h1>

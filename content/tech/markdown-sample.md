@@ -1,7 +1,7 @@
 ---
 title: マークダウンサンプル
 description: 本ブログのマークダウンサンプルです。
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png
+icon: /avatar_gray_xlafck.webp
 published: true
 date: 2025-04-07
 ---

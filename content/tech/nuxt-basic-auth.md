@@ -1,7 +1,7 @@
 ---
 title: Nuxt で Basic 認証を実装してみる
 description: Nuxt で Basic 認証を実装する備忘録です。
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
+icon: /avatar_green_oab8qx.webp
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1749222843/tsukiyama-blog/nuxt-basic-auth/nuxt-basic-auth_kj3jlm.png
 published: true
 date: 2025-06-06

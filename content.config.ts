@@ -28,6 +28,7 @@ export default defineContentConfig({
           country: z.string(),
           prefecture: z.string(),
         }),
+        avatar: z.string(),
         bio: z.string(),
       }),
     }),
