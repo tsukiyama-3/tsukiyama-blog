@@ -1,26 +1,26 @@
 ---
 title: Webページの画像最適化について学びなおす
-description: フロントエンド
+description: フロントエンドでできる画像最適化の基本から Nuxt での実装方法までまとめました。
 icon: /avatar_orange_t1b2ky.webp
-ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1753114202/tsukiyama-blog/google-maps-api/google-maps-api_camiip.png
+ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1755351894/tsukiyama-blog/image-optimization/image-optimization_efkg8g.png
 published: true
-date: 2025-07-30
-tags: ["HTML5", "Core Web Vitals"]
+date: 2025-08-17
+tags: ["HTML5", "Core Web Vitals", "Nuxt Image"]
 ---
 
 ## はじめに
 
-あなたのWebサイト **画像最適化** について意識できていますか？
+あなたのWebサイトは **画像最適化** について意識できていますか？
 
-僕自身、結構曖昧な知識でできた気になっていたので、フロントエンド側でできる画像最適化を体系的にまとめてみようと本記事を書き始めました。
+僕自身、曖昧な知識でできた気になっていたので、フロントエンド側でできる画像最適化を体系的にまとめてみようと本記事を書き始めました。
 
 ::warning
-本記事は サーバー側、CDN 配信戦略などについては触れていません。
+本記事は **フロントエンド視点の最適化**に焦点を当てています。サーバー側の圧縮や CDN 配信戦略などは扱いません。
 ::
 
 ## 画像最適化しないと起こること
 
-最適化の重要性を理解するために、まずは最適化されていない場合に起こり得る問題を挙げて恐怖を植え付けていきたいと思います。
+最適化について理解するために、まずは最適化されていない場合に起こり得る問題を挙げて恐怖を植え付けていきたいと思います。
 
 ### ページ表示スピードが遅くなる
 
@@ -29,7 +29,7 @@ tags: ["HTML5", "Core Web Vitals"]
 
 ### 検索エンジンも機嫌を損ねる
 
-Google が Core Web vitals という指標を発表し、フロントエンドエンジニア界で一般的になり久しいですが、その指標の一つである `LCP` (Largest Contentful Paint) の 約70% が画像が原因となっています。<br>
+Google が Core Web vitals という指標を発表し、フロントエンドエンジニア界で一般的になり久しいですが、その指標の一つである **`LCP` (Largest Contentful Paint) の 約70% が画像が原因**となっています。<br>
 Core Web vitals がSEOに影響を与えることは Google が公言していることから検索エンジンも機嫌を損ねます。<br>
 検索エンジンが機嫌を損ねると検索順位が下がるのでユーザーがきてくれなくなります。
 
@@ -57,8 +57,13 @@ CDN やホスティング、トラフィックに応じた従量課金制のイ�
 
 **ユーザーが使うデバイス**に対してです。
 
-画面の大きさ、解像度、通信環境、処理性能などユーザーの閲覧環境は千差万別です。<br>
-にもかかわらず、高解像度の画像をひとつしか用意していないのはユニバーサルでもアクセシブルでもサスティナブルでもないのです。
+- 画面の大きさ
+- 解像度
+- 通信環境
+- 処理性能
+
+などユーザーの閲覧環境は千差万別です。<br>
+にもかかわらず、画像リソースをひとつしか用意していないのはユニバーサルでもアクセシブルでもサスティナブルでもないのです。
 
 ## “解像度”ごとに最適な画像を表示する
 
@@ -67,16 +72,27 @@ CDN やホスティング、トラフィックに応じた従量課金制のイ�
 ::ExternalLinkCardWrapper{url="https://developer.mozilla.org/ja/docs/Web/API/Window/devicePixelRatio"}
 ::
 
-ピクセルには**物理ピクセル**と**CSSピクセル**の2つあります。
+ピクセルには**物理ピクセル**と**CSSピクセル**の2つあります。<br>
+`DPR` (`Device Pixel Ratio`) はCSSピクセルに対する物理ピクセルの比率です。
+
+かつては`DPR = 1`のデバイスしかありませんでした。<br>
+なので、物理ピクセルとCSSピクセルは等価でした。
+
+時代は流れディスプレイの画素が上がっていきます。すると、`DPR = 1`（1 CSSピクセル = 1 物理ピクセル）の前提では対応しきれなくなりました。
+（CSSピクセルと物理ピクセルが等価だと高解像度画面で小さく見えてしまう）
+
+物理ピクセルとCSSピクセルのズレを表す仕組みとして`DPR`(`Device Pixel Ratio`)が導入されたのです。
 
 - 物理ピクセル
-  - ハードウェアの画素
+  - ディスプレイが実際に持っている最小のドット（ディスプレイの画素）
   - デバイスごとに差がある
 - CSS ピクセル
-  - 論理上の単位
+  - ブラウザ上の論理単位（物理ピクセルと必ずしも一致しない）
   - デバイスごとに何個の物理ピクセルに割り当てるかが変わる
 
-つまり、CSSピクセルで 100px の幅の画像を表示させる場合、DPR = 2 (Retina相当)のデバイスでは 200 物理ピクセル を使って描画をしています。
+---
+
+CSSピクセルで 100px の幅の画像を表示させる場合、DPR = 2 (Retina相当)のデバイスでは 200 物理ピクセル を使って描画をしています。
 
 ::warning
 100px の画像しか用意していないと、DPR = 2 のデバイスでは 200物理px 表示領域があるのに対して 100px の画像を引き延ばして使うので画像がぼやけてしまいます。<br>
@@ -320,6 +336,12 @@ srcset="/img/480w.png 480w,
 
 これにより、デコードと描画タイミングをスクロール直前まで後ろ倒しにできます。
 
+::ExternalLinkCardWrapper{url="https://developer.mozilla.org/ja/docs/Web/Performance/Guides/Lazy_loading"}
+::
+
+::ExternalLinkCardWrapper{url="https://developer.mozilla.org/ja/docs/Web/API/HTMLImageElement/decoding"}
+::
+
 ### LCP画像を優先的に先読み
 
 初期表示で一番大きく表示する画像(LCP候補)は、ネットワーク優先度を上げると描画が速くなります。
@@ -330,12 +352,18 @@ srcset="/img/480w.png 480w,
 
 `high` を渡すと他の画像と比較して高い優先度で画像を取得します。
 
+::ExternalLinkCardWrapper{url="https://developer.mozilla.org/ja/docs/Web/API/HTMLImageElement/fetchPriority"}
+::
+
 - `preload`
 
 ブラウザのレンダリング前に読み込みを始めることができます。<br>
 これにより、そのリソースが早く利用でき、レンダリングブロックされるのを防げます。
 
 （`rel="preload"`も`<source>`同様にMIMEタイプを含めることができます。）
+
+::ExternalLinkCardWrapper{url="https://developer.mozilla.org/ja/docs/Web/HTML/Reference/Attributes/rel/preload"}
+::
 
 ```html
 <head>
@@ -459,37 +487,37 @@ Nuxt には画像最適化モジュールとして `@nuxt/image` があります
 高解像度の原本を渡して `sizes` を指定すると Nuxt Image が `srcset` を生成してくれます。<br>
 これにより、複数サイズの画像を手動で作成・配置する必要がなくなり記述もスッキリします。
 
----
 
-また、`<NuxtPicture>` を使用すればフォールバックの指定もできます。
+### `<NuxtPicture>` を使って複数フォーマット配信
+
+::ExternalLinkCardWrapper{url="https://image.nuxt.com/usage/nuxt-picture"}
+::
+
+また、`<NuxtPicture>` を使用すれば複数フォーマットの配信とフォールバックの指定もできます。
 
 ```vue
 <NuxtPicture
   provider="cloudinary"
-  :src="src"
-  sizes="120px md:240w"
-  densities="x1 x2 x3"
-  alt=""
-  width="120"
-  height="120"
+  :src="_src"
   format="avif,webp"
-  :img-attrs="{
-    class: 'border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800',
-  }"
 />
 ```
 
-生成されるDOM
+生成されるDOM<br>
+（画像パスは抽象化しています）
 
 ```html
-<picture den="">
-  <source type="image/avif" sizes="120px" srcset="https://... 120w, https://... 240w, https://... 360w">
-  <source type="image/webp" sizes="120px" srcset="https://... 120w, https://... 240w, https://... 360w">
-  <img width="120" height="120" alt="" class="border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800" data-nuxt-pic="" src="https://..." sizes="120px" srcset="https://... 120w, https://... 240w, https://... 360w">
+<picture>
+  // avif
+  <source type="image/avif" sizes="(max-width: 640px) 320px, (max-width: 768px) 640px, (max-width: 1024px) 768px, (max-width: 1280px) 1024px, (max-width: 1536px) 1280px, 1536px" srcset="/img/320w.png 320w, /img/640w.png 640w, /img/768w.png 768w, /img/1024w.png 1024w, /img/1280w.png 1280w, /img/1536w.png 1536w, /img/2048w.png 2048w, /img/2560w.png 2560w, /img/3072w.png 3072w">
+  // webp
+  <source type="image/webp" sizes="(max-width: 640px) 320px, (max-width: 768px) 640px, (max-width: 1024px) 768px, (max-width: 1280px) 1024px, (max-width: 1536px) 1280px, 1536px" ssrcset="/img/320w.png 320w, /img/640w.png 640w, /img/768w.png 768w, /img/1024w.png 1024w, /img/1280w.png 1280w, /img/1536w.png 1536w, /img/2048w.png 2048w, /img/2560w.png 2560w, /img/3072w.png 3072w">
+  // img (fallback)
+  <img data-nuxt-pic="" src="https://res.cloudinary.com/dyoyv8djx/image/upload/f_png,q_auto,w_3072/v1745236671/tsukiyama-blog/image-optimization/w1600_ar2ubh.png" sizes="(max-width: 640px) 320px, (max-width: 768px) 640px, (max-width: 1024px) 768px, (max-width: 1280px) 1024px, (max-width: 1536px) 1280px, 1536px" srcset="/img/320w.png 320w, /img/640w.png 640w, /img/768w.png 768w, /img/1024w.png 1024w, /img/1280w.png 1280w, /img/1536w.png 1536w, /img/2048w.png 2048w, /img/2560w.png 2560w, /img/3072w.png 3072w">
 </picture>
 ```
 
-一つの画像ソースから複数のサイズ、フォーマットで配信できるのでとても便利です。
+`Nuxt Image` を使うと特に気にせずに一つの画像ソースから複数のサイズ、フォーマットで配信できるのでとても便利です。
 
 ## まとめ
 
@@ -499,13 +527,18 @@ Nuxt には画像最適化モジュールとして `@nuxt/image` があります
 - **次世代フォーマット**を使いつつ、フォールバックで互換性を確保する
 - LCP 画像は **`fetchpriority="high"`,`preload` で読み込みタイミングを制御**
 - 重要ではない画像は **`loading="lazy"`**
-- Nuxt なら @nuxt/image に任せると自動で `srcset` ,フォーマット変換してくれて便利
+- Nuxt なら `@nuxt/image` に任せると自動で `srcset` ,フォーマット変換してくれて便利
 
 今回はフロントエンド側でできることを整理しました。
 サーバー側での最適化や CDN 配信戦略など、よりインフラ寄りの話はまた別の機会に書いてみたいと思います。
 
-## TODO
+## 参考文献
 
-- DPRの説明もっとまとめる
-- sizesの計算が多分違う
-- NuxtPicture の src をパスで
+::ExternalLinkCardWrapper{url="https://developer.mozilla.org/ja/docs/Web/HTML/Guides/Responsive_images"}
+::
+
+::ExternalLinkCardWrapper{url="https://stackoverflow.blog/2022/12/27/picture-perfect-images-with-the-modern-element/"}
+::
+
+::ExternalLinkCardWrapper{url="https://web.dev/articles/fetch-priority?hl=ja"}
+::
