@@ -457,17 +457,48 @@ Nuxt には画像最適化モジュールとして `@nuxt/image` があります
 
 ---
 
-高解像度の原本を渡して `sizes` を指定すると Nuxt Image が `srcset` を生成してくれます。
-
+高解像度の原本を渡して `sizes` を指定すると Nuxt Image が `srcset` を生成してくれます。<br>
 これにより、複数サイズの画像を手動で作成・配置する必要がなくなり記述もスッキリします。
 
+また、`<NuxtPicture>` を使用すればフォールバックの指定もできます。
+
+```vue
+<NuxtPicture
+  provider="cloudinary"
+  :src="src"
+  sizes="120px md:240w"
+  densities="x1 x2 x3"
+  alt=""
+  width="120"
+  height="120"
+  format="avif,webp"
+  :img-attrs="{
+    class: 'border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800',
+  }"
+/>
+```
+
+生成されるDOM
+
+```html
+<picture den="">
+  <source type="image/avif" sizes="120px" srcset="https://... 120w, https://... 240w, https://... 360w">
+  <source type="image/webp" sizes="120px" srcset="https://... 120w, https://... 240w, https://... 360w">
+  <img width="120" height="120" alt="" class="border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800" data-nuxt-pic="" src="https://..." sizes="120px" srcset="https://... 120w, https://... 240w, https://... 360w">
+</picture>
+```
+
+一つの画像ソースから複数のサイズ、フォーマットで配信できるのでとても便利です。
 
 ## まとめ
 
+- 最適化の対象を**ユーザーのデバイス**
+- 固定幅の画像は **DPR ごとに画像サイズを変える**
+- 可変幅の画像は **`w` + `sizes` を活用し、画像サイズを変える**
+- **次世代フォーマット**を使いつつ、フォールバックで互換性を確保する
+- LCP 画像は **`fetchpriority="high"`,`preload` で読み込みタイミングを制御**
+- 重要ではない画像は **`loading="lazy"`**
+- Nuxt なら @nuxt/image に任せると自動で srcset / フォーマット変換してくれて便利
 
-あと書きたいこと
-
-- LCP画像を優先的に先読み
-- アートディレクションが異なる場合
-- 画像フォーマット
-- Nuxtではどうするか
+今回はフロントエンド側でできることを整理しました。
+サーバー側での最適化や CDN 配信戦略など、よりインフラ寄りの話はまた別の機会に書いてみたいと思います。

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { NuxtPicture } from '#components'
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
 import { useProfile } from '~/composables/configurations/profile'
@@ -21,6 +20,20 @@ const { profile, displayName, displayBirthDate } = await useProfile()
           :src="profile?.avatar"
           sizes="480px md:240w lg:480w"
           alt="Kohei Tsukiyama Icon"
+          width="120"
+          height="120"
+          format="avif,webp"
+          :img-attrs="{
+            class: 'border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800',
+          }"
+        />
+        <NuxtPicture
+          provider="cloudinary"
+          :src="profile?.avatar"
+          den
+          sizes="120px md:240w"
+          alt=""
+          densities="x1 x2 x3"
           width="120"
           height="120"
           format="avif,webp"
