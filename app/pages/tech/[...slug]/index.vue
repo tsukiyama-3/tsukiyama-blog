@@ -39,14 +39,17 @@ useSeoMeta({
       class="space-y-8"
     >
       <div class="space-y-4">
-        <img
+        <NuxtImg
+          provider="cloudinary"
           :src="article.icon"
+          sizes="320px md:160w lg:240w"
+          format="avif"
           alt=""
           width="160"
           height="160"
           class="mx-auto"
           :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
-        >
+        />
         <h1 class="font-bold text-xl md:text-3xl dark:text-highlighted">
           {{ article.title }}
         </h1>

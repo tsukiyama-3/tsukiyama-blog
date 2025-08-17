@@ -1,0 +1,12 @@
+{
+  "_description": "プロフィール",
+  "familyName": "tsukiyama",
+  "givenName": "kohei",
+  "birthDate": "1999-10-12",
+  "birthPlace": {
+    "country": "japan",
+    "prefecture": "tokyo"
+  },
+  "avatar": "/avatar_bwg8e2.webp",
+  "bio": "Web Enginner"
+}

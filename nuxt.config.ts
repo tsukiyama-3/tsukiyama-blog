@@ -2,8 +2,16 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/ui-pro', '@nuxtjs/sitemap', '@nuxt/content', '@nuxthub/core', '@nuxt/eslint',
-    '@nuxt/test-utils/module', '@nuxt/scripts'],
+  modules: [
+    '@nuxt/ui-pro',
+    '@nuxtjs/sitemap',
+    '@nuxt/content',
+    '@nuxthub/core',
+    '@nuxt/eslint',
+    '@nuxt/test-utils/module',
+    '@nuxt/scripts',
+    '@nuxt/image',
+  ],
   components: [
     { path: '~/components/links', pathPrefix: false },
     { path: '~/components/sample', pathPrefix: false },
@@ -108,6 +116,11 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       stylistic: true,
+    },
+  },
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog',
     },
   },
   uiPro: {

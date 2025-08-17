@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
+import { useProfile } from '~/composables/configurations/profile'
 import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
+const { profile, displayName, displayBirthDate } = await useProfile()
 </script>
 
 <template>
@@ -13,19 +15,24 @@ const { convertSvgLogo } = useTag()
       <div
         class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
       >
-        <img
-          src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png"
+        <NuxtPicture
+          provider="cloudinary"
+          :src="profile?.avatar"
+          sizes="480px md:240w lg:480w"
           alt="Kohei Tsukiyama Icon"
           width="120"
           height="120"
-          class="border border-gray-200 rounded-full md:w-[240px] md:h-[240px] dark:border-gray-800"
-        >
-        <div class="w-fit">
+          format="avif,webp"
+          :img-attrs="{
+            class: 'border border-gray-200 rounded-full aspect-square md:w-[240px] md:h-[240px] dark:border-gray-800',
+          }"
+        />
+        <div class="w-fit space-y-0.5 md:space-y-1 lg:space-y-2">
           <h2 class="font-bold text-lg md:text-2xl dark:text-highlighted">
-            Kohei Tsukiyama
+            {{ displayName }}
           </h2>
           <p class="text-base md:text-lg dark:text-highlighted">
-            Web Enginner
+            {{ profile?.bio }}
           </p>
           <div class="flex gap-x-2 dark:text-highlighted">
             <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
@@ -33,14 +40,14 @@ const { convertSvgLogo } = useTag()
                 name="flag:jp-4x3"
                 class="size-5 border border-gray-200 dark:border-0"
               />
-              Tokyo
+              {{ profile?.birthPlace.prefecture.toUpperCase() }}
             </p>
             /
             <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">
               <UIcon
                 name="emojione:birthday-cake"
                 class="size-5"
-              /> 1999.10.12
+              /> {{ displayBirthDate }}
             </p>
           </div>
         </div>
@@ -59,14 +66,17 @@ const { convertSvgLogo } = useTag()
               :to="article.path"
             >
               <article class="grid grid-cols-[80px_1fr] gap-x-4 md:grid-cols-[120px_1fr]">
-                <img
+                <NuxtImg
+                  provider="cloudinary"
                   :src="article.icon"
+                  sizes="480px md:240w lg:480w"
+                  format="avif"
                   alt=""
-                  width="80"
-                  height="80"
+                  width="120"
+                  height="120"
                   class="border border-gray-200 rounded-xl dark:border-gray-800 md:w-[120px] md:h-[120px]"
                   :style="`view-transition-name: ${article.id.replace(/\W/g, '-')}`"
-                >
+                />
                 <div class="space-y-1">
                   <h3 class="text-base md:text-xl font-bold dark:text-highlighted">{{ article.title }}</h3>
                   <ul

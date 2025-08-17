@@ -1,7 +1,7 @@
 ---
 title: Nuxt で Google Maps API を使ってみる
 description: Nuxt + Google Maps API を使ってマップの表示とルート表示を行います。
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
+icon: /avatar_green_oab8qx.webp
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1753114202/tsukiyama-blog/google-maps-api/google-maps-api_camiip.png
 published: true
 date: 2025-07-22

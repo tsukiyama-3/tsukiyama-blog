@@ -1,7 +1,7 @@
 ---
 title: Nuxt インポート関数をモックする mockNuxtImport 関数の紹介
 description: useAsyncData や useFetch のような Nuxt インポート関数をモックするのに便利な mockNuxtImport の紹介と凝集度を低くしテスタビリティを高める方法を紹介します。
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
+icon: /avatar_green_oab8qx.webp
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1744641614/tsukiyama-blog/mock-nuxt-import/mock-nuxt-import-thumbnail_zqckp3.png
 published: true
 date: 2025-04-15

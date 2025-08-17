@@ -5,7 +5,7 @@
         https://localhost:3000
       </p>
     </div>
-    <div class="pt-8 px-4 pb-4 dark:bg-neutral-800">
+    <div class="pt-8 px-4 pb-4 dark:bg-neutral-800 dark:text-highlighted">
       <slot />
     </div>
   </div>

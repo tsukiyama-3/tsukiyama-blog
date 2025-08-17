@@ -32,14 +32,15 @@ const { data } = await useFetch('/api/ogp', {
           {{ url }}
         </p>
       </div>
-      <img
+      <NuxtImg
         :src="data?.image"
         class="aspect-video w-[120px] object-cover md:w-[240px] h-full"
         alt=""
+        sizes="240px md:480w"
         width="120"
         height="68"
         loading="lazy"
-      >
+      />
     </div>
   </NuxtLink>
 </template>

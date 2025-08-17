@@ -1,7 +1,7 @@
 ---
 title: Nuxt アプリケーションでサードパーティスクリプトを最適化する Nuxt Scripts の紹介
 description: サードパーティスクリプトの最適化・遅延読み込みなど、Nuxt.js アプリケーションにおける高度なスクリプト管理を可能にする Nuxt Modules、 Nuxt Scripts の紹介です。
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742466220/green-transparent_gw7l0b.png
+icon: /avatar_green_oab8qx.webp
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1747046645/tsukiyama-blog/nuxt-scripts-introduce/nuxt-scripts-introduce_lts8lo.webp
 published: true
 date: 2025-05-12

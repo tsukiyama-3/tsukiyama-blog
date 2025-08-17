@@ -1,7 +1,7 @@
 ---
 title: <head>管理ライブラリ Unhead の紹介
 description: フレームワーク非依存<head>管理ライブラリのUnheadの紹介です。
-icon: https://res.cloudinary.com/dyoyv8djx/image/upload/v1742465747/tsukiyama_cqdytg.png
+icon: /avatar_bwg8e2.webp
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1746433649/tsukiyama-blog/introduce-unhead/Frame_6_pwvdwd.png
 published: true
 date: 2025-05-05
