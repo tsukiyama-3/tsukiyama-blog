@@ -498,7 +498,7 @@ Nuxt には画像最適化モジュールとして `@nuxt/image` があります
 ```vue
 <NuxtPicture
   provider="cloudinary"
-  :src="_src"
+  :src="_src" // Cloudinaryに置いてある画像パス
   format="avif,webp"
 />
 ```
