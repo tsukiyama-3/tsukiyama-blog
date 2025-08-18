@@ -6,7 +6,7 @@ import { useTag } from '~/composables/utilities/tag'
 
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
-const { profile, displayName, displayBirthDate } = await useProfile()
+const { profile, displayName, displayBirthDate, displayPrefecture } = await useProfile()
 </script>
 
 <template>
@@ -40,7 +40,7 @@ const { profile, displayName, displayBirthDate } = await useProfile()
                 name="flag:jp-4x3"
                 class="size-5 border border-gray-200 dark:border-0"
               />
-              {{ profile?.birthPlace.prefecture.toUpperCase() }}
+              {{ displayPrefecture }}
             </p>
             /
             <p class="text-sm md:text-base opacity-80 flex items-center gap-x-2">

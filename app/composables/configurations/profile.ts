@@ -31,5 +31,12 @@ export const useProfile = async () => {
     return `${year}.${month}.${date}`
   })
 
-  return { profile, displayName, displayBirthDate }
+  const displayPrefecture = computed(() => {
+    if (profile.value === null) {
+      return ''
+    }
+    return `${profile.value.birthPlace.prefecture.charAt(0).toUpperCase()}${profile.value.birthPlace.prefecture.slice(1).toLowerCase()}`
+  })
+
+  return { profile, displayName, displayBirthDate, displayPrefecture }
 }
