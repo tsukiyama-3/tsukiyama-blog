@@ -87,8 +87,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': { prerender: true },
-    '/tech/**': { prerender: true },
+    '/**': { prerender: true },
     '/basic-auth': { ssr: true },
   },
   future: {
