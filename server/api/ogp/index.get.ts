@@ -3,7 +3,7 @@ import { getQuery, sendError } from 'h3'
 import type { CheerioAPI } from 'cheerio'
 import { load } from 'cheerio'
 
-export default defineEventHandler(async (event: H3Event) => {
+export default defineCachedEventHandler(async (event: H3Event) => {
   const { url } = getQuery(event)
 
   if (!url || typeof url !== 'string') {
@@ -36,4 +36,7 @@ export default defineEventHandler(async (event: H3Event) => {
       createError({ statusCode: 500, message: 'Failed to fetch or parse OGP' }),
     )
   }
+}, {
+  maxAge: 60 * 60 * 6,
+  swr: true,
 })

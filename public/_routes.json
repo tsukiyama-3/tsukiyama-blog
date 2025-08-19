@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "include": ["/api/*", "/basic-auth"],
+  "exclude": [
+    "/_nuxt/*",
+    "/_payload.json",
+    "/**/_payload.json"
+  ]
+}

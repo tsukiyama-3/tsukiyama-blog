@@ -7,9 +7,10 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxthub/core',
+    '@nuxt/eslint',
     '@nuxt/scripts',
     '@nuxt/image',
-    ...(import.meta.dev ? ['@nuxt/eslint', '@nuxt/test-utils/module'] : []),
+    ...(import.meta.dev ? ['@nuxt/test-utils/module'] : []),
   ],
   components: [
     { path: '~/components/links', pathPrefix: false },
@@ -95,7 +96,7 @@ export default defineNuxtConfig({
   },
   experimental: {
     viewTransition: true,
-    payloadExtraction: true,
+    payloadExtraction: false,
   },
   compatibilityDate: '2024-11-01',
   nitro: {
