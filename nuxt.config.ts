@@ -7,10 +7,9 @@ export default defineNuxtConfig({
     '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxthub/core',
-    '@nuxt/eslint',
-    '@nuxt/test-utils/module',
     '@nuxt/scripts',
     '@nuxt/image',
+    ...(import.meta.dev ? ['@nuxt/eslint', '@nuxt/test-utils/module'] : []),
   ],
   components: [
     { path: '~/components/links', pathPrefix: false },
@@ -102,6 +101,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'cloudflare_pages',
+    compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
       ignore: ['/basic-auth'],
@@ -110,7 +110,8 @@ export default defineNuxtConfig({
   vite: {
     plugins: [tailwindcss()],
     build: {
-      minify: false,
+      minify: 'esbuild',
+      cssMinify: true,
     },
   },
   eslint: {
