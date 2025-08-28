@@ -89,8 +89,10 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/': { static: true },
+    '/articles/**': { static: true },
     '/tech/**': { static: true },
-    '/basic-auth': { ssr: true },
+    '/tech': { redirect: '/' },
+    '/basic-auth': { ssr: true, prerender: false },
   },
   future: {
     compatibilityVersion: 4,
@@ -107,7 +109,9 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: [
         '/',
-        '/tech',
+      ],
+      ignore: [
+        '/basic-auth',
       ],
     },
   },
