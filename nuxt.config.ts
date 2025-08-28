@@ -54,6 +54,7 @@ export default defineNuxtConfig({
           searchDepth: 3,
         },
         highlight: {
+          preload: ['diff', 'json', 'ts', 'js', 'bash', 'md'],
           theme: {
             default: 'github-dark-high-contrast',
             dark: 'github-dark',
@@ -88,8 +89,11 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/**': { prerender: true },
-    '/basic-auth': { ssr: true },
+    '/': { static: true },
+    '/articles/**': { static: true },
+    '/tech/**': { static: true },
+    '/tech': { redirect: '/' },
+    '/basic-auth': { ssr: true, prerender: false },
   },
   future: {
     compatibilityVersion: 4,
@@ -104,7 +108,12 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
-      ignore: ['/basic-auth'],
+      routes: [
+        '/',
+      ],
+      ignore: [
+        '/basic-auth',
+      ],
     },
   },
   vite: {

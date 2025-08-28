@@ -14,6 +14,9 @@ const mapRef = ref<HTMLElement | null>(null)
 const { onLoaded } = useScriptGoogleMaps()
 
 onMounted(() => {
+  // クライアントサイドでのみ実行
+  if (!import.meta.client) return
+
   onLoaded(async (instance) => {
     if (!mapRef.value) {
       return
@@ -40,8 +43,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    ref="mapRef"
-    class="w-full aspect-video"
-  />
+  <ClientOnly>
+    <div
+      ref="mapRef"
+      class="w-full aspect-video"
+    />
+  </ClientOnly>
 </template>
