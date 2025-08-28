@@ -53,6 +53,7 @@ export default defineNuxtConfig({
           searchDepth: 3,
         },
         highlight: {
+          preload: ['diff', 'json', 'ts', 'js', 'bash', 'md'],
           theme: {
             default: 'github-dark-high-contrast',
             dark: 'github-dark',
@@ -96,12 +97,19 @@ export default defineNuxtConfig({
   },
   experimental: {
     viewTransition: true,
-    payloadExtraction: true,
+    payloadExtraction: false,
   },
   compatibilityDate: '2024-11-01',
   nitro: {
     preset: 'cloudflare_pages',
     compressPublicAssets: true,
+    prerender: {
+      crawlLinks: true,
+      routes: [
+        '/',
+        '/tech',
+      ],
+    },
   },
   vite: {
     plugins: [tailwindcss()],
