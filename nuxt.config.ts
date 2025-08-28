@@ -89,9 +89,6 @@ export default defineNuxtConfig({
   routeRules: {
     '/**': { prerender: true },
     '/basic-auth': { ssr: true },
-    '/tech/google-maps-api': { isr: 3600 },
-    '/tech/geolocation-api': { isr: 3600 },
-    '/': { isr: 3600 },
   },
   future: {
     compatibilityVersion: 4,
