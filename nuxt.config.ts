@@ -102,12 +102,6 @@ export default defineNuxtConfig({
   nitro: {
     preset: 'cloudflare_pages',
     compressPublicAssets: true,
-    prerender: {
-      routes: [
-        '/',
-        '/tech/**',
-      ],
-    },
   },
   vite: {
     plugins: [tailwindcss()],
