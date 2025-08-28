@@ -87,7 +87,8 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/**': { prerender: true },
+    '/': { static: true },
+    '/tech/**': { static: true },
     '/basic-auth': { ssr: true },
   },
   future: {
@@ -102,11 +103,9 @@ export default defineNuxtConfig({
     preset: 'cloudflare_pages',
     compressPublicAssets: true,
     prerender: {
-      crawlLinks: true,
-      ignore: [
-        '/basic-auth',
-        '/tech/google-maps-api',
-        '/tech/geolocation-api',
+      routes: [
+        '/',
+        '/tech/**',
       ],
     },
   },
