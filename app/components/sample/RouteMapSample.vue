@@ -38,6 +38,9 @@ const { onLoaded } = useScriptGoogleMaps({
   apiKey: config.public.scripts.googleMaps.apiKey,
 })
 onMounted(() => {
+  // クライアントサイドでのみ実行
+  if (!import.meta.client) return
+
   onLoaded(async (instance) => {
     if (!mapRef.value) {
       return
@@ -74,8 +77,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div
-    ref="mapRef"
-    class="w-full aspect-video"
-  />
+  <ClientOnly>
+    <div
+      ref="mapRef"
+      class="w-full aspect-video"
+    />
+  </ClientOnly>
 </template>
