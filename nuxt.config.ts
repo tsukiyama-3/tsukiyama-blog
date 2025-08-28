@@ -103,7 +103,11 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
-      ignore: ['/basic-auth'],
+      ignore: [
+        '/basic-auth',
+        '/tech/google-maps-api',
+        '/tech/geolocation-api',
+      ],
     },
   },
   vite: {
