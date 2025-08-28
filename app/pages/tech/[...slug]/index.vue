@@ -28,7 +28,35 @@ useSeoMeta({
   ogDescription: article.value.description,
   ogImage: article.value.ogImage ?? 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
   ogUrl: `https://tsukiyama.blog/tech/${article.value.id}`,
+  twitterTitle: `${article.value.title}｜tsukiyama.blog`,
+  twitterDescription: article.value.description,
+  twitterImage: article.value.ogImage ?? 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
+  twitterCard: 'summary_large_image',
 })
+
+useSchemaOrg([
+  defineArticle({
+    image: article.value.ogImage,
+    datePublished: article.value.date,
+    headline: article.value.title,
+    description: article.value.description,
+    dateModified: article.value.updatedAt,
+    author: [
+      {
+        '@type': 'Person',
+        'name': '築山航平',
+      },
+    ],
+    publisher: {
+      '@type': 'Organization',
+      'name': 'tsukiyama.blog',
+      'logo': {
+        '@type': 'ImageObject',
+        'url': 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
+      },
+    },
+  }),
+])
 </script>
 
 <template>

@@ -10,7 +10,9 @@ export default defineNuxtConfig({
     '@nuxt/eslint',
     '@nuxt/scripts',
     '@nuxt/image',
-    ...(import.meta.dev ? ['@nuxt/test-utils/module'] : []),
+    '@nuxt/eslint',
+    '@nuxt/test-utils/module',
+    'nuxt-schema-org',
   ],
   components: [
     { path: '~/components/links', pathPrefix: false },
