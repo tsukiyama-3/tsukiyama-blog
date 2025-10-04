@@ -12,7 +12,6 @@ jobs:
       id-token: write
 
     env:
-      NUXT_UI_PRO_LICENSE: ${{ secrets.NUXT_UI_PRO_LICENSE }}
       NUXT_PUBLIC_SCRIPTS_GOOGLE_MAPS_API_KEY: ${{ secrets.NUXT_PUBLIC_SCRIPTS_GOOGLE_MAPS_API_KEY }}
 
     steps:
@@ -29,9 +28,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Debug license
-        run: echo "KEY=${NUXT_UI_PRO_LICENSE}"
 
       - name: Ensure NuxtHub module is installed
         run: npx nuxthub@latest ensure

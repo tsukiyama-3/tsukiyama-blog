@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/ui-pro',
+    '@nuxt/ui',
     '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxthub/core',
@@ -47,7 +47,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  css: ['~/assets/css/tailwind.css'],
+  css: ['~/assets/css/main.css'],
   content: {
     build: {
       markdown: {
@@ -134,10 +134,5 @@ export default defineNuxtConfig({
     cloudinary: {
       baseURL: 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog',
     },
-  },
-  uiPro: {
-    content: true,
-    license: process.env.NUXT_UI_PRO_LICENSE,
-    mdc: true,
   },
 })
