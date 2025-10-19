@@ -101,6 +101,7 @@ export default defineNuxtConfig({
     compatibilityVersion: 4,
   },
   experimental: {
+    asyncContext: true,
     viewTransition: true,
     payloadExtraction: false,
   },
