@@ -25,7 +25,6 @@
     "@nuxtjs/sitemap": "^7.2.10",
     "@tailwindcss/vite": "^4.0.17",
     "@unhead/vue": "^2.0.8",
-    "better-sqlite3": "^12.2.0",
     "cheerio": "^1.0.0",
     "eslint": "^9.24.0",
     "nuxt": "^4.0.1",
@@ -46,6 +45,7 @@
   },
   "optionalDependencies": {
     "@oxc-parser/binding-linux-x64-gnu": "latest",
-    "@rollup/rollup-linux-x64-gnu": "latest"
+    "@rollup/rollup-linux-x64-gnu": "latest",
+    "better-sqlite3": "^12.2.0"
   }
 }

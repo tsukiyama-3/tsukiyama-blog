@@ -114,6 +114,9 @@ export default defineNuxtConfig({
       failOnError: false,
     },
   },
+  hub: {
+    database: true,
+  },
   vite: {
     plugins: [tailwindcss()],
     build: {
