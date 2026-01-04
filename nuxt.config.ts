@@ -3,7 +3,7 @@ import tailwindcss from '@tailwindcss/vite'
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
-    '@nuxt/ui-pro',
+    '@nuxt/ui',
     '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxthub/core',
@@ -109,13 +109,9 @@ export default defineNuxtConfig({
     preset: 'cloudflare_pages',
     compressPublicAssets: true,
     prerender: {
-      crawlLinks: true,
-      routes: [
-        '/',
-      ],
-      ignore: [
-        '/basic-auth',
-      ],
+      crawlLinks: false,
+      routes: ['/'],
+      failOnError: false,
     },
   },
   vite: {
@@ -132,12 +128,8 @@ export default defineNuxtConfig({
   },
   image: {
     cloudinary: {
-      baseURL: 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog',
+      baseURL:
+        'https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog',
     },
-  },
-  uiPro: {
-    content: true,
-    license: process.env.NUXT_UI_PRO_LICENSE,
-    mdc: true,
   },
 })

@@ -99,8 +99,8 @@ CSSピクセルで 100px の幅の画像を表示させる場合、DPR = 2 (Reti
 逆もまた然りで、100 物理px の領域で 200px の画像ソースだと縮小表示されるため画質は保たれますが、余分に転送量とデコード負荷がかかります。
 ::
 
-::div{class="text-center flex flex-col items-center"}
-  :img{src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1754885264/tsukiyama-blog/image-optimization/tsukiyama-64x64_jczd1i.png" width="128" height="128" alt="`64x64` の画像を `128x128` (DPR = 2 ならさら)に引き伸ばされてぼやけている僕"}
+::div{class="text-center mx-auto flex flex-col items-center"}
+  :img{src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1754885264/tsukiyama-blog/image-optimization/tsukiyama-64x64_jczd1i.png" width="128" height="128" alt="`64x64` の画像を `128x128` (DPR = 2 ならさら)に引き伸ばされてぼやけている僕" style="width: 128px"}
   :p[`64x64` の画像を `128x128` (DPR = 2 ならさら)に引き伸ばされてぼやけている僕]{class="mt-0 opacity-60 text-sm"}
 ::
 
@@ -127,7 +127,7 @@ CSSピクセルで 100px の幅の画像を表示させる場合、DPR = 2 (Reti
 ```
 
 ::div{class="text-center flex flex-col items-center"}
-  :img{src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893394/tsukiyama-blog/image-optimization/tsukiyama-128x128_dxb19q.png" srcset="https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893394/tsukiyama-blog/image-optimization/tsukiyama-128x128_dxb19q.png 1x, https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893395/tsukiyama-blog/image-optimization/tsukiyama-256x256_omoir8.png 2x, https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893398/tsukiyama-blog/image-optimization/tsukiyama-384x384_hgygfe.png 3x" width="128" height="128" alt="解像度ごとに最適な画像ソースが設定され、くっきりしている僕"}
+  :img{src="https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893394/tsukiyama-blog/image-optimization/tsukiyama-128x128_dxb19q.png" srcset="https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893394/tsukiyama-blog/image-optimization/tsukiyama-128x128_dxb19q.png 1x, https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893395/tsukiyama-blog/image-optimization/tsukiyama-256x256_omoir8.png 2x, https://res.cloudinary.com/dyoyv8djx/image/upload/v1754893398/tsukiyama-blog/image-optimization/tsukiyama-384x384_hgygfe.png 3x" width="128" height="128" alt="解像度ごとに最適な画像ソースが設定され、くっきりしている僕" style="width: 128px"}
   :p[解像度ごとに最適な画像ソースが設定され、くっきりしている僕]{class="mt-0 opacity-60 text-sm"}
 ::
 
