@@ -1,15 +1,17 @@
 {
-  "extends": ["config:base"],
-  "schedule": "before 9am on the first day of the month",
-  "timezone": "Asia/Tokyo",
-  "prHourlyLimit": 0,
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "schedule": ["before 1pm on sunday"]
+  },
+  "postUpdateOptions": ["npmDedupe"],
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch", "minor"],
-      "excludePackageNames": ["typescript"],
-      "groupName": "all minor and patch dependencies"
+      "matchPackageNames": ["bare-events"],
+      "enabled": false,
+      "description": "bare-eventsは@nuxt/imageとnuxtの依存関係で必要だが、renovateが不要と判断して削除するため無効化"
     }
-  ],
-  "enabledManagers": ["github-actions", "npm"]
+  ]
 }
