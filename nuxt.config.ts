@@ -113,6 +113,9 @@ export default defineNuxtConfig({
       routes: ['/'],
       failOnError: false,
     },
+    experimental: {
+      wasm: true,
+    },
   },
   hub: {
     database: true,
