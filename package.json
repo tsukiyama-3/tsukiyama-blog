@@ -23,7 +23,7 @@
     "@nuxt/ui": "^4.3.0",
     "@nuxtjs/sitemap": "^7.2.10",
     "@tailwindcss/vite": "^4.0.17",
-    "@unhead/vue": "^2.0.8",
+    "@unhead/vue": "^2.1.4",
     "better-sqlite3": "^12.5.0",
     "cheerio": "^1.1.2",
     "eslint": "^9.39.2",
