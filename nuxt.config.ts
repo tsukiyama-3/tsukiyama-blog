@@ -48,6 +48,9 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/tailwind.css'],
   content: {
+    database: {
+      type: 'static',
+    },
     build: {
       markdown: {
         toc: {
