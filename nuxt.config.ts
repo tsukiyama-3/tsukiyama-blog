@@ -1,5 +1,3 @@
-import tailwindcss from '@tailwindcss/vite'
-
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: [
@@ -48,9 +46,6 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/tailwind.css'],
   content: {
-    database: {
-      type: 'static',
-    },
     build: {
       markdown: {
         toc: {
@@ -113,7 +108,6 @@ export default defineNuxtConfig({
     },
   },
   vite: {
-    plugins: [tailwindcss()],
     build: {
       minify: 'esbuild',
       cssMinify: true,
