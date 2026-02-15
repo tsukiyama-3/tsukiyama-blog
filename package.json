@@ -21,7 +21,7 @@
     "@nuxt/image": "^1.11.0",
     "@nuxt/scripts": "^0.11.10",
     "@nuxt/ui": "^4.3.0",
-    "@nuxtjs/sitemap": "^7.2.10",
+    "@nuxtjs/sitemap": "^7.6.0",
     "@unhead/vue": "^2.1.4",
     "better-sqlite3": "^12.5.0",
     "cheerio": "^1.1.2",
