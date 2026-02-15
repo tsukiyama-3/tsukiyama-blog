@@ -89,6 +89,13 @@ export default defineNuxtConfig({
       },
     },
   },
+  routeRules: {
+    '/': { static: true },
+    '/articles/**': { static: true },
+    '/tech/**': { static: true },
+    '/tech': { redirect: '/' },
+    '/basic-auth': { ssr: true, prerender: false },
+  },
   future: {
     compatibilityVersion: 4,
   },
@@ -99,8 +106,10 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     compressPublicAssets: true,
-    experimental: {
-      wasm: true,
+    prerender: {
+      crawlLinks: false,
+      routes: ['/'],
+      failOnError: false,
     },
   },
   vite: {
