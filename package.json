@@ -21,7 +21,6 @@
     "@nuxt/image": "^1.11.0",
     "@nuxt/scripts": "^0.11.10",
     "@nuxt/ui": "^4.3.0",
-    "@nuxthub/core": "^0.9.0",
     "@nuxtjs/sitemap": "^7.2.10",
     "@tailwindcss/vite": "^4.0.17",
     "@unhead/vue": "^2.0.8",
@@ -41,8 +40,7 @@
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^20.0.11",
     "playwright-core": "^1.51.1",
-    "vitest": "^3.2.4",
-    "wrangler": "^4.22.0"
+    "vitest": "^3.2.4"
   },
   "optionalDependencies": {
     "@oxc-parser/binding-linux-x64-gnu": "latest",

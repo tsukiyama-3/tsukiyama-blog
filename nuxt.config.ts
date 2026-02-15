@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/sitemap',
     '@nuxt/content',
-    '@nuxthub/core',
     '@nuxt/eslint',
     '@nuxt/scripts',
     '@nuxt/image',
@@ -91,9 +90,8 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': { static: true },
-    '/articles/**': { static: true },
-    '/tech/**': { static: true },
+    '/api/**': { prerender: false },
+    '/**': { prerender: true },
     '/tech': { redirect: '/' },
     '/basic-auth': { ssr: true, prerender: false },
   },
@@ -106,19 +104,10 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'cloudflare_pages',
     compressPublicAssets: true,
     prerender: {
       crawlLinks: false,
-      routes: ['/'],
-      failOnError: false,
     },
-    experimental: {
-      wasm: true,
-    },
-  },
-  hub: {
-    database: true,
   },
   vite: {
     plugins: [tailwindcss()],
