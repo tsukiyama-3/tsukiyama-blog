@@ -88,13 +88,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  routeRules: {
-    '/': { static: true },
-    '/articles/**': { static: true },
-    '/tech/**': { static: true },
-    '/tech': { redirect: '/' },
-    '/basic-auth': { ssr: true, prerender: false },
-  },
   future: {
     compatibilityVersion: 4,
   },
