@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/sitemap',
     '@nuxt/content',
-    '@nuxt/eslint',
     '@nuxt/scripts',
     '@nuxt/image',
     '@nuxt/eslint',
@@ -105,19 +104,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'cloudflare-pages',
     compressPublicAssets: true,
-    prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      failOnError: false,
-    },
-    experimental: {
-      wasm: true,
-    },
-  },
-  hub: {
-    database: true,
   },
   vite: {
     plugins: [tailwindcss()],
