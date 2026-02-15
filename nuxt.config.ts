@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/sitemap',
     '@nuxt/content',
-    '@nuxthub/core',
     '@nuxt/eslint',
     '@nuxt/scripts',
     '@nuxt/image',
@@ -106,7 +105,7 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'cloudflare_pages',
+    preset: 'cloudflare-pages',
     compressPublicAssets: true,
     prerender: {
       crawlLinks: false,
