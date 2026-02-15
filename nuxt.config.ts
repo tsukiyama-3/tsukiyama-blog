@@ -116,6 +116,7 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       stylistic: true,
+      routes: ['/'],
     },
   },
   image: {
