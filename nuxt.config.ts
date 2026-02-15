@@ -90,9 +90,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/': { static: true },
-    '/articles/**': { static: true },
-    '/tech/**': { static: true },
+    '/**': { prerender: true },
     '/tech': { redirect: '/' },
     '/basic-auth': { ssr: true, prerender: false },
   },
@@ -107,9 +105,7 @@ export default defineNuxtConfig({
   nitro: {
     compressPublicAssets: true,
     prerender: {
-      crawlLinks: false,
-      routes: ['/'],
-      failOnError: false,
+      crawlLinks: true,
     },
   },
   vite: {
