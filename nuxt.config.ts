@@ -46,11 +46,6 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/tailwind.css'],
   content: {
-    // Vercel では better-sqlite3 のみ対応（sqlite3 は非対応）
-    // https://content.nuxt.com/docs/getting-started/configuration#experimentalsqliteconnector
-    experimental: {
-      sqliteConnector: 'better-sqlite3',
-    },
     build: {
       markdown: {
         toc: {
@@ -107,7 +102,6 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
-    preset: 'vercel',
     compressPublicAssets: true,
   },
   vite: {
