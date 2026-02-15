@@ -15,7 +15,6 @@ const breadcrumbs = ref<BreadcrumbItem[]>([
   { label: article.value?.title ?? '記事' },
 ])
 
-
 const { convertSvgLogo } = useTag()
 
 useHead({
