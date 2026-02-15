@@ -102,10 +102,8 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-01',
   nitro: {
+    preset: 'vercel',
     compressPublicAssets: true,
-    prerender: {
-      crawlLinks: true,
-    },
   },
   vite: {
     build: {
@@ -116,7 +114,6 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       stylistic: true,
-      routes: ['/'],
     },
   },
   image: {
