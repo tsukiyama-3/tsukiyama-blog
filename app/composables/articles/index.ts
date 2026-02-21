@@ -14,7 +14,7 @@ export const useTechArticle = async (path: string) => {
   const { data: article } = await useAsyncData(path, () =>
     queryCollection('tech')
       .path(path)
-      .select('id', 'title', 'description', 'ogImage', 'icon', 'tags', 'body', 'date')
+      .select('id', 'title', 'description', 'ogImage', 'icon', 'tags', 'body', 'date', 'updatedAt')
       .first(), {
     default: () => null,
   })

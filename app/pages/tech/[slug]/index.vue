@@ -112,7 +112,7 @@ useSchemaOrg([
         <UBreadcrumb :items="breadcrumbs" />
       </div>
       <section class="grid gap-8 grid-cols-1 md:grid-cols-[1fr_300px]">
-        <main class="w-full max-w-[836px] order-2 md:order-1">
+        <main class="w-full max-w-209 order-2 md:order-1">
           <ContentRenderer
             :value="article"
             class="space-y-8 dark:text-highlighted"
