@@ -1,21 +1,15 @@
+import type { TechCollectionItem } from '@nuxt/content'
+
 export const useTechArticles = async () => {
-  const { data: articles } = await useAsyncData('blog', () =>
-    queryCollection('tech')
-      .where('published', '=', true)
-      .select('id', 'title', 'path', 'description', 'icon', 'tags', 'date')
-      .order('date', 'DESC')
-      .all(),
-  )
+  const { data: articles } = await useFetch('/api/articles', {
+    default: (): TechCollectionItem[] => [],
+  })
 
   return { articles }
 }
 
 export const useTechArticle = async (path: string) => {
-  const { data: article } = await useAsyncData(path, () =>
-    queryCollection('tech')
-      .path(path)
-      .select('id', 'title', 'description', 'ogImage', 'icon', 'tags', 'body', 'date', 'updatedAt')
-      .first(), {
+  const { data: article } = await useFetch<TechCollectionItem | null>(`/api/articles/${path}`, {
     default: () => null,
   })
 

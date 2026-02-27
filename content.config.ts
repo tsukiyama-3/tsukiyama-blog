@@ -10,11 +10,12 @@ export default defineContentConfig({
         title: z.string(),
         description: z.string(),
         icon: z.string(),
+        tags: z.string().array().optional(),
         ogImage: z.string().optional(),
         published: z.boolean(),
         date: z.date(),
-        tags: z.string().array().optional(),
         updatedAt: z.date().optional(),
+        publishedAt: z.date().optional(),
       }),
     }),
     profile: defineCollection({
