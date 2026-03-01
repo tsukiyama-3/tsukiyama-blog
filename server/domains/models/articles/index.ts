@@ -22,9 +22,11 @@ export const getArticle = async (event: H3Event, slug: string) => {
   const article = await findArticleBySlug(event, slug)
 
   if (article === null) {
+    console.log('article: null')
     return null
   }
 
+  console.log(filterPublishedArticle(article), article)
   return filterPublishedArticle(article) ? article : null
 }
 
@@ -36,6 +38,7 @@ export const getArticle = async (event: H3Event, slug: string) => {
 export const getArticles = async (event: H3Event) => {
   const articles = await findArticles(event)
 
+  console.log(articles)
   return articles.filter(filterPublishedArticle)
 }
 

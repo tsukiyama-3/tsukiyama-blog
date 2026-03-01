@@ -11,6 +11,7 @@ export const findArticleBySlug = async (event: H3Event, slug: string) => {
 
 export const findArticles = async (event: H3Event) => {
   const articles = await queryCollection<'tech'>(event, 'tech')
+    .where('published', '=', true)
     .order('date', 'DESC')
     .all()
 
