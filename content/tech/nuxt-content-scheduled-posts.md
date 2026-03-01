@@ -4,9 +4,9 @@ description: 予約投稿、それは希望。未来を信じるもののみに�
 icon: /avatar_bwg8e2.webp
 tags: ["Nuxt.js", "Nuxt Content", "Day.js"]
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog/geo-location-api/geo-location-api_dwk5a7.png
-published: false
+published: true
 date: 2026-03-01
-publishedAt: 2026-03-01 19:53
+publishedAt: 2026-03-01 20:00
 ---
 
 ## Intro
