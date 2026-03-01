@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { getArticle } from '~~/server/domains/models/articles'
+import { getArticle } from '~~/server/domains/models/article'
 
 const PARAMETER_SCHEMA = z.object({
   slug: z.string(),

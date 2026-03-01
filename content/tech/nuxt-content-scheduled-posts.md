@@ -6,7 +6,7 @@ tags: ["Nuxt.js", "Nuxt Content", "Day.js"]
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1772369627/tsukiyama-blog/nuxt-content-scheduled-posts/nuxt-content-scheduled-posts_phjsvn.webp
 published: true
 date: 2026-03-02
-publishedAt: 2026-03-01 22:00
+publishedAt: 2026-03-01 22:10
 ---
 
 ## Intro
@@ -245,7 +245,7 @@ const filterPublishedArticle = (article: TechCollectionItem) => {
 #### List API
 
 ```ts [~~/server/api/articles/index.get.ts]
-import { getArticles } from '~~/server/domains/models/articles'
+import { getArticles } from '~~/server/domains/models/article'
 
 export default defineEventHandler(async (event) => {
   const articles = await getArticles(event)
@@ -258,7 +258,7 @@ export default defineEventHandler(async (event) => {
 
 ```ts [~~/server/api/articles/[slug]/index.get.ts]
 import { z } from 'zod'
-import { getArticle } from '~~/server/domains/models/articles'
+import { getArticle } from '~~/server/domains/models/article'
 
 const PARAMETER_SCHEMA = z.object({
   slug: z.string(),
