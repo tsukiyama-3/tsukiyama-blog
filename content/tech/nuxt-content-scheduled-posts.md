@@ -1,12 +1,12 @@
 ---
 title: Nuxt Content で作ったブログの予約投稿を実装する
 description: 予約投稿、それは希望。未来を信じるもののみに許された「祈り」「願い」「誓い」。僕はそれを実装しようと思う。
-icon: /avatar_bwg8e2.webp
+icon: /avatar_green_oab8qx.webp
 tags: ["Nuxt.js", "Nuxt Content", "Day.js"]
-ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog/geo-location-api/geo-location-api_dwk5a7.png
+ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1772369627/tsukiyama-blog/nuxt-content-scheduled-posts/nuxt-content-scheduled-posts_phjsvn.webp
 published: true
-date: 2026-03-01
-publishedAt: 2026-03-01 21:38
+date: 2026-03-02
+publishedAt: 2026-03-01 22:00
 ---
 
 ## Intro
@@ -325,4 +325,8 @@ if (article === null) {
 </template>
 ```
 
+## Outro
+
 以上です。
+
+予約投稿が実装されたので来週からは記事が勝手に投稿されるに違いあるまい。
