@@ -55,6 +55,8 @@ const filterPublishedArticle = (article: TechCollectionItem) => {
 
   const now = dayjs().tz(TIME_ZONE)
 
+  console.log(now, article.publishedAt)
+
   // publishedAt が現在時刻以降か判定する
   return now.isSameOrAfter(dayjs(article.publishedAt).tz(TIME_ZONE))
 }
