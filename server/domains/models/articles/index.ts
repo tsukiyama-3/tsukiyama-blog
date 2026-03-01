@@ -54,7 +54,6 @@ const filterPublishedArticle = (article: TechCollectionItem) => {
   }
 
   const now = dayjs().tz(TIME_ZONE)
-
   const publishedAt = dayjs.tz(
     article.publishedAt,
     TIME_ZONE,
