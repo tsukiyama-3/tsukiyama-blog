@@ -5,8 +5,8 @@ icon: /avatar_bwg8e2.webp
 tags: ["Nuxt.js", "Nuxt Content", "Day.js"]
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog/geo-location-api/geo-location-api_dwk5a7.png
 published: false
-date: 2026-03-02
-publishedAt: 2026-03-02 08:00
+date: 2026-03-01
+publishedAt: 2026-03-01 19:53
 ---
 
 ## Intro
