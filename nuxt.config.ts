@@ -89,7 +89,8 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/api/**': { prerender: false },
-    '/**': { prerender: true },
+    '/': { isr: 60 },
+    '/tech/**': { isr: 60 },
     '/tech': { redirect: '/' },
     '/basic-auth': { ssr: true, prerender: false },
   },
@@ -98,7 +99,7 @@ export default defineNuxtConfig({
   },
   experimental: {
     viewTransition: true,
-    payloadExtraction: false,
+    payloadExtraction: true,
   },
   compatibilityDate: '2024-11-01',
   nitro: {

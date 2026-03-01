@@ -4,8 +4,10 @@ import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTag } from '~/composables/utilities/tag'
 import { useTechArticle } from '~/composables/articles'
 
-const route = useRoute()
-const { article } = await useTechArticle(route.path)
+const route = useRoute('tech-slug')
+const slug = route.params.slug
+const { article } = await useTechArticle(String(slug))
+
 if (article.value === null) {
   throw createError({ statusCode: 404, message: 'Article not found' })
 }
