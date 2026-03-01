@@ -6,7 +6,7 @@ tags: ["Nuxt.js", "Nuxt Content", "Day.js"]
 ogImage: https://res.cloudinary.com/dyoyv8djx/image/upload/v1772369627/tsukiyama-blog/nuxt-content-scheduled-posts/nuxt-content-scheduled-posts_phjsvn.webp
 published: true
 date: 2026-03-02
-publishedAt: 2026-03-01 22:10
+publishedAt: 2026-03-02 08:00
 ---
 
 ## Intro
@@ -19,7 +19,7 @@ publishedAt: 2026-03-01 22:10
 
 「...一本目です。」
 
-「もう2月も終わるぞ？そもそも君は去年もそのような目標を立ててなかったか？」
+「もうマクドナルドから『てりたま』が発売される季節だぞ？そもそも君は去年もそのような目標を立ててなかったか？」
 
 「...はい。」<br>
 「今年こそはやり遂げようと思ってたんですが、年始から仕事やプライベートでバタバタしていまして、気がついたらこんな時期まで何も記事を書けていませんでした...。」
