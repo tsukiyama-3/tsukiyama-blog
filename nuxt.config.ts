@@ -89,7 +89,8 @@ export default defineNuxtConfig({
   },
   routeRules: {
     '/api/**': { prerender: false },
-    '/**': { prerender: true },
+    '/': { isr: 60 },
+    '/tech/**': { isr: 60 },
     '/tech': { redirect: '/' },
     '/basic-auth': { ssr: true, prerender: false },
   },
