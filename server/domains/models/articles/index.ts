@@ -12,6 +12,12 @@ dayjs.extend(isSameOrAfter)
 
 const TIME_ZONE = 'Asia/Tokyo'
 
+/**
+ * 記事スラッグをもとに単一の公開記事を取得する
+ * @param event H3Event
+ * @param slug 記事スラッグ
+ * @returns 公開記事 Get
+ */
 export const getArticle = async (event: H3Event, slug: string) => {
   const article = await findArticleBySlug(event, slug)
 
@@ -23,6 +29,7 @@ export const getArticle = async (event: H3Event, slug: string) => {
 }
 
 /**
+ * 公開記事の一覧を取得する
  * @param event H3Event
  * @returns 公開済み記事 List
  */
@@ -32,6 +39,11 @@ export const getArticles = async (event: H3Event) => {
   return articles.filter(filterPublishedArticle)
 }
 
+/**
+ * 公開記事フィルター
+ * @param article TechCollectionItem
+ * @returns boolean
+ */
 const filterPublishedArticle = (article: TechCollectionItem) => {
   // 公開日時が設定されていなければ公開済みとして扱う
   if (!article.publishedAt) {
@@ -40,5 +52,6 @@ const filterPublishedArticle = (article: TechCollectionItem) => {
 
   const now = dayjs().tz(TIME_ZONE)
 
+  // publishedAt が現在時刻以降か判定する
   return now.isSameOrAfter(dayjs(article.publishedAt).tz(TIME_ZONE))
 }
