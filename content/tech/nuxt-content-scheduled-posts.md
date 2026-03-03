@@ -176,7 +176,7 @@ Models では、Repository から取得したデータをドメインモデル�
 
 ```ts [~~/server/domains/models/article/index.ts]
 import type { H3Event } from 'h3'
-import type { TechCollectionItem } from '@nuxt/content'
+import type { ArticleCollectionItem } from '@nuxt/content'
 import dayjs from 'dayjs/esm'
 import utc from 'dayjs/esm/plugin/utc'
 import timezone from 'dayjs/esm/plugin/timezone'
@@ -218,10 +218,10 @@ export const getArticles = async (event: H3Event) => {
 
 /**
  * 公開記事フィルター
- * @param article TechCollectionItem
+ * @param article ArticleCollectionItem
  * @returns boolean
  */
-const filterPublishedArticle = (article: TechCollectionItem) => {
+const filterPublishedArticle = (article: ArticleCollectionItem) => {
   // 公開日時が設定されていなければ公開済みとして扱う
   if (!article.publishedAt) {
     return true
@@ -278,18 +278,18 @@ export default defineEventHandler(async (event) => {
 ## Composables
 
 ```ts [~/app/composables/articles/index.ts]
-import type { TechCollectionItem } from '@nuxt/content'
+import type { ArticleCollectionItem } from '@nuxt/content'
 
-export const useTechArticles = async () => {
+export const useArticles = async () => {
   const { data: articles } = await useFetch('/api/articles', {
-    default: (): TechCollectionItem[] => [],
+    default: (): ArticleCollectionItem[] => [],
   })
 
   return { articles }
 }
 
-export const useTechArticle = async (path: string) => {
-  const { data: article } = await useFetch<TechCollectionItem | null>(`/api/articles/${path}`,
+export const useArticle = async (path: string) => {
+  const { data: article } = await useFetch<ArticleCollectionItem | null>(`/api/articles/${path}`,
     {
       default: () => null,
     }
