@@ -45,8 +45,8 @@ export const getArticles = async (event: H3Event) => {
  * @returns boolean
  */
 const filterPublishedArticle = (article: TechCollectionItem) => {
-  // 公開日時が設定されていなければ公開済みとして扱う
-  if (!article.publishedAt) {
+  // dev または、公開日時が設定されていなければ公開済みとして扱う
+  if (import.meta.dev || !article.publishedAt) {
     return true
   }
 
