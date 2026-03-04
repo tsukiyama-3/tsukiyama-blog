@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+import BasicMap from '~/components/map/BasicMap.vue'
+import RouteMap from '~/components/map/RouteMap.vue'
 import FormattedDate from '~/components/text/FormattedDate.vue'
 import { useTechArticles } from '~/composables/articles'
 import { useProfile } from '~/composables/configurations/profile'
@@ -7,11 +10,77 @@ import { useTag } from '~/composables/utilities/tag'
 const { articles } = await useTechArticles()
 const { convertSvgLogo } = useTag()
 const { profile, displayName, displayBirthDate, displayPrefecture } = await useProfile()
+const config = useRuntimeConfig()
+const { onLoaded } = useScriptGoogleMaps({
+  apiKey: config.public.scripts.googleMaps.apiKey,
+})
+const map = ref<HTMLElement | null>(null)
+onMounted(() => {
+  onLoaded(async (instance) => {
+    if (!map.value) return
+    const maps = await instance.maps
+    const mapInstance = new maps.Map(map.value, {
+      center: { lat: 35.4047, lng: 139.4516 },
+      zoom: 12,
+      disableDefaultUI: true,
+      mapTypeControl: false,
+      zoomControl: true,
+      scaleControl: false,
+      streetViewControl: false,
+      fullscreenControl: false,
+    })
+    const tokyo = new google.maps.LatLng(24.1426, -110.3127)
+    const osaka = new google.maps.LatLng(25.79, -109.00)
+    // const gifu = new google.maps.LatLng(35.4233, 136.7607)
+    const request = {
+      origin: tokyo,
+      destination: osaka,
+      // waypoints: [
+      //   {
+      //     location: gifu,
+      //     stopover: true,
+      //   },
+      // ],
+      travelMode: google.maps.TravelMode.DRIVING,
+    }
+    const directionsService = new maps.DirectionsService()
+    const directionsRenderer = new maps.DirectionsRenderer({ suppressMarkers: true })
+    directionsRenderer.setMap(mapInstance)
+    directionsService.route(request, (result, status) => {
+      if (status === 'OK') {
+        directionsRenderer.setDirections(result)
+        new maps.Marker({
+          position: tokyo,
+          map: mapInstance,
+        })
+
+        // ✅ 自前マーカー追加（到着地点）
+        new maps.Marker({
+          position: osaka,
+          map: mapInstance,
+        })
+      }
+    })
+  })
+})
 </script>
 
 <template>
   <UPage>
     <div class="space-y-6">
+      <BasicMap
+        :position="{ lat: 35.4047, lng: 139.4516 }"
+        :enable-marker="true"
+      />
+      <RouteMap
+        :positions="{
+          start: { lat: 35.6895, lng: 139.6917 },
+          end: { lat: 34.6937, lng: 135.5023 },
+          waypoints: [{
+            lat: 35.4233, lng: 136.7607,
+          }],
+        }"
+      />
       <div
         class="grid grid-cols-[120px_auto] items-center gap-x-4 md:gap-x-8 md:grid-cols-[240px_auto]"
       >
@@ -56,6 +125,10 @@ const { profile, displayName, displayBirthDate, displayPrefecture } = await useP
         <h2 class="text-xl text-center dark:text-highlighted">
           新着記事
         </h2>
+        <NuxtLink
+          to="/journey"
+          class="dark:text-highlighted"
+        >Journey</NuxtLink>
         <ul class="grid md:grid-cols-2 gap-4">
           <li
             v-for="article in articles"
