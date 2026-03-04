@@ -18,21 +18,6 @@ export default defineContentConfig({
         publishedAt: z.date().optional(),
       }),
     }),
-    profile: defineCollection({
-      type: 'data',
-      source: 'configurations/profile.json',
-      schema: z.object({
-        familyName: z.string(),
-        givenName: z.string(),
-        birthDate: z.date(),
-        birthPlace: z.object({
-          country: z.string(),
-          prefecture: z.string(),
-        }),
-        avatar: z.string(),
-        bio: z.string(),
-      }),
-    }),
     diary: defineCollection({
       type: 'page',
       source: 'journey/diary/*.md',
@@ -112,10 +97,15 @@ export default defineContentConfig({
       type: 'data',
       source: 'configurations/profile.json',
       schema: z.object({
-        name: z.string(),
+        familyName: z.string(),
+        givenName: z.string(),
         birthday: z.date(),
         origin: z.string(), // 出身
         nationality: z.string(), // 国籍
+        birthPlace: z.object({
+          country: z.string(),
+          prefecture: z.string(),
+        }),
         avatar: z.string(),
         email: z.string(),
         accounts: z.array(z.object({

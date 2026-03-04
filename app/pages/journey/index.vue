@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import GlobeMaker from '~/components/globe/GlobeMaker.vue'
 import { useDiaryArticles } from '~/composables/articles/journey/diary'
-import { useProfile } from '~/composables/profile'
+import { useProfile } from '~/composables/configurations/profile'
 
-const { profile } = await useProfile()
+const { profile, displayName } = await useProfile()
 const { articles, totalDistance, localTime, localOffset } = await useDiaryArticles()
 </script>
 
@@ -24,22 +24,19 @@ const { articles, totalDistance, localTime, localOffset } = await useDiaryArticl
             <li class="contents grid-cols-subgrid">
               <span class="text-muted">NAME</span>
               <span class="text-muted">:</span>
-              <span v-if="profile.name">{{ profile?.name.toUpperCase() }}</span>
-            </li>
-            <li class="contents grid-cols-subgrid">
-              <span class="text-muted">AGE</span>
-              <span class="text-muted">:</span>
-              <span>{{ profile?.age }}</span>
+              <span v-if="displayName">{{ displayName }}</span>
             </li>
             <li class="contents grid-cols-subgrid">
               <span class="text-muted">ORIGIN</span>
               <span class="text-muted">:</span>
               <span>{{ profile?.origin }}</span>
             </li>
-            <li class="contents grid-cols-subgrid">
+            <li
+              class="contents grid-cols-subgrid"
+            >
               <span class="text-muted">LOCATION</span>
               <span class="text-muted">:</span>
-              <span>{{ articles[0].position.end?.label }}</span>
+              <span>{{ articles[0]?.position.end?.label }}</span>
             </li>
             <li class="contents grid-cols-subgrid">
               <span class="text-muted">LOCAL TIME</span>

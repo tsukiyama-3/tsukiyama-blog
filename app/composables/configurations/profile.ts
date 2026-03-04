@@ -22,7 +22,7 @@ export const useProfile = async () => {
       return ''
     }
 
-    const dateTime = new Date(profile.value.birthDate)
+    const dateTime = new Date(profile.value.birthday)
 
     const year = dateTime.getUTCFullYear()
     const month = String(dateTime.getUTCMonth() + 1).padStart(2, '0')

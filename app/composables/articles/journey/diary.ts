@@ -14,7 +14,7 @@ export const useDiaryArticles = async () => {
 
   const localTime = computed(() => {
     return new Date().toLocaleTimeString('en-US', {
-      timeZone: articles.value ? articles.value[0].timezone : 'UTC',
+      timeZone: articles.value ? articles.value[0]?.timezone : 'UTC',
       hour: '2-digit',
       minute: '2-digit',
     })
