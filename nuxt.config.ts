@@ -81,9 +81,9 @@ export default defineNuxtConfig({
         },
       },
       scripts: {
-        xPixel: {
-          id: 'xxx',
-        },
+        // xPixel: {
+        //   id: 'xxx',
+        // },
         googleMaps: {
           apiKey: '',
         },
@@ -127,7 +127,7 @@ export default defineNuxtConfig({
   },
   scripts: {
     registry: {
-      xPixel: { trigger: 'onNuxtReady' },
+      xPixel: { id: 'xxx', trigger: 'onNuxtReady' },
     },
   },
 })
