@@ -81,6 +81,9 @@ export default defineNuxtConfig({
         },
       },
       scripts: {
+        // xPixel: {
+        //   id: 'xxx',
+        // },
         googleMaps: {
           apiKey: '',
         },
@@ -120,6 +123,11 @@ export default defineNuxtConfig({
     cloudinary: {
       baseURL:
         'https://res.cloudinary.com/dyoyv8djx/image/upload/v1745236671/tsukiyama-blog',
+    },
+  },
+  scripts: {
+    registry: {
+      xPixel: { id: 'xxx', trigger: 'onNuxtReady' },
     },
   },
 })
