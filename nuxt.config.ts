@@ -82,7 +82,7 @@ export default defineNuxtConfig({
       },
       scripts: {
         xPixel: {
-          id: 'ol7lz',
+          id: 'xxx',
         },
         googleMaps: {
           apiKey: '',
