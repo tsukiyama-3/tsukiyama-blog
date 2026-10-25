@@ -8,7 +8,7 @@ const route = useRoute('tech-slug')
 const slug = route.params.slug
 const { article } = await useTechArticle(String(slug))
 
-if (article.value === null) {
+if (!article.value) {
   throw createError({ statusCode: 404, message: 'Article not found' })
 }
 
