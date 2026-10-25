@@ -1,7 +1,7 @@
 ---
 title: 小さいこととシンプルは違う
 description: "シンプルとは、小さいことではなく、分けて考えられること。"
-icon: /avatar_green_oab8qx.webp
+icon: /avatar_gray_xlafck.webp
 tags: ["ソフトウェア設計", "リファクタリング"]
 published: true
 date: 2026-10-26
