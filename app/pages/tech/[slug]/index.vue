@@ -19,8 +19,11 @@ const breadcrumbs = ref<BreadcrumbItem[]>([
 
 const { convertSvgLogo } = useTag()
 
+// id は「コレクション名/ファイルパス.md」なので、URL には path（/tech/slug）を使う
+const articleUrl = `https://tsukiyama.blog${article.value.path}`
+
 useHead({
-  link: [{ rel: 'canonical', href: `https://tsukiyama.blog/tech/${article.value.id}` }],
+  link: [{ rel: 'canonical', href: articleUrl }],
 })
 
 useSeoMeta({
@@ -29,7 +32,7 @@ useSeoMeta({
   ogTitle: `${article.value.title}｜tsukiyama.blog`,
   ogDescription: article.value.description,
   ogImage: article.value.ogImage ?? 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
-  ogUrl: `https://tsukiyama.blog/tech/${article.value.id}`,
+  ogUrl: articleUrl,
   twitterTitle: `${article.value.title}｜tsukiyama.blog`,
   twitterDescription: article.value.description,
   twitterImage: article.value.ogImage ?? 'https://res.cloudinary.com/dyoyv8djx/image/upload/v1744039369/tsukiyama-blog/tsukiyama.blog_uaoqwg.png',
