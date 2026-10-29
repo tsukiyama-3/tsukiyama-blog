@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { readdirSync } from 'node:fs'
+import { join } from 'node:path'
+
 export default defineNuxtConfig({
   modules: [
     '@nuxt/ui',
@@ -104,11 +107,31 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   nitro: {
     compressPublicAssets: true,
+    prerender: {
+      crawlLinks: true,
+      routes: ['/'],
+    },
   },
   vite: {
     build: {
       minify: 'esbuild',
       cssMinify: true,
+    },
+  },
+  hooks: {
+    'nitro:config'(nitroConfig) {
+      if (nitroConfig.dev) return
+      const techDir = join(process.cwd(), 'content', 'tech')
+      try {
+        const files = readdirSync(techDir, { withFileTypes: true })
+        const routes = files
+          .filter(f => f.isFile() && f.name.endsWith('.md'))
+          .map(f => `/tech/${f.name.replace(/\.md$/, '')}`)
+        nitroConfig.prerender!.routes!.push(...routes)
+      }
+      catch {
+        // content/tech が無い場合はスキップ
+      }
     },
   },
   eslint: {
